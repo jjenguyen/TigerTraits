@@ -5,6 +5,11 @@ function getUser(talk){
     });
 }
 
+const user = {
+    name: "Default User",
+    type: "unknown"
+};
+
 
 
 function main(){
