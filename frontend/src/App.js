@@ -11,7 +11,7 @@ function App() {
         <div class = "start">
           <header className="App-header">
             <p>
-              Welcome to Tiger Traits! 
+              Welcome to Tiger Traits, {user.name || 'Unknown User'}!
             </p>
           </header>
         </div> 
@@ -19,6 +19,11 @@ function App() {
       </body>
     </div>
   );
+}
+
+const user = {
+  name: "Default User",
+  type: "unknown"
 }
 
 export default App;
