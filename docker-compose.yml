@@ -1,8 +1,46 @@
+#aws ecr build docker compose section
+
+#version: "3"
+
+#services:
+#  backend:
+#    image: 490004653796.dkr.ecr.us-east-2.amazonaws.com/tiger-traits-backend:latest
+#    ports:
+#      - "3001:3001"
+#    environment:
+#      - MONGO_URI=mongodb://mongo:27017/tigerTraitsDB
+#    depends_on:
+#      - mongo
+#
+#  frontend:
+#    image: 490004653796.dkr.ecr.us-east-2.amazonaws.com/tiger-traits-frontend:latest
+#    ports:
+#      - "80:80"
+#    environment:
+#      - REACT_APP_BACKEND_URL=http://backend:3001 # Docker service name
+#    depends_on:
+#      - backend
+#
+#  mongo:
+#    image: mongo:5
+#    ports:
+#      - "27017:27017"
+#    volumes:
+#      - mongo-data:/data/db
+#
+#volumes:
+#  mongo-data:
+#
+#-----------------
+
+# local develompment docker compose section
+
 version: "3"
 
 services:
   backend:
-    image: 490004653796.dkr.ecr.us-east-2.amazonaws.com/tiger-traits-backend:latest
+    build:
+      context: ./backend
     ports:
       - "3001:3001"
     environment:
@@ -11,7 +49,8 @@ services:
       - mongo
 
   frontend:
-    image: 490004653796.dkr.ecr.us-east-2.amazonaws.com/tiger-traits-frontend:latest
+    build:
+      context: ./frontend
     ports:
       - "80:80"
     environment:
@@ -28,3 +67,4 @@ services:
 
 volumes:
   mongo-data:
+
