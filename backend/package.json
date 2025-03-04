@@ -12,6 +12,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.2",
+    "logic": "file:",
     "mongoose": "^8.11.0",
     "path": "^0.12.7"
   }
