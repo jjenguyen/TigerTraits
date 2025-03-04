@@ -14,7 +14,12 @@ const app = express();
 const port = process.env.PORT || 3001; // Defaults to 3001 for local development
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  methods: 'GET,POST,PUT,DELETE,OPTIONS',
+  allowedHeaders: 'Content-Type, Authorization'
+}));
+
 app.use(express.json());
 
 // ✅ Add Health Check Route for AWS Load Balancer

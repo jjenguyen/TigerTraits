@@ -53,10 +53,13 @@ services:
       context: ./frontend
     ports:
       - "80:80"
+      - "3000:3000"
+    volumes:
+    - ./nginx.conf:/etc/nginx/conf.d/default.conf # force docker to use local ngninx.conf
     environment:
       - REACT_APP_BACKEND_URL=http://backend:3001 # Docker service name
     depends_on:
-      - backend
+      - mongo
 
   mongo:
     image: mongo:5
