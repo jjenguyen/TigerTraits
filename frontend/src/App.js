@@ -55,8 +55,13 @@ function App() {
     };
 
     return (
-        <div style={{ textAlign: "center", marginTop: "50px" }}>
+        //class = "mainContainer" holds css for SPA
+        <div class="mainContainer">
             <h1>Welcome to Tiger Traits!</h1>
+            <div>
+            <p>Turning Traits into Connections</p>
+            </div>
+        
             {!showQuiz ? (
                 <>
                     <input
