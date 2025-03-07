@@ -1,0 +1,49 @@
+services:
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    restart: always
+    ports:
+      - "8080:80"  # Keep this mapped for local development
+    networks:
+      - app_network
+    depends_on:
+      - backend
+    environment:
+      - REACT_APP_API_URL=http://backend:5000  # Keep backend container name for local networking
+
+  backend:
+    build: ./backend
+    container_name: backend
+    restart: always
+    ports:
+      - "4000:5000"  # Keep local mapping for development
+    networks:
+      - app_network
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://root:example@mongo:27017/mydatabase?authSource=admin
+      - PORT=5000
+
+  mongo:
+    build: ./mongo  # Builds Mongo from a Dockerfile (same as production)
+    container_name: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db  # Preserve local volume for persistent data
+    networks:
+      - app_network
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=example
+      - MONGO_INITDB_DATABASE=mydatabase
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  mongo-data:
