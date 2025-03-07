@@ -4,7 +4,7 @@ function Quiz({ onSubmit }) {
     const [answers, setAnswers] = useState({ ie: "", sn: "", tf: "", jp: "" });
 
     const questions = [
-        { key: "ie", text: "Are you an Introvert (I) or an Extrovert (E)?", options: ["I", "E"] },
+        { key: "ie", text: "The Homecoming Parade is Today! Are you on Tiger Ave, lively with the crowd? Or are you at a quieter spot with a few friends?", options: ["Option 1", "Option 2"] },
         { key: "sn", text: "Do you rely more on Sensing (S) or Intuition (N)?", options: ["S", "N"] },
         { key: "tf", text: "Do you make decisions based on Thinking (T) or Feeling (F)?", options: ["T", "F"] },
         { key: "jp", text: "Do you prefer Judging (J) or Perceiving (P)?", options: ["J", "P"] }
@@ -38,7 +38,7 @@ function Quiz({ onSubmit }) {
                                 margin: "5px",
                                 padding: "10px",
                                 fontSize: "16px",
-                                backgroundColor: answers[q.key] === option ? "lightblue" : "white"
+                                backgroundColor: answers[q.key] === option ? "grey" : "white"
                             }}
                         >
                             {option}
