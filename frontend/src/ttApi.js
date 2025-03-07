@@ -32,6 +32,7 @@ async function checkUser(uname, pass){
  * @param {String} pass password (nonhashed to be hashed in registerUser_)
  * @returns bool if user's logged in
  */
+
 async function registerUser(uname, pass) {
     var registerThisUname = await checkUser(uname, pass);
     if (registerThisUname[1] === "User doesn't exist yet."){
