@@ -2,11 +2,18 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const mongoose = require("mongoose");
-
+//hashing dependency
+require("dotenv").config();
 const quizRoutes = require("./routes/quizRoutes");
 const { processUserName } = require("./utils/tigerTraits");
 const QuizResult = require("./models/QuizResult");
 const connectDB = require("./config/db");
+//hashing dependency
+const cookieParser = require("cookie-parser");
+//hashing dependency
+const authRoute = require("./routes/AuthRoutes");
+//referenced from /utils/.env
+const { MONGO_URL, PORT } = process.env;
 
 const app = express();
 
@@ -14,11 +21,27 @@ const app = express();
 const port = process.env.PORT || 3001; // Defaults to 3001 for local development
 
 // Middleware
+//updated for hashing
 app.use(cors({
-  origin: '*',
-  methods: 'GET,POST,PUT,DELETE,OPTIONS',
-  allowedHeaders: 'Content-Type, Authorization'
-}));
+  origin: ["http://localhost:3000"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+})
+);
+
+
+mongoose.connect(MONGO_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("MongoDB is connected succesffully!"))
+.catch((err) => console.log(err));
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on ${PORT}`);
+});
+/////////////
+
 
 app.use(express.json());
 
@@ -56,3 +79,11 @@ app.use((err, req, res, next) => {
   console.error("🔥 Uncaught Error:", err);
   return res.status(500).json({ error: "Internal Server Error" });
 });
+
+
+//updated for hashing
+app.use(express.json());
+
+app.use(cookieParser());
+
+app.use("/", authRoute);
