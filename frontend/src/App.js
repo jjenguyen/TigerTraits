@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import Quiz from "./components/Quiz";
 
+
 function App() {
     const [userName, setUserName] = useState("");
     const [message, setMessage] = useState("");
     const [showQuiz, setShowQuiz] = useState(false);
     const [quizResults, setQuizResults] = useState([]); // Store all past results
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [showCreateAccountForm, setShowCreateAccountForm] = useState(false);
 
     const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001'; // Default for local dev
 
@@ -54,6 +60,30 @@ function App() {
         }
     };
 
+    //create account
+    const handleCreateAccountSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            setLoading(true)
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api//register`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, password }),
+            });
+
+            if(!response.ok) {
+                throw new Error("Couldn't create an account")
+            }
+
+            setLoading(false)
+
+        }
+        catch (err){
+            setLoading(false)
+            console.error("Error creating Account")
+        }
+    };
+
     return (
         //class = "mainContainer" holds css for SPA
         <div class="mainContainer">
@@ -61,8 +91,22 @@ function App() {
             <div>
             <p>Turning Traits into Connections</p>
             </div>
+            
+            {showCreateAccountForm ?(
+                <div>
+                    <h1>Create an Account</h1>
+                    <form onSubmit={handleCreateAccountSubmit}>
+                    <input type= "text" name = "name" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}/> <br/> <br/>
+                    <input type= "email" name = "email" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)}/> <br/> <br/>
+                    <input type= "password" name = "password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/> <br/> <br/>
+                    <button onClick={handleCreateAccountSubmit}>Submit</button><br/><br/>
+                    <button onClick={()=> setShowCreateAccountForm(false)}>Cancel</button>
+                    </form>
+                </div>
         
-            {!showQuiz ? (
+            ) : showQuiz ? (
+                <Quiz onSubmit={handleQuizSubmit} />
+            ):(
                 <>
                     <input
                         type="text"
@@ -75,9 +119,8 @@ function App() {
                         setMessage(""); // ✅ Clear previous personality type
                     }}>Start Quiz</button>
                     <button onClick={fetchAllResults} style={{ marginLeft: "10px" }}>View All Previous Entries</button>
+                    <button onClick={() => setShowCreateAccountForm(true)}>Create an account</button>
                 </>
-            ) : (
-                <Quiz onSubmit={handleQuizSubmit} />
             )}
             {message && <h2>{message}</h2>}
 
@@ -95,6 +138,7 @@ function App() {
                     </ul>
                 </div>
             )}
+
         </div>
     );
 }
