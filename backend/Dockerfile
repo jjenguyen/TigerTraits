@@ -1,8 +1,7 @@
-# backend/Dockerfile
 FROM node:18-alpine
-WORKDIR /app
+WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
-EXPOSE 5000
-CMD ["node", "index.js"]
+EXPOSE 4000
+CMD ["npm", "start"]
