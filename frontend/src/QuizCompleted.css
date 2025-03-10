@@ -1,0 +1,62 @@
+/* Main container */
+.quiz-completed-container {
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #d06363;
+    color: white;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+  }
+  
+  /* Image container */
+  .image-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  /* Quiz completion image */
+  .completion-image {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+  }
+  
+  /* Centered button */
+  .centered-button {
+    position: absolute;
+    top: 61%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* This moves it back by half its own size */
+  }
+
+  .centered-button {
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: white;
+    color: #db2443;
+    border: 3px solid #db2443;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .centered-button:hover {
+    background-color: #db2443;
+    color: white;
+  }

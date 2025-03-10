@@ -1,0 +1,48 @@
+  /* Button styling */
+  .button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    background-color: white;
+    color: #db2443;
+    border: 3px solid #db2443;
+    border-radius: 5px;
+    margin: 10px;
+  }
+  
+  .button:hover {
+    background-color: #db2443;
+    color: white;
+  }
+  
+  
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #d06363;
+    color: white;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+  }
+  
+  /* Quiz Title */
+  .quiz-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Quiz Image styling */
+  .quiz-image {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    display: block;
+  }
