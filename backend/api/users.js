@@ -4,7 +4,7 @@ const router = require("express".Router());
 
 //get user method, return json version of result if found by uname
 router.get("/:uname", function(req, res){
-    User.findOne({uname: {$eq: req.paramas.uname}})
+    User.findOne({uname: {$eq: req.params.uname}})
     .then((found) => {
         res.json(found);
     })
