@@ -1,0 +1,49 @@
+/* makes the whole page a flexbox to center content */
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+  /* background-color: pink; */
+  /* font-family: 'Courier New', Courier, monospace; */
+}
+
+/* title */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.welcome-gif {
+  width: 300px;
+  max-width: 80%;
+  height: auto;
+  margin: 20px 0;
+}
+
+/* button to login/register page */
+.start-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin: 10px 0;
+  cursor: pointer;
+  border: none;
+  background-color: #3f51b5;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+.start-button:hover {
+  background-color: #303f9f;
+}
+
+.description,
+.creator-credit {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 5px;
+}

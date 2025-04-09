@@ -1,0 +1,143 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { 
+    height: 100%;
+}
+body { 
+    margin: 0;
+    /* font-family: Roboto, "Helvetica Neue", sans-serif; */
+    font-family: 'Comfortaa', sans-serif;
+    background-color: pink;
+}
+
+/* assignment 4 */
+.mat-toolbar.header-container {
+    background-color: #667799;
+    color:whitesmoke;
+    font-size: 24px;
+    text-align: center;
+    padding: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* final project */
+nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 1px;
+    overflow: hidden;
+    background-color: #667799;
+}
+
+nav a {
+    display: inline;
+    float: left;
+    color: whitesmoke;
+    text-align: center;
+    font-size: 23px;
+    padding: 16px 18px;
+    text-decoration: none;
+    margin-right: 7px;
+}
+
+.logout-link {
+    float: right;
+}
+
+/* change the link color black on hover */
+nav a:hover:not(.active) {
+    background-color: #3e495e;
+}
+
+/* login and register form containers */
+.form-container {
+    text-align: center;
+    font-size: 17px;
+    margin: 0 auto;
+    width: 700px;
+    height: 400px;
+    /* background-color: #f2f2f2; */
+    padding-top: 60px;
+    border-radius: 8px;
+    /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
+}
+
+.input-container {
+    margin: 0 auto 15px;
+    width: 60%;
+}
+
+.form-container input[type="email"],
+.form-container input[type="password"] {
+    width: 70%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.form-container label {
+    display: inline-block;
+    width: 150px;
+    text-align: left;
+    margin-right: 145px;
+    font-size: 17px;
+}
+
+.form-container button[type="submit"] {
+    width: 15%;
+    padding: 7px;
+    font-size: 15px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 7px;
+}
+
+.form-container button:hover {
+    background-color: #0056b3;
+}
+
+.success-message {
+    color: green;
+}
+
+.error-message {
+    color: red;
+}
+
+/* linking forms */
+.register-form,
+.login-form {
+    padding-top: 15px;
+    font-size: 15px;
+}
+
+/* login and register form titles */
+.form-container h2 {
+    font-size: 25px;
+    color: #333;
+}
+
+.footer-container {
+    background-color: #667799;
+    color: whitesmoke;
+    padding: 10px;
+    padding-top: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-text {
+    font-size: 15px;
+}
+
+.home-page {
+    margin: 0 auto;
+    padding: 35px;
+}

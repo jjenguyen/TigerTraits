@@ -1,0 +1,15 @@
+<!-- use header component for routing -->
+<!-- render login component and register link if user is not logged in -->
+<!-- <div *ngIf="!isLoggedIn">
+    <router-outlet></router-outlet>
+</div> -->
+
+<!-- render header component and router outlet if user is logged in -->
+<!-- <div *ngIf="isLoggedIn">
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+</div> -->
+
+<!-- simpler version of previous code above-->
+<app-header *ngIf="isLoggedIn"></app-header>
+<router-outlet></router-outlet>
