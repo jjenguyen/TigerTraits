@@ -1,5 +1,7 @@
-/* makes the whole page a flexbox to center content */
-:host {
+/* Make the whole page a flexbox to center content */
+
+/* original :host styling */
+/* :host {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,37 +10,54 @@
   flex-direction: column;
   padding: 20px;
   box-sizing: border-box;
-  /* background-color: pink; */
-  /* font-family: 'Courier New', Courier, monospace; */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} */
+
+/* working :host */
+/* :host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: #FFD17D;
+} */
+
+.title {
+  font-size: 5rem;
+  margin: 4px 0;
+  letter-spacing: 1px;
 }
 
-/* title */
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+.slogan {
+  margin-top: 40px;
+  font-size: 1.2rem;
+  color: #444;
+  font-style: italic;
 }
 
-.welcome-gif {
+.top-image {
   width: 300px;
   max-width: 80%;
   height: auto;
   margin: 20px 0;
+  border-radius: 20px;
 }
 
-/* button to login/register page */
 .start-button {
   padding: 10px 20px;
   font-size: 1rem;
   margin: 10px 0;
   cursor: pointer;
   border: none;
-  background-color: #3f51b5;
+  background-color: #2979ff;
   color: white;
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
+
 .start-button:hover {
-  background-color: #303f9f;
+  background-color: #1565c0;
 }
 
 .description,

@@ -52,7 +52,7 @@ import { ProfileComponent } from './profile/profile.component';
     MatExpansionModule,
     HttpClientModule,
     MatTableModule,
-    MatListModule
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

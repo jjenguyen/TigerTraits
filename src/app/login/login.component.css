@@ -1,0 +1,81 @@
+/* working :host */
+/* :host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: #FFD17D;
+} */
+
+.form-container {
+    text-align: center;
+    margin-top: -100px;
+    width: 100%;
+    max-width: 400px;
+    background-color: #ffffff;
+    padding: 20px;
+    padding-top: 50px;
+    padding-bottom: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+  
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333333;
+}
+  
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers the container in the form */
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.input-container label {
+  align-self: flex-start; /* keeps the label left-aligned */
+  margin-bottom: 5px;
+  font-weight: 500;
+  font-size: 14px;
+  padding-left: 13%;
+}
+
+.input-container input {
+  width: 75%; /* makes input boxes longer */
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+  
+button[type="submit"] {
+    width: 75%;
+    padding: 12px;
+    background-color: #2979ff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 7px;
+    transition: background-color 0.3s ease;
+}
+  
+button[type="submit"]:hover {
+    background-color: #1565c0;
+}
+  
+.register-form {
+    margin-top: 10px;
+    font-size: 14px;
+}
+  
+.register-form a {
+    color: purple;
+    text-decoration: underline;
+}

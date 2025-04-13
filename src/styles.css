@@ -1,14 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+.page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #FFD17D;
+    /* update */
+    font-family: 'Courier New', Courier, monospace;
+}
 
 html, body { 
     height: 100%;
 }
 body { 
     margin: 0;
-    /* font-family: Roboto, "Helvetica Neue", sans-serif; */
-    font-family: 'Comfortaa', sans-serif;
-    background-color: pink;
+    /* need to update these after styling home and quiz */
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #FFD17D;
 }
+
+/* testing mat card module */
+/* .example-card {
+    max-width: 400px;
+}
+  
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+} */
 
 /* assignment 4 */
 .mat-toolbar.header-container {
@@ -50,76 +72,12 @@ nav a:hover:not(.active) {
     background-color: #3e495e;
 }
 
-/* login and register form containers */
-.form-container {
-    text-align: center;
-    font-size: 17px;
-    margin: 0 auto;
-    width: 700px;
-    height: 400px;
-    /* background-color: #f2f2f2; */
-    padding-top: 60px;
-    border-radius: 8px;
-    /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
-}
-
-.input-container {
-    margin: 0 auto 15px;
-    width: 60%;
-}
-
-.form-container input[type="email"],
-.form-container input[type="password"] {
-    width: 70%;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 15px;
-}
-
-.form-container label {
-    display: inline-block;
-    width: 150px;
-    text-align: left;
-    margin-right: 145px;
-    font-size: 17px;
-}
-
-.form-container button[type="submit"] {
-    width: 15%;
-    padding: 7px;
-    font-size: 15px;
-    color: white;
-    background-color: #007bff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    margin-top: 7px;
-}
-
-.form-container button:hover {
-    background-color: #0056b3;
-}
-
 .success-message {
     color: green;
 }
 
 .error-message {
     color: red;
-}
-
-/* linking forms */
-.register-form,
-.login-form {
-    padding-top: 15px;
-    font-size: 15px;
-}
-
-/* login and register form titles */
-.form-container h2 {
-    font-size: 25px;
-    color: #333;
 }
 
 .footer-container {
@@ -141,3 +99,66 @@ nav a:hover:not(.active) {
     margin: 0 auto;
     padding: 35px;
 }
+
+/* WEBDEV 2 CODE */
+/* original login and register forms */
+/* .form-container {
+    text-align: center;
+    font-size: 17px;
+    margin: 0 auto;
+    width: 700px;
+    height: 400px;
+    padding-top: 60px;
+    border-radius: 8px;
+} */
+
+/* .input-container {
+    margin: 0 auto 15px;
+    width: 60%;
+} */
+
+/* .form-container input[type="email"],
+.form-container input[type="password"] {
+    width: 70%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+} */
+
+/* .form-container label {
+    display: inline-block;
+    width: 150px;
+    text-align: left;
+    margin-right: 145px;
+    font-size: 17px;
+} */
+
+/* .form-container button[type="submit"] {
+    width: 15%;
+    padding: 7px;
+    font-size: 15px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 7px;
+} */
+
+/* .form-container button:hover {
+    background-color: #0056b3;
+} */
+
+/* linking forms */
+/* .register-form,
+.login-form {
+    padding-top: 15px;
+    font-size: 15px;
+} */
+
+/* login and register form titles */
+/* .form-container h2 {
+    font-size: 25px;
+    color: #333;
+} */
