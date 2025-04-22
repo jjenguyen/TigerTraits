@@ -1,5 +1,3 @@
-<p>quiz works!</p>
-
 <app-header></app-header>
 
 <!-- START SCREEN -->
@@ -7,13 +5,14 @@
   <div class="gif-container">
     <img src="assets/gifs/Test.gif" alt="GIF" class="gif-image" />
   </div>
-  <h2>Ready to find out your Tiger Traits?</h2>
-  <button class="button" (click)="viewStep = 'quiz'">Start Quiz</button>
+  <h2>It's Homecoming Weekend at the University of Missouri!</h2>
+  <h2>Ready to start the day and discover your TigerTraits?</h2>
+  <button class="button" (click)="viewStep = 'quiz'">Let's Do It!</button>
 </div>
 
 <!-- QUIZ SCREEN -->
 <div *ngIf="viewStep === 'quiz'" class="quiz-screen">
-  <h2>Question {{ currentQuestion + 1 }} / {{ questions.length }}</h2>
+  <h2>{{ currentQuestion + 1 }} / {{ questions.length }}</h2>
 
   <!-- GIF -->
   <div class="gif-container">
@@ -23,8 +22,10 @@
   <p class="question-text">{{ questions[currentQuestion].text }}</p>
 
   <div *ngFor="let option of questions[currentQuestion].options">
-    <button (click)="handleSelect(questions[currentQuestion].key, option)"
-            [ngStyle]="{'background-color': isSelected(questions[currentQuestion].key, option) ? 'grey' : 'white'}"
+    <!-- handleSelection just takes in the optionText selected, returns mapped letter to ans obj-->
+    <!--updated ngStyle call to isSelected to questions[current].'ID' to display selected ans to user-->
+    <button (click)="handleSelect(option)"
+            [ngStyle]="{'background-color': isSelected(questions[currentQuestion].id, option) ? 'grey' : 'white'}"
             class="option-button">
       {{ option }}
     </button>
@@ -36,11 +37,12 @@
   <div class="gif-container">
     <img src="assets/gifs/Test.gif" alt="GIF" class="gif-image" />
   </div>
-  <h2>All done! Ready to see your results?</h2>
-  <button class="button" (click)="viewStep = 'result'">Show Results</button>
+  <h2>What a day! Ready to see your TigerTraits?</h2>
+  <button class="button" (click)="viewStep = 'result'">Take Me There!</button>
 </div>
 
 <!-- RESULTS SCREEN -->
+ <!--take note that tagColor is hard coded to hex #FFD17D 'gold tint 1', set back to resultData.tagColor if we want to change colors based on profile -->
 <div *ngIf="viewStep === 'result'" class="results-screen">
   <h2>Your Tiger Trait: {{ result }}</h2>
   <app-info-card
@@ -53,6 +55,6 @@
     [resources]="resultData.resources"
     [compatibilities]="resultData.compatibilities"
     [cardColor]="resultData.cardColor"
-    [tagColor]="resultData.tagColor"
+    [tagColor]="FFD17D"
   ></app-info-card>
 </div>

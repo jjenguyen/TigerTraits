@@ -32,9 +32,9 @@ body {
     background-size: cover;
 } */
 
-/* assignment 4 */
+
 .mat-toolbar.header-container {
-    background-color: #667799;
+    background-color: #333333;
     color:whitesmoke;
     font-size: 24px;
     text-align: center;
@@ -43,13 +43,13 @@ body {
     padding-bottom: 40px;
 }
 
-/* final project */
+
 nav {
     list-style-type: none;
     margin: 0;
     padding: 1px;
     overflow: hidden;
-    background-color: #667799;
+    background-color: #333333;
 }
 
 nav a {

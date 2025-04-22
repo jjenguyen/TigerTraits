@@ -10,14 +10,19 @@
   
 .card {
     background-color: white;
-    padding-left: 30px;
-    padding-right: 30px;
+    /* testing mobile friendly display */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 60px;
+    padding-right: 60px;
     padding-top: 20px;
     padding-bottom: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 550px; /* makes it a rectangle */
     text-align: center;
+    
+    
 }
 
 h1 {

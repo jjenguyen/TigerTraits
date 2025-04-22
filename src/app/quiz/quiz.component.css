@@ -4,6 +4,8 @@
 .results-screen {
     text-align: center;
     margin-top: 30px;
+    /* testing mobile friendly display */
+    
 }
 
 /* for all gifs */
@@ -40,9 +42,10 @@
 }
 
 /* answer choice button */
+/* set height to auto for dynamic sizing, mobile friendly display */
 .option-button {
     width: 200px;
-    height: 85px;
+    height: auto;
     margin: 5px;
     padding: 10px;
     font-size: 16px;
