@@ -4,17 +4,18 @@ const path = require('path');
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-
+const { body, validationResult } = require('express-validator');
 // create an express app
 const app = express();
 // const port = 3000;
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080
 
-const uri = process.env.MONGO_URI || "mongodb+srv://jn4gz:jn4gz12345@clustera4.jcqksc9.mongodb.net/tigertraits?retryWrites=true&w=majority";
+const uri = process.env.MONGO_URI
 console.log("Environment PORT:", process.env.PORT);
 
 const { MongoClient, ObjectId } = require('mongodb');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 app.use(express.json());
 app.use(cors());
@@ -53,9 +54,28 @@ function isPasswordHashed(password) {
     return password.startsWith('$2b$');
 }
 
+const authenticateJWT = (req, res, next) => {
+    const token = req.headers['authorization']?.split(' ')[1]; // Bearer <token>
+    if (token) {
+        jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+            if (err) {
+                return res.sendStatus(403); // Forbidden
+            }
+            req.user = user;
+            next();
+        });
+    } else {
+        res.sendStatus(401); // Unauthorized
+    }
+    if(!token) {
+        return res.sendStatus(401).json({message: 'invalid token'}); // Unauthorized
+    }
+}
+
 // 2. user login auth
 app.post('/login', async (req, res) => {
     try {
+        
         console.log('Login request received:', req.body);
         
         const db = await connectToMongoDB();
@@ -92,6 +112,10 @@ app.post('/login', async (req, res) => {
             console.log('Incorrect password');
             return res.status(401).json({ message: 'Incorrect password. Please try again.' });
         }
+        const token = jwt.sign(
+            { userID: user._id, email: user.email },
+            process.env.JWT_SECRET
+        );
 
         console.log('Login successful!');
         // res.status(200).json({ message: 'Login successful!' });
@@ -99,8 +123,10 @@ app.post('/login', async (req, res) => {
         res.status(200).json({
             message: 'Login successful!',
             userId: user._id.toString(),
-            email: user.email
+            email: user.email,
+            token: token
           });
+          console.log('Token:', token);
     } catch (error) {
         console.error('Error during login:', error);
         res.status(500).json({ message: 'Internal server error' });
@@ -108,7 +134,19 @@ app.post('/login', async (req, res) => {
 });
 
 // 3. register new user and insert new document into mongo "users" collection
-app.post('/register', async (req, res) => {
+app.post('/register',[
+    body('email').isEmail().withMessage('Please enter a valid email address.'),
+    body('password')
+    .isLength({ min: 8 }).withMessage('Password must be at least 8 characters long.')
+    .matches(/\d/).withMessage('Password must contain at least one number.')
+    .matches(/[a-z]/).withMessage('Password must contain at least one lowercase letter.')
+    ],
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+    console.log('Registration request received:', req.body);
     try {
         const db = await connectToMongoDB();
         const usersCollection = db.collection('users');
@@ -130,7 +168,7 @@ app.post('/register', async (req, res) => {
 });
 
 // 4. insert user quiz results into mongo "quizResults" collection
-app.post('/quizResults', async (req, res) => {
+app.post('/quizResults',authenticateJWT, async (req, res) => {
     try {
         const db = await connectToMongoDB();
         const quizResultsCollection = db.collection('quizResults');
@@ -162,6 +200,9 @@ app.use(express.static(path.join(__dirname, 'dist/tigertraits-deployed/browser')
 // for any routes that don't match the api, serve the angular index.html
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/tigertraits-deployed/browser/index.html'));
+});
+app.get('/', (req, res) => {
+    res.send('hello from the server!');
 });
 
 // start server
