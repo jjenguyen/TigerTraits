@@ -12,11 +12,22 @@ export class RegisterComponent {
   errorMessage: string = '';
   successMessage: string = '';
 
+  hasUpperCase: boolean = false;
+  hasNumber: boolean = false;
+  hasSpecialChar: boolean = false;
+
   constructor(private http: HttpClient) {}
+
+  validatePassword(password: string) {
+    this.hasUpperCase = /[A-Z]/.test(password);
+    this.hasNumber = /\d/.test(password);
+  }
+
 
   register() {
     // change localhost route to new api when deployed!!!
-    this.http.post<any>('http://tt-env.eba-ey2xk2m2.us-east-1.elasticbeanstalk.com/register', { email: this.email, password: this.password })
+    this.http.post<any>('http://localhost:3000/register', { email: this.email, password: this.password })
+    //this.http.post<any>('http://tt-env.eba-ey2xk2m2.us-east-1.elasticbeanstalk.com/register', { email: this.email, password: this.password })
       .subscribe({
         next: (response) => {
           // check if the response contains a success message

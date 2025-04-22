@@ -24,7 +24,8 @@ export class LoginComponent {
 
   login() {
     // change localhost route to new api when deployed!!!
-    this.http.post<any>('http://tt-env.eba-ey2xk2m2.us-east-1.elasticbeanstalk.com/login', { email: this.email, password: this.password })
+    this.http.post<any>('http://localhost:3000/login', { email: this.email, password: this.password })
+    //this.http.post<any>('http://tt-env.eba-ey2xk2m2.us-east-1.elasticbeanstalk.com/login', { email: this.email, password: this.password })
       .subscribe({
         next: (response) => {
           console.log(response);

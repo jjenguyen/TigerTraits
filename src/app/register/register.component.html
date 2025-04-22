@@ -22,20 +22,51 @@
 <!-- <p>register works!</p> -->
 <div class="page-wrapper">
     <div class="form-container">
-    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
-    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
-    <h2>Sign up</h2>
-    <form (ngSubmit)="register()" #registerForm="ngForm">
-    <div class="input-container">
-        <label for="email">Email: </label>
-        <input type="email" id="email" name="email" required [(ngModel)]="email">
+      <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+      
+      <h2>Sign up</h2>
+  
+      <form (ngSubmit)="register()" #registerForm="ngForm">
+        <div class="input-container">
+          <label for="email">Email:</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            required 
+            [(ngModel)]="email" 
+            #emailRef="ngModel"
+            email/>
+            
+            <p *ngIf="emailRef?.errors?.['required'] && emailRef?.touched" class="error-message">Email is required.</p>
+            <p *ngIf="emailRef?.errors?.['email'] && emailRef?.touched" class="error-message">Enter a valid email address.</p>
+         </div>
+  
+        <div class="input-container">
+          <label for="password">Password:</label>
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            required 
+            minlength="8" 
+            [(ngModel)]="password" 
+            #passwordRef="ngModel"
+            (ngModelChange)="validatePassword(password)">
+          
+          <div *ngIf="passwordRef.touched || password">
+            <p *ngIf="password.length < 6" class="error-message">Password must be at least 6 characters long.</p>
+            <p *ngIf="!hasUpperCase" class="error-message">Must include at least one uppercase letter.</p>
+            <p *ngIf="!hasNumber" class="error-message">Must include at least one number.</p>
+          </div>
+        </div>
+
+        <button type="submit" [disabled]="!registerForm.form.valid">Sign up</button>
+      </form>
+
+  
+      <p class="login-form">Already have an account? <a routerLink="/login">Sign in</a></p>
     </div>
-    <div class="input-container">
-        <label for="password">Password: </label>
-        <input type="password" id="password" name="password" required [(ngModel)]="password">
-    </div>
-    <button type="submit">Sign up</button>
-    </form>
-    <p class="login-form">Already have an account? <a routerLink="/login">Sign in</a></p>
-    </div>
-</div>
+  </div>
+  
