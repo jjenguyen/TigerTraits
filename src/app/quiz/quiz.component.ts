@@ -70,7 +70,7 @@ export class QuizComponent {
         "There’s a reason the line’s out the door, Goldie’s is a classic!",
         "That new menu looks incredible! Let’s try it out!"
       ],
-      gif: 'assets/gifs/gif2.gif'
+      gif: 'assets/gifs/Test.gif'
     },
     {
       id: "Q3",
@@ -80,7 +80,7 @@ export class QuizComponent {
         "Time for a battle of the minds! Which art display is the best?",
         "Let’s enjoy the good vibes for today, bring me the song and dance!"
       ],
-      gif: 'assets/gifs/gif3.gif'
+      gif: 'assets/gifs/Test.gif'
     },
     {
       id: "Q4",
@@ -90,7 +90,7 @@ export class QuizComponent {
         "At a quieter spot with a friend!",
         "On Tiger Ave losing my voice and being lively with the crowd!"
       ],
-      gif: 'assets/gifs/gif4.gif'
+      gif: 'assets/gifs/Test.gif'
     },
     {
       id: "Q5",
@@ -100,7 +100,7 @@ export class QuizComponent {
         "Shakespeare's Pizza or Booche's! Can't turn down a Columbia classic!",
         "I'm tired of the same old rotation. Let's try something new!"
       ],
-      gif: 'assets/gifs/gif5.gif'
+      gif: 'assets/gifs/Test.gif'
     },
     {
       id: "Q6",
@@ -110,7 +110,7 @@ export class QuizComponent {
         "Let’s relax for a while in a quieter spot!",
         "Too much to go do and see!"
       ],
-      gif: 'assets/gifs/gif6.gif'
+      gif: 'assets/gifs/Test.gif'
     },
     {
       id: "Q7",
@@ -120,7 +120,7 @@ export class QuizComponent {
         "I’ve been looking forward to this event on my calendar for weeks!",
         "This event looked like so much fun and a good cause, I had to jump in! What do you mean planned it out?"
       ],
-      gif: 'assets/gifs/gif7.gif'
+      gif: 'assets/gifs/Test.gif'
     },
     {
       id: "Q8",
@@ -130,7 +130,7 @@ export class QuizComponent {
         "Analyzing the process and making sure everything runs smoothly!",
         "Connecting with others, keeping spirits high, and making sure everyone’s doing okay!"
       ],
-      gif: 'assets/gifs/gif8.gif'
+      gif: 'assets/gifs/Test.gif'
     },
     {
       id: "Q9",
@@ -140,7 +140,7 @@ export class QuizComponent {
         "I want to help out practically! Give me the step-by-step guide!",
         "Let me try and figure it out myself first, I think I’ve got the big idea!"
       ],
-      gif: 'assets/gifs/gif9.gif'
+      gif: 'assets/gifs/Test.gif'
     },
     {
       id: "Q10",
@@ -150,7 +150,7 @@ export class QuizComponent {
         "Give me some time, let’s just text them!",
         "The phone is already ringing! Let’s talk about it together!"
       ],
-      gif: 'assets/gifs/gif10.gif'
+      gif: 'assets/gifs/Test.gif'
     },
     {
       id: "Q11",
@@ -160,7 +160,7 @@ export class QuizComponent {
         "Approaching it logically! Maybe the best thing is to move along, we won’t know unless we weigh the pros and cons!",
         "Checking in with friends to see how everyone’s doing! If the group consensus says we stay, I’m staying too!"
       ],
-      gif: 'assets/gifs/gif11.gif'
+      gif: 'assets/gifs/Test.gif'
     },
     {
       id: "Q12",
@@ -170,7 +170,7 @@ export class QuizComponent {
         "Why would we plan if we’re not following through? Gotta go with the plan!",
         "Let’s keep our options open so if something better comes up we can go!"
       ],
-      gif: 'assets/gifs/gif12.gif'
+      gif: 'assets/gifs/Test.gif'
     }
   ];
 
@@ -185,7 +185,7 @@ export class QuizComponent {
       traits: ['Spontaneous', 'Great Performer', 'Enthusiastic'],
       leftTags: ['Not openly angry', '*comes late*', 'Quick thinker'],
       rightTags: ['Acts unbothered, actually is', 'Hates if you underrate them', 'Likes sharing their plans'],
-      image: 'assets/personas/Sparkys.png',
+      image: 'assets/personas/ESFP.png',
       resources: [
         { name: 'Comedy Wars', link: 'https://www.instagram.com/comedy_wars/' },
         { name: 'Caring for Columbia', link: 'https://www.instagram.com/caring4columbia/' },
@@ -193,9 +193,9 @@ export class QuizComponent {
         { name: 'Tiger Pantry and Truman`s Closet', link: 'https://www.instagram.com/tigerpantry/?hl=en' }
       ],
       compatibilities: [
-        { name: 'Kiss the 50', image: "assets/personas/KissThe50.png", link: '/profile/ISFJ' },
-        { name: 'Heidelberg', image: "assets/personas/Heidelberg.png", link: '/profile/ESFJ' },
-        { name: 'Mizzou Squirrel', image: "assets/personas/Squirrel.png", link: '/profile/ENFP' }
+        { name: 'Kiss the 50', image: "assets/personas/ISFJ.png", link: '/profile/ISFJ' },
+        { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '/profile/ESFJ' },
+        { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' }
       ],
       tagColor: '#99CECF',
     },
@@ -206,7 +206,7 @@ export class QuizComponent {
       traits: ['Entrepreneurial', 'Energetic', 'Social'],
       leftTags: ['Prioritizes harmony', 'Bursts of energy', 'Usually laid back'],
       rightTags: ['Good at reading the room', 'Attention seeking', 'Likes impressing others'],
-      image: 'assets/personas/FootballHelmet.png',
+      image: 'assets/personas/ESTP.png',
       resources: [
         { name: 'Collegiate DECA', link: 'https://www.instagram.com/mizzou_deca/' },
         { name: 'Mizzou Racing', link: 'https://www.instagram.com/mizzouracing/?hl=en' },
@@ -214,9 +214,9 @@ export class QuizComponent {
         { name: 'Intramural Sports', link: 'https://mizzourec.missouri.edu/intramural-sports/' }
       ],
       compatibilities: [
-        { name: 'Kiss The 50', image: "assets/personas/KissThe50.png", link: '/profile/ISFJ' },
-        { name: 'Sparky`s', image: "assets/personas/Sparkys.png", link: '/profile/ESFP' },
-        { name: 'Mort`s Wall', image: "assets/personas/MortWall.png", link: '/profile/ISTJ' }
+        { name: 'Kiss The 50', image: "assets/personas/ISFJ.png", link: '/profile/ISFJ' },
+        { name: 'Sparky`s', image: "assets/personas/ESFP.png", link: '/profile/ESFP' },
+        { name: 'Mort`s Wall', image: "assets/personas/ISTJ.png", link: '/profile/ISTJ' }
       ],
       tagColor: '#99CECF',
     },
@@ -227,7 +227,7 @@ export class QuizComponent {
       traits: ['Self-Expressive', 'Charming & Flexible', 'Always Ready to Explore'],
       leftTags: ['Stoic facial expressions', 'Very patient', 'First to speak up against people who act "badly"'],
       rightTags: ['Adventure oriented', 'Suddenly vocal once their values are a talk', 'Doesn`t want the spotlight, wants to exist and express themselves'],
-      image: 'assets/personas/Shamrock.png',
+      image: 'assets/personas/ISFP.png',
       resources: [
         { name: 'MU Outdoors', link: 'https://www.instagram.com/mu.outdoors/' },
         { name: 'Best Buddies', link: 'https://www.facebook.com/bestbuddiesmizcomo/' },
@@ -235,9 +235,9 @@ export class QuizComponent {
         { name: 'Freestyle Your Expression', link: 'https://www.instagram.com/fyemizzou/' }
       ],
       compatibilities: [
-        { name: 'Heidelberg', image: "assets/personas/Heidelberg.png", link: '/profile/ESFJ' },
-        { name: 'Jesse Hall Dome', image: "assets/personas/JesseDome.png", link: '/profile/ENFJ' },
-        { name: 'Kiss The 50', image: "assets/personas/KissThe50.png", link: '/profile/ISFJ' }
+        { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '/profile/ESFJ' },
+        { name: 'Jesse Hall Dome', image: "assets/personas/ENFJ.png", link: '/profile/ENFJ' },
+        { name: 'Kiss The 50', image: "assets/personas/ISFJ.png", link: '/profile/ISFJ' }
       ],
       tagColor: '#99CECF',
     },
@@ -248,7 +248,7 @@ export class QuizComponent {
       traits: ['Bold', 'Practical', 'Experimenter'],
       leftTags: ['Really calm energy', 'Stubborn to no end', 'Kind of like a mix between a cat and a dog'],
       rightTags: ['Prefers doing things their way', 'Funny remarks, always', 'LOVES puzzles and food for thought'],
-      image: 'assets/personas/BoatHenge.png',
+      image: 'assets/personas/ISTP.png',
       resources: [
         { name: 'Mizzou Racing', link: 'https://www.instagram.com/mizzouracing/?hl=en' },
         { name: 'MU Outdoors', link: 'https://www.instagram.com/mu.outdoors/' },
@@ -256,9 +256,9 @@ export class QuizComponent {
         { name: 'Intramural Sports', link: 'https://mizzourec.missouri.edu/intramural-sports/' }
       ],
       compatibilities: [
-        { name: 'Heidelberg', image: "assets/personas/Heidelberg.png", link: '/profile/ESFJ' },
-        { name: 'Shamrock', image: "assets/personas/Shamrock.png", link: '/profile/ISFP' },
-        { name: 'Mizzou Helmet', image: "assets/personas/FootballHelmet.png", link: '/profile/ESTP' }
+        { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '/profile/ESFJ' },
+        { name: 'Shamrock', image: "assets/personas/ISFP.png", link: '/profile/ISFP' },
+        { name: 'Mizzou Helmet', image: "assets/personas/ESTP.png", link: '/profile/ESTP' }
       ],
       tagColor: '#99CECF',
     },
@@ -269,7 +269,7 @@ export class QuizComponent {
       traits: ['Caring', 'Social & Popular', 'Helpful'],
       leftTags: ['MOST extroverted', 'Kinda oblivious', 'Judges you, helps anyway'],
       rightTags: ['self-sacrificing', 'Kind of stuck in the past', 'Nosy, because they want to get to know you'],
-      image: 'assets/personas/Heidelberg.png',
+      image: 'assets/personas/ESFJ.png',
       resources: [
         { name: 'Mizzou Tour Team', link: 'https://www.instagram.com/mizzoutourteam/?hl=en' },
         { name: 'Mizzou Homecoming Steering Committee', link: 'https://www.mizzou.com/s/1002/alumni/19/interior.aspx?sid=1002&gid=1001&sitebuilder=1&pgid=10482' },
@@ -277,9 +277,9 @@ export class QuizComponent {
         { name: 'Caring for Columbia', link: 'https://www.instagram.com/caring4columbia/' }
       ],
       compatibilities: [
-        { name: 'Shamrock', image: "assets/personas/Shamrock.png", link: '/profile/ISFP' },
-        { name: 'BoatHenge', image: "assets/personas/BoatHenge.png", link: '/profile/ISTP' },
-        { name: 'Big MO', image: "assets/personas/BigMO.png", link: '/profile/ESTJ' }
+        { name: 'Shamrock', image: "assets/personas/ISFP.png", link: '/profile/ISFP' },
+        { name: 'BoatHenge', image: "assets/personas/ISTP.png", link: '/profile/ISTP' },
+        { name: 'Big MO', image: "assets/personas/ESTJ.png", link: '/profile/ESTJ' }
       ],
       tagColor: '#99CECF',
     },
@@ -290,7 +290,7 @@ export class QuizComponent {
       traits: ['Excellent Administrator', 'Leader', 'Strong Willed'],
       leftTags: ['Laughing at their own jokes', '*smiling*', 'Notices what is wrong fast'],
       rightTags: ['Good sense of humor', 'Always in a good mood', 'Likes their routine'],
-      image: 'assets/personas/BigMO.png',
+      image: 'assets/personas/ESTJ.png',
       resources: [
         { name: 'Mizzou Homecoming Steering Committee', link: 'https://www.mizzou.com/s/1002/alumni/19/interior.aspx?sid=1002&gid=1001&sitebuilder=1&pgid=10482' },
         { name: 'Leadership @ Mizzou', link: 'https://getinvolved.missouri.edu/leadership-opportunities/' },
@@ -298,9 +298,9 @@ export class QuizComponent {
         { name: 'MU Presidents` Council', link: 'https://studentaffairs.missouri.edu/presidents-council/' }
       ],
       compatibilities: [
-        { name: 'Kiss The 50', image: "assets/personas/KissThe50.png", link: '/profile/ISFJ' },
-        { name: 'Mort`s Wall', image: "assets/personas/MortWall.png", link: '/profile/ISTJ' },
-        { name: 'Heidelberg', image: "assets/personas/Heidelberg.png", link: '/profile/ESFJ' }
+        { name: 'Kiss The 50', image: "assets/personas/ISFJ.png", link: '/profile/ISFJ' },
+        { name: 'Mort`s Wall', image: "assets/personas/ISTJ.png", link: '/profile/ISTJ' },
+        { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '/profile/ESFJ' }
       ],
       tagColor: '#99CECF',
     },
@@ -311,7 +311,7 @@ export class QuizComponent {
       traits: ['Dedicated', 'People-Oriented', 'Warm Protector'],
       leftTags: ['Very sociable', 'Feels overlooked', '"If no one else is gonna do it... *sigh*"'],
       rightTags: ['Likes creating things', 'Doesn`t like improvising', 'Forgives and gives many chances'],
-      image: 'assets/personas/KissThe50.png',
+      image: 'assets/personas/ISFJ.png',
       resources: [
         { name: 'Mindful Mizzou', link: 'https://www.umsystem.edu/totalrewards/wellness/mindfulness' },
         { name: 'Sustain Mizzou', link: 'https://www.instagram.com/sustainmizzou/' },
@@ -319,9 +319,9 @@ export class QuizComponent {
         { name: 'Caring for Columbia', link: 'https://www.instagram.com/caring4columbia/' }
       ],
       compatibilities: [
-        { name: 'Sparky`s', image: "assets/personas/Sparkys.png", link: '/profile/ESFP' },
-        { name: 'Mizzou Helmet', image: "assets/personas/FootballHelmet.png", link: '/profile/ESTP' },
-        { name: 'Mort`s Wall', image: "assets/personas/MortWall.png", link: '/profile/ISTJ' }
+        { name: 'Sparky`s', image: "assets/personas/ESFP.png", link: '/profile/ESFP' },
+        { name: 'Mizzou Helmet', image: "assets/personas/ESTP.png", link: '/profile/ESTP' },
+        { name: 'Mort`s Wall', image: "assets/personas/ISTJ.png", link: '/profile/ISTJ' }
       ],
       tagColor: '#99CECF',
     },
@@ -332,7 +332,7 @@ export class QuizComponent {
       traits: ['Practical', 'Fact-Minded', 'Traditional'],
       leftTags: ['Secretly a huge nerd', 'Oop - over achieved again...', 'Ambitious, just not talking about it'],
       rightTags: ['*smirks*', 'Has clear boundaries', 'Wants others to build independence'],
-      image: 'assets/personas/MortWall.png',
+      image: 'assets/personas/ISTJ.png',
       resources: [
         { name: 'Alumni Association Student Board', link: 'https://www.instagram.com/mizzouaasb/?hl=en' },
         { name: 'Collegiate DECA', link: 'https://www.instagram.com/mizzou_deca/' },
@@ -340,9 +340,9 @@ export class QuizComponent {
         { name: 'Mizzou Billiards Club', link: 'https://www.instagram.com/mizzoubilliardsclub/' }
       ],
       compatibilities: [
-        { name: 'Mizzou Helmet', image: "assets/personas/FootballHelmet.png", link: '/profile/ESTP' },
-        { name: 'Heidelberg', image: "assets/personas/Heidelberg.png", link: '/profile/ESFJ' },
-        { name: 'Kiss The 50', image: "assets/personas/KissThe50.png", link: '/profile/ISFJ' }
+        { name: 'Mizzou Helmet', image: "assets/personas/ESTP.png", link: '/profile/ESTP' },
+        { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '/profile/ESFJ' },
+        { name: 'Kiss The 50', image: "assets/personas/ISFJ.png", link: '/profile/ISFJ' }
       ],
       tagColor: '#99CECF',
     },
@@ -353,7 +353,7 @@ export class QuizComponent {
       traits: ['Enthusiastic', 'Creative', 'Sociable'],
       leftTags: ['Gives you an essay on their passions', 'Talks a LOT', 'Procrastination tendencies'], 
       rightTags: ['Stubborn', 'So many hand gestures', 'Needs to express themselves'],
-      image: 'assets/personas/Squirrel.png',
+      image: 'assets/personas/ENFP.png',
       resources: [
         { name: 'Involvement Ambassadors', link: 'https://www.instagram.com/mizgetinvolved/' },
         { name: 'The Mizzou Education Bank', link: 'https://www.instagram.com/mizzoueducationbank/' },
@@ -361,9 +361,9 @@ export class QuizComponent {
         { name: 'Campus Activities Programming Board', link: 'https://www.instagram.com/stufftodoatmu/?hl=en' }
       ],
       compatibilities: [
-        { name: 'Ghost Of Harlan', image: "assets/personas/GhostOfHarlan.png", link: '/profile/INFJ' },
-        { name: 'The Big Tree', image: "assets/personas/BigTree.png", link: '/profile/INTJ' },
-        { name: 'Truman`s Paw', image: "assets/personas/TrumansPaw.png", link: '/profile/INFP' }
+        { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: '/profile/INFJ' },
+        { name: 'The Big Tree', image: "assets/personas/INTJ.png", link: '/profile/INTJ' },
+        { name: 'Truman`s Paw', image: "assets/personas/INFP.png", link: '/profile/INFP' }
       ],
       tagColor: '#99CECF',
     },
@@ -374,7 +374,7 @@ export class QuizComponent {
       traits: ['Charismatic', 'Inspiring', 'Leader'],
       leftTags: ['Such a loud laugher', 'Into many very nerdy topics', 'Smile with a drop of mischief behind it'],
       rightTags: ['Overly happy go lucky', 'Loyalty is very important', 'Biggest schemer out there'],
-      image: 'assets/personas/JesseDome.png',
+      image: 'assets/personas/ENFJ.png',
       resources: [
         { name: 'Leadership @ Mizzou', link: 'https://getinvolved.missouri.edu/leadership-opportunities/' },
         { name: 'MU Philanthropy', link: 'https://www.instagram.com/mizmsf/?hl=en' },
@@ -382,9 +382,9 @@ export class QuizComponent {
         { name: 'College Mentors for Kids', link: 'https://www.instagram.com/collegementors.mizzou/' }
       ],
       compatibilities: [
-        { name: 'Truman`s Paw', image: "assets/personas/TrumansPaw.png", link: '/profile/INFP' },
-        { name: 'Shamrock', image: "assets/personas/Shamrock.png", link: '/profile/ISFP' },
-        { name: 'Ghost Of Harlan', image: "assets/personas/GhostOfHarlan.png", link: '/profile/INFJ' }
+        { name: 'Truman`s Paw', image: "assets/personas/INFP.png", link: '/profile/INFP' },
+        { name: 'Shamrock', image: "assets/personas/ISFP.png", link: '/profile/ISFP' },
+        { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: '/profile/INFJ' }
       ],
       tagColor: '#99CECF',
     },
@@ -395,7 +395,7 @@ export class QuizComponent {
       traits: ['Poetic', 'Kind & Altruistic', 'Eager To Help A Good Cause'],
       leftTags: ['Either a meme lord or a serious person', 'What is expressing feelings outwardly? ', 'Can be really oblivious'],
       rightTags: ['* Random nostalgia *', 'Likes people who inspire easily', 'Once they start talking, they won`t stop'],
-      image: 'assets/personas/TrumansPaw.png',
+      image: 'assets/personas/INFP.png',
       resources: [
         { name: 'Mindful Mizzou', link: 'https://www.umsystem.edu/totalrewards/wellness/mindfulness' },
         { name: 'Creative Writing Club', link: 'https://x.com/cowclubmu' },
@@ -403,9 +403,9 @@ export class QuizComponent {
         { name: 'Caring for Columbia', link: 'https://www.instagram.com/caring4columbia/' }
       ],
       compatibilities: [
-        { name: 'Jesse Hall Dome', image: "assets/personas/JesseDome.png", link: '/profile/ENFJ' },
-        { name: 'Ghost Of Harlan', image: "assets/personas/GhostOfHarlan.png", link: '/profile/INFJ' },
-        { name: 'Mizzou Squirrel', image: "assets/personas/Squirrel.png", link: '/profile/ENFP' }
+        { name: 'Jesse Hall Dome', image: "assets/personas/ENFJ.png", link: '/profile/ENFJ' },
+        { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: '/profile/INFJ' },
+        { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' }
       ],
       tagColor: '#99CECF',
     },
@@ -416,7 +416,7 @@ export class QuizComponent {
       traits: ['Quiet and Mystical', 'Idealist', 'Inspiring'],
       leftTags: ['Will bend their schedule for you', 'Was born wise', 'Activist and revolutionary'],
       rightTags: ['REALLY likes motivational quotes', 'Doesn`t prefer the spotlight', 'Walking on a cloud 24/7'],
-      image: 'assets/personas/GhostOfHarlan.png',
+      image: 'assets/personas/INFJ.png',
       resources: [
         { name: 'Mizzou Alternative Breaks', link: 'https://breaks.missouri.edu/' },
         { name: 'Mizzou Student Foundation', link: 'https://www.instagram.com/mizmsf/?hl=en' },
@@ -424,9 +424,9 @@ export class QuizComponent {
         { name: 'Mizzou MoreThan4 Club', link: 'https://www.instagram.com/mizzoumorethan4/' }
       ],
       compatibilities: [
-        { name: 'Mizzou Squirrel', image: "assets/personas/Squirrel.png", link: '/profile/ENFP' },
-        { name: 'Speaker`s Circle', image: "assets/personas/SpeakersCircle.png", link: '/profile/ENTP' },
-        { name: 'Truman`s Paw', image: "assets/personas/TrumansPaw.png", link: '/profile/INFP' }
+        { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' },
+        { name: 'Speaker`s Circle', image: "assets/personas/ENTP.png", link: '/profile/ENTP' },
+        { name: 'Truman`s Paw', image: "assets/personas/INFP.png", link: '/profile/INFP' }
       ],
       tagColor: '#99CECF',
     },
@@ -437,7 +437,7 @@ export class QuizComponent {
       traits: ['Smart', 'Curious Thinker', 'Loves Intellectual Challenges'],
       leftTags: ['Probably up to no good', 'Exceptional music taste', 'Judgemental but understanding at the same time'],
       rightTags: ['Enjoys 1 on 1 conversation more than group ones', 'Always in their head thinking', 'Funny and well informed'],
-      image: 'assets/personas/SpeakersCircle.png',
+      image: 'assets/personas/ENTP.png',
       resources: [
         { name: 'Mizzou Mock Trial Association', link: 'https://www.instagram.com/mizzoumocktrial/?hl=en' },
         { name: 'Missouri Debate Union', link: 'https://www.instagram.com/missouridebateunion/' },
@@ -445,9 +445,9 @@ export class QuizComponent {
         { name: 'Comedy Wars', link: 'https://www.instagram.com/comedy_wars/' }
       ],
       compatibilities: [
-        { name: 'Ghost Of Harlan', image: "assets/personas/GhostOfHarlan.png", link: '/profile/INFJ' },
-        { name: 'Truman`s Paw', image: "assets/personas/TrumansPaw.png", link: '/profile/INFP' },
-        { name: 'The Big Tree', image: "assets/personas/BigTree.png", link: '/profile/INTJ' }
+        { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: '/profile/INFJ' },
+        { name: 'Truman`s Paw', image: "assets/personas/INFP.png", link: '/profile/INFP' },
+        { name: 'The Big Tree', image: "assets/personas/INTJ.png", link: '/profile/INTJ' }
       ],
       tagColor: '#99CECF',
     },
@@ -458,7 +458,7 @@ export class QuizComponent {
       traits: ['Bold', 'Imaginative', 'Strong-Willed Leader'],
       leftTags: ['Always trying to understand', 'Can be controversial', 'Socially introverted'],
       rightTags: ['Secretly a softie', 'Likes leaving a mark on others', 'Daydreams about the future'],
-      image: 'assets/personas/Nose.png',
+      image: 'assets/personas/ENTJ.png',
       resources: [
         { name: 'American Constitution Society', link: 'https://www.instagram.com/acs_mizzou/' },
         { name: 'Leadership @ Mizzou', link: 'https://getinvolved.missouri.edu/leadership-opportunities/' },
@@ -466,9 +466,9 @@ export class QuizComponent {
         { name: 'University of Missouri Investment Group', link: 'https://business.missouri.edu/student-development/learning-doing/university-missouri-investment-group' }
       ],
       compatibilities: [
-        { name: 'The Columns', image: "assets/personas/Columns.png", link: '/profile/INTP' },
-        { name: 'The Big Tree', image: "assets/personas/BigTree.png", link: '/profile/INTJ' },
-        { name: 'Mizzou Squirrel', image: "assets/personas/Squirrel.png", link: '/profile/ENFP' }
+        { name: 'The Columns', image: "assets/personas/INTP.png", link: '/profile/INTP' },
+        { name: 'The Big Tree', image: "assets/personas/INTJ.png", link: '/profile/INTJ' },
+        { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' }
       ],
       tagColor: '#99CECF',
     },
@@ -479,7 +479,7 @@ export class QuizComponent {
       traits: ['Innovative', 'Curious', 'Analytical'],
       leftTags: ['Likes trying new things', '* random thought they want to tell you about *', 'Wants to understand the universe'], 
       rightTags: ['* silently plots *', 'Secretly wants to meet new people', 'Can feel left out'],
-      image: 'assets/personas/Columns.png',
+      image: 'assets/personas/INTP.png',
       resources: [
         { name: 'Mizzou Philosophy Club', link: 'https://www.instagram.com/mizzouphilosophyclub/' },
         { name: 'Mizzou Quiz Bowl Club', link: 'https://x.com/mizzouquizbowl' },
@@ -487,9 +487,9 @@ export class QuizComponent {
         { name: '3D Printing Club', link: 'https://www.instagram.com/mu3dpc/?hl=en' }
       ],
       compatibilities: [
-        { name: 'David R. Francis Nose', image: "assets/personas/Nose.png", link: '/profile/ENTJ' },
-        { name: 'Mizzou Squirrel', image: "assets/personas/Squirrel.png", link: '/profile/ENFP' },
-        { name: 'Speaker`s Circle', image: "assets/personas/SpeakersCircle.png", link: '/profile/ENTP' }
+        { name: 'David R. Francis Nose', image: "assets/personas/ENTJ.png", link: '/profile/ENTJ' },
+        { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' },
+        { name: 'Speaker`s Circle', image: "assets/personas/ENTP.png", link: '/profile/ENTP' }
       ],
       tagColor: '#99CECF',
     },
@@ -500,7 +500,7 @@ export class QuizComponent {
       traits: ['Imaginative', 'Strategic Thinker', 'Future Oriented'],
       leftTags: ['A human cat, basically', 'Hidden artistic / poetic side', 'Likes personal growth'],
       rightTags: ['Niche hobbies', 'Big softie inside', 'Likes being direct & honest'],
-      image: 'assets/personas/BigTree.png',
+      image: 'assets/personas/INTJ.png',
       resources: [
         { name: '3D Printing Club', link: 'https://www.instagram.com/mu3dpc/?hl=en' },
         { name: 'MU Chess Club', link: 'https://www.instagram.com/mizzouchessclub/' },
@@ -508,9 +508,9 @@ export class QuizComponent {
         { name: 'MU Documentary Club', link: 'https://www.instagram.com/mizzoudocclub/' }
       ],
       compatibilities: [
-        { name: 'Mizzou Squirrel', image: "assets/personas/Squirrel.png", link: '/profile/ENFP' },
-        { name: 'Speaker`s Circle', image: "assets/personas/SpeakersCircle.png", link: '/profile/ENTP' },
-        { name: 'Ghost Of Harlan', image: "assets/personas/GhostOfHarlan.png", link: '/profile/INFJ' }
+        { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' },
+        { name: 'Speaker`s Circle', image: "assets/personas/ENTP.png", link: '/profile/ENTP' },
+        { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: '/profile/INFJ' }
       ],
       tagColor: '#99CECF',
     }
