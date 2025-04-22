@@ -42,7 +42,8 @@ app.get('/api', (req, res) => {
     endpoints: {
       login: '/login',
       register: '/register',
-      quizResults: '/quizResults'
+      quizResults: '/quizResults',
+      profile: '/profile'
     }
   });
 });
@@ -57,7 +58,7 @@ function isPasswordHashed(password) {
 app.post('/login', async (req, res) => {
     try {
         console.log('Login request received:', req.body);
-        
+
         const db = await connectToMongoDB();
         const usersCollection = db.collection('users');
         const user = await usersCollection.findOne({ email: req.body.email });
@@ -117,12 +118,31 @@ app.post('/register', async (req, res) => {
             return res.status(400).json({ message: 'User already exists. Please go to the login page to log in.' });
         }
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
-        await usersCollection.insertOne({
+        const user = await usersCollection.insertOne({
             email: req.body.email,
             password: hashedPassword
         });
+    // Get the newly inserted user's ID
+    const userId = user.insertedId;
+
+    // Create a default profile for the new user in the profiles collection
+    const newProfile = {
+      userId: userId,
+      name: '',
+      bio: '',
+      picture: '',
+      socials: '',
+      personalityType: ''
+    };
+
+    const profilesCollection = db.collection('profiles');
+    console.log("found profiles collection:", profilesCollection);
+    await profilesCollection.insertOne(newProfile);
+
+    console.log('User and profile created successfully!');
+    return res.status(201).json({ message: 'Account and profile successfully created! Please go to the login page to log in.' });
         console.log('User registered successfully!');
-        return res.status(201).json({ message: 'Account successfully created! Please go to the login page to log in.' });
+        return res.status(201).json({ message: 'Account and profile successfully created! Please go to the login page to log in.' });
     } catch (error) {
         console.error('Error during registration:', error);
         res.status(500).json({ message: 'Internal server error' });
@@ -157,10 +177,122 @@ app.post('/quizResults', async (req, res) => {
     }
 });
 
+// 5. create new user profile if needed and insert in database
+app.post('/profile', async (req, res) => {
+  try {
+    const db = await connectToMongoDB();
+    const profilesCollection = db.collection('profiles');
+
+    const { userId, name, bio, picture, social, personalityType } = req.body;
+
+
+    const updateProfile = {
+      $set: {
+      userId,
+      name: name || null,
+      bio: bio || null,
+      picture: picture || null,
+      social: social || null,
+      personalityType: personalityType || null,
+      editedAt: new Date()
+      },
+      $setOnInsert: {
+        userId,
+        createdAt: new Date()
+      }
+    };
+
+    const result = await profilesCollection.updateOne(
+      { userId },
+      updateDoc,
+      { upsert: true }
+    );
+    if (result.upsertedCount > 0) {
+      res.status(201).json({ message: 'Profile created', userId });
+    } else {
+      res.status(200).json({ message: 'Profile updated', userId });
+    }
+  } catch (err) {
+    console.error('Error upserting profile:', err);
+    res.status(500).json({ message: 'Error creating or updating profile' });
+  }
+});
+
+
+
+  // 6. get user profile by userId
+  app.get('/profile/:userId', async (req, res) => {
+    try {
+      const { userId } = req.params;
+
+      // Step 1: Check if profile exists
+      const profile = await db.collection('profiles').findOne({ userId });
+      console.log('Profile found:', profile);
+
+      if (!profile) {
+        // Step 2: If no profile, create one with default empty values (except userId)
+        const newProfile = {
+          userId,
+          name: null,
+          bio: null,
+          picture: null,
+          socials: null,
+          personalityType: null
+        };
+
+        const result = await db.collection('profiles').insertOne(newProfile);
+        return res.status(201).json(result);
+      }
+
+      // Step 3: Return the existing profile if found
+      res.status(200).json(profile);
+    } catch (error) {
+      console.error('Error retrieving profile:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+
+  // 7. Update profile
+  app.put('/profile/:userId', async (req, res) => {
+    try {
+      const { userId } = req.params;
+    const { name, bio, picture, socials, personalityType } = req.body;
+
+    // Step 1: Update profile in the database
+    const updatedProfile = {
+      name,
+      bio,
+      picture,
+      socials,
+      personalityType
+    };
+
+    const result = await db.collection('profiles').updateOne(
+      { userId },
+      { $set: updatedProfile }
+    );
+
+    if (result.matchedCount === 0) {
+      return res.status(404).json({ message: 'Profile not found' });
+    }
+
+    // Step 2: Return updated profile
+    const updatedProfileData = await db.collection('profiles').findOne({ userId });
+    res.status(200).json(updatedProfileData);
+  } catch (error) {
+    console.error('Error updating profile:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
+
 // serve static files from the angular app (i.e. the "dist" folder created from the production build command)
 app.use(express.static(path.join(__dirname, 'dist/tigertraits-deployed/browser')));
 // for any routes that don't match the api, serve the angular index.html
+
 app.get('*', (req, res) => {
+  console.log('Catch-all triggered for:', req.originalUrl);
   res.sendFile(path.join(__dirname, 'dist/tigertraits-deployed/browser/index.html'));
 });
 
