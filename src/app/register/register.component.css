@@ -49,7 +49,7 @@ input[type="password"] {
   border: 2px solid #008486;
   border-radius: 10px;
   background-color: #fff;
-  font-family: 'Comic Sans MS', cursive;
+  font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
   font-size: 14px;
   box-shadow: inset 2px 2px #ccc;
   outline: none;
@@ -64,7 +64,7 @@ button[type="submit"] {
   font-weight: bold;
   padding: 10px 24px;
   border-radius: 16px;
-  font-family: 'Comic Sans MS', cursive;
+  font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
   box-shadow: 3px 3px #888;
   cursor: pointer;
   transition: all 0.2s ease-in-out;

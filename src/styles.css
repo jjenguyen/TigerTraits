@@ -13,7 +13,7 @@
 }
 
 body {
-  font-family: 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+  font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
   background: #FFD17D;
   min-height: 100vh;
   display: flex;
@@ -123,7 +123,7 @@ button:hover {
 }
 
 h1, h2, h3 {
-  font-family: 'Comic Sans MS', cursive;
+  font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
   color: #222;
   margin-bottom: 12px;
 }

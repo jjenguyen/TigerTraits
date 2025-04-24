@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrl: './mobile-layout.component.css'
 })
 export class MobileLayoutComponent implements OnInit {
-  currentScreen: string = 'about';
+  currentScreen: string = 'quiz';
   menuOpen: boolean = false;
   isUnlocking: boolean = false;
   unlocked: boolean = false;

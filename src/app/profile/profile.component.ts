@@ -14,7 +14,8 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.userId) {
-      this.http.get(`http://localhost:3000/profiles/${this.userId}`).subscribe({
+      // http://localhost:3000/profiles/${this.userId}
+      this.http.get(`/profiles/${this.userId}`).subscribe({
         next: (data) => this.profileData = data,
         error: (err) => console.error('Profile fetch error:', err)
       });

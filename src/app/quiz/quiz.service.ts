@@ -18,18 +18,19 @@ export class QuizService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
-    return this.http.post('/quiz-results', data, { headers });
+    return this.http.post('/quizResults', data, { headers });
   }
 
   storeQuizResult(userId: string, personalityType: string): Observable<any> {
-    return this.http.post('http://tt-env.eba-ey2xk2m2.us-east-1.elasticbeanstalk.com/quizResults', {
+    return this.http.post('/quizResults', {
       userId,
       personalityType
     });
   }
 
   storeCompatibility(userId: string, resultType: string) {
-    return this.http.post<any>('http://localhost:3000/compatibilities', {
+    // http://localhost:3000/compatibilities
+    return this.http.post<any>('/compatibilities', {
       userId,
       resultType
     });

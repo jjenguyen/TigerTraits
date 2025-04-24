@@ -1,3 +1,7 @@
+.body {
+    font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+}
+
 .window-container {
   top: 30px;
   left: 250px;
@@ -126,7 +130,7 @@
   all: unset;
   display: block;
   padding: 12px 16px;
-  font-family: 'Comic Sans MS', cursive;
+  font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
   font-size: 15px;
   color: #fff;
   cursor: pointer;
