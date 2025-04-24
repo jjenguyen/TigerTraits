@@ -1,4 +1,3 @@
-// app.component.ts
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { AuthService } from './login/auth.service';
@@ -90,10 +89,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     if (success) {
       this.isLoggedIn = true;
   
-      // Clear all current open windows
+      // clear all the current windows
       this.openApps = [];
   
-      // 🕒 Give Angular time to update `isLoggedIn` before opening new window
+      // give angualr some time to update `isLoggedIn` before opening new window
       setTimeout(() => {
         this.openApp('quiz');
       }, 50);

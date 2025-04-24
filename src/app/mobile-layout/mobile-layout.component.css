@@ -1,0 +1,247 @@
+.window-container {
+  top: 30px;
+  left: 250px;
+  width: 400px;
+  height: 750px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  animation: popIn 0.25s ease-out;
+  transform-origin: top left;
+  border-radius: 10px;
+  box-shadow: 5px 5px #d4d4d4;
+  background-color: #FFFAF0;
+}
+
+/* Header bar - clean no border look */
+.window-header-bar {
+  background-color: #3b7d82;
+  color: white;
+  padding: 13px 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.window-body {
+    text-align: center;
+}
+
+.window-body-wrapper {
+  border: 2px solid #989898;
+  border-top: 2px solid #989898;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  /* box-shadow: 5px 5px #888; */
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+/* Container for the entire mobile app layout */
+/* .mobile-window-container {
+  max-width: 420px;
+  margin: 40px auto;
+  border: 2px solid #000;
+  background-color: #f4f4f4;
+  box-shadow: 4px 4px 0px #999;
+  font-family: 'Verdana', sans-serif;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  overflow: hidden;
+} */
+
+/* Retro-style header bar */
+/* .mobile-window-header-bar {
+  background-color: #c0c0c0;
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #000;
+  font-weight: bold;
+  font-size: 16px;
+} */
+
+/* Navigation hamburger button */
+.hamburger-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-menu {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    width: 180px;
+    background-color: #3b7d82;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    z-index: 1000;
+    border: 2px dashed #FFD17D;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 4px 4px 0px #555;
+    animation: slideDown 0.2s ease-out;
+  }
+  
+  .nav-menu button {
+    all: unset;
+    padding: 12px 16px;
+    color: #fff;
+    font-family: 'Comic Sans MS', cursive;
+    font-size: 15px;
+    cursor: pointer;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    text-align: left;
+  }
+  
+  .nav-menu button:hover {
+
+    color: #FFD17D;
+
+    transform: scale(1.035);
+
+  }  
+
+/* Unlocking animation overlay */
+.unlocking-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(220, 220, 220, 0.95);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Courier New', monospace;
+}
+
+.unlock-box {
+  background-color: #fff;
+  border: 2px solid #000;
+  padding: 24px 32px;
+  box-shadow: 4px 4px 0px #999;
+  text-align: center;
+  min-width: 240px;
+}
+
+.loading-bar-container {
+  margin: 12px 0;
+  height: 10px;
+  background-color: #ddd;
+  overflow: hidden;
+  border: 1px solid #999;
+}
+
+.loading-bar {
+  width: 0%;
+  height: 100%;
+  background-color: #0078D7;
+  animation: loadingFlicker 3s linear forwards;
+}
+
+@keyframes loadingFlicker {
+  0% { width: 0%; }
+  30% { width: 40%; }
+  60% { width: 70%; }
+  90% { width: 90%; }
+  100% { width: 100%; }
+}
+
+.checkmark {
+  font-size: 28px;
+  color: green;
+  margin-bottom: 10px;
+}
+
+/* smallest screen size (mobile avg. 360-375px width), fits well to go down to 350 */
+@media screen and (max-width: 629px) {
+  .window-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: #FFFAF0;
+    z-index: 1000;
+  }
+
+  .window-header-bar {
+    border-radius: 0;
+    font-size: 16px;
+    padding: 10px 16px;
+  }
+
+  .window-body-wrapper {
+    border: none;
+    border-radius: 0;
+    padding: 12px;
+  }
+
+  .window-body {
+    margin-top: 15px;
+  }
+}
+
+/* mid size screens (between desktop and mobile) */
+@media screen and (min-width: 630px) {
+    .window-container {
+    top: 30px;
+    left: 450px;
+    width: 600px;
+    height: 750px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    animation: popIn 0.25s ease-out;
+    transform-origin: top left;
+    border-radius: 10px;
+    box-shadow: 5px 5px #d4d4d4;
+    background-color: #FFFAF0;
+    }
+
+    /* Header bar - clean no border look */
+    .window-header-bar {
+    background-color: #3b7d82;
+    color: white;
+    padding: 13px 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    }
+
+    .window-body {
+        margin-top: 20px;
+    }
+
+    .window-body-wrapper {
+    border: 2px solid #989898;
+    border-top: 2px solid #989898;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    /* box-shadow: 5px 5px #888; */
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    }
+}

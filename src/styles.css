@@ -6,9 +6,6 @@
     color: red;
 }
 
-/* =========================
-   RESET + BASE STYLES
-========================= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -36,17 +33,15 @@ body::before {
   background-image: url('assets/Bkg.png');
   background-repeat: repeat;
   background-size: 600px;
-  opacity: 0.65; /* 👈 adjust this value */
-  pointer-events: none; /* lets you click through */
-  z-index: -1; /* keep it behind everything */
+  opacity: 0.65;
+  pointer-events: none;
+  z-index: -1;
 }
 
-/* =========================
-   MAIN WINDOW FRAME
-========================= */
+/* main window frame */
 .window-wrapper {
-  width: 1000px; /* Fixed width like Shar's site */
-  height: 700px; /* Fixed height */
+  width: 1000px;
+  height: 700px;
   background-color: #ffffff;
   border: 2px solid #444;
   border-radius: 12px;
@@ -57,9 +52,7 @@ body::before {
   position: relative;
 }
 
-/* =========================
-   HEADER BAR
-========================= */
+/* header bar */
 .window-header {
   background-color: #444;
   color: white;
@@ -71,7 +64,6 @@ body::before {
   align-items: center;
 }
 
-/* As nav when logged in */
 nav.window-header {
   justify-content: space-between;
   gap: 12px;
@@ -97,9 +89,6 @@ nav.window-header a:hover {
   background-color: #666;
 }
 
-/* =========================
-   CONTENT INSIDE THE WINDOW
-========================= */
 .window-content {
   flex: 1;
   padding: 32px;
@@ -107,9 +96,6 @@ nav.window-header a:hover {
   text-align: center;
 }
 
-/* =========================
-   BUTTONS
-========================= */
 button {
   background-color: #ffcc33;
   border: 2px solid #222;
@@ -127,9 +113,6 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* =========================
-   FOOTER
-========================= */
 .footer-container {
   text-align: center;
   font-size: 13px;
@@ -139,9 +122,6 @@ button:hover {
   border-top: 1px dashed #aaa;
 }
 
-/* =========================
-   HEADINGS & TEXT
-========================= */
 h1, h2, h3 {
   font-family: 'Comic Sans MS', cursive;
   color: #222;
@@ -155,9 +135,7 @@ p {
   margin-bottom: 16px;
 }
 
-/* =========================
-   LINKS
-========================= */
+/* form links */
 a {
   color: #6a0572;
   text-decoration: none;

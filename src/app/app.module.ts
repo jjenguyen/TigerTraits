@@ -25,6 +25,8 @@ import { InfoCardComponent } from './info-card/info-card.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ResultsComponent } from './results/results.component';
+import { MobileLayoutComponent } from './mobile-layout/mobile-layout.component';
+import { LayoutDeciderComponent } from './layout-decider/layout-decider.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { ResultsComponent } from './results/results.component';
     InfoCardComponent,
     WelcomeComponent,
     ProfileComponent,
-    ResultsComponent
+    ResultsComponent,
+    MobileLayoutComponent,
+    LayoutDeciderComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +61,6 @@ import { ResultsComponent } from './results/results.component';
     MatListModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [LayoutDeciderComponent]
 })
 export class AppModule { }
