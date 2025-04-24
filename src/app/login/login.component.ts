@@ -31,67 +31,45 @@ export class LoginComponent {
   ) {}
 
   login() {
-    // change localhost route to new api when deployed!!!
-    this.http.post<any>('http://localhost:3000/login', { email: this.email, password: this.password })
-    //this.http.post<any>('http://tt-env.eba-ey2xk2m2.us-east-1.elasticbeanstalk.com/login', { email: this.email, password: this.password })
-      .subscribe({
-        next: (response) => {
-          console.log(response);
-
-          // set the current user in authservice
-          this.authService.setCurrentUser({
-            id: response.userId,  // note to self: check if backend returns a user identifier
-            email: response.email,
-            // can add any other relevant user data here, but i think this is good for now
-          });
-
-          // emit login success event
-          this.loginSuccess.emit(true);
-
-          // nav to the quiz route onced logged in
-          this.router.navigate(['/quiz']);
-        },
-        error: (error) => {
-          // handle login error
-          this.error = error.error.message;
-        }
-      });
-  }
-// ADD THIS TO THE ABOVE LOGIN()
-// login() {
-//     this.http.post<any>('http://tt-env.eba-ey2xk2m2.us-east-1.elasticbeanstalk.com/login', {
-//       email: this.email,
-//       password: this.password
-//     }).subscribe({
-//       next: (response) => {
-//         // ✅ Only show unlocking screen if login is successful
-//         this.isUnlocking = true;
-//         this.error = ''; // clear any previous error
+    this.http.post<any>('http://localhost:3000/login', {
+      email: this.email,
+      password: this.password
+    }).subscribe({
+      next: (response) => {
+        console.log(response);
   
-//         setTimeout(() => {
-//           this.unlocked = true;
+        this.isUnlocking = true;
+        this.error = '';
   
-//           setTimeout(() => {
-//             localStorage.setItem('token', 'placeholder');
-//             localStorage.setItem('redirectApp', 'quiz');
+        // ✅ Start animation delay
+        setTimeout(() => {
+          this.unlocked = true;
   
-//             this.authService.setCurrentUser({
-//               id: response.userId,
-//               email: response.email
-//             });
+          setTimeout(() => {
+            // ✅ Save JWT
+            localStorage.setItem('token', response.token); // don't use 'placeholder' anymore!
+            localStorage.setItem('redirectApp', 'quiz');
   
-//             this.loginSuccess.emit(true);
-//             this.router.navigate(['/']);
-//           }, 1200); // time for checkmark animation
-//         }, 3200); // time for loading bar
-//       },
+            // ✅ Store user info
+            this.authService.setCurrentUser({
+              id: response.userId,
+              email: response.email
+            });
   
-//       error: (err) => {
-//         // ✅ No loading bar at all if login fails
-//         this.error = err.error.message || 'Login failed.';
-//         this.isUnlocking = false;
-//         this.unlocked = false;
-//       }
-//     });
-//   }  
+            // ✅ Tell parent app that login succeeded
+            this.loginSuccess.emit(true);
+  
+            // ✅ Navigate to quiz or home
+            this.router.navigate(['/']);
+          }, 1200); // checkmark animation time
+        }, 3200); // loading bar time
+      },
+  
+      error: (error) => {
+        this.error = error.error.message || 'Login failed.';
+        this.isUnlocking = false;
+        this.unlocked = false;
+      }
+    });
+  }  
 }

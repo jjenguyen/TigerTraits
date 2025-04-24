@@ -14,6 +14,8 @@ const app = express();
 const port = process.env.PORT || 3000
 
 const uri = process.env.MONGO_URI
+console.log("Loaded MONGO_URI:", process.env.MONGO_URI);
+
 // jenna local
 // const uri = process.env.MONGO_URI || "mongodb+srv://jn4gz:jn4gz12345@clustera4.jcqksc9.mongodb.net/tigertraits?retryWrites=true&w=majority";
 
