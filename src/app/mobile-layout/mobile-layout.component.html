@@ -9,7 +9,7 @@
 
         <!-- nav menu (slides open) -->
         <div class="nav-menu" *ngIf="menuOpen">
-            <button (click)="switchScreen('welcome')">Welcome</button>
+            <button *ngIf="!isLoggedIn" (click)="switchScreen('welcome')">Welcome</button>
             <button (click)="switchScreen('about')">About</button>
             
             <button 
@@ -58,8 +58,8 @@
             <app-results *ngIf="currentScreen === 'results'"></app-results>
             
             <div *ngIf="currentScreen === 'about'">
-            <h2>What is this?</h2>
-            <p>Mobile/browser responsiveness layout is working</p>
+            <h2>About Us</h2>
+            <p>An interactive personality test that gives you currated campus resources and person-to-person compatibility recommendations based on your personality type</p>
             </div>
 
             <div *ngIf="currentScreen === 'feedback'">

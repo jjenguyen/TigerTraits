@@ -90,6 +90,8 @@ body, html {
 
 .window-about {
   background-color: #f3e5f5;
+  width: 700px;
+  height: 500px;
 }
 
 .window-feedback {

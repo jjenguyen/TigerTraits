@@ -44,9 +44,12 @@ export class MobileLayoutComponent implements OnInit {
   }
 
   switchScreen(screen: string): void {
+    if (this.isLoggedIn && screen === 'welcome') {
+      return; // don't allow returning to welcome after login
+    }
     this.currentScreen = screen;
     this.menuOpen = false;
-  }
+  }  
 
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
@@ -62,13 +65,14 @@ export class MobileLayoutComponent implements OnInit {
 
   getHeaderTitle(): string {
     switch (this.currentScreen) {
-      case 'welcome': return 'Start Here';
+      case 'welcome':
+        return this.isLoggedIn ? 'TigerTraits' : 'Start Here';
       case 'quiz': return 'Quiz';
       case 'about': return 'About';
-      case 'results': return 'Results';
+      case 'results': return 'My Results';
       case 'profile': return 'Contact Card';
       case 'feedback': return 'Feedback';
-      default: return 'TigerTraits';
+      default: return 'Login';
     }
-  }
+  }  
 }

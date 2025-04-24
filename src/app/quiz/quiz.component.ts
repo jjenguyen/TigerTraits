@@ -530,8 +530,6 @@ handleSubmit(): void {
     jp: { J: 0, P: 0 }
   };
 
-  
-
   //iterate through each question and grab corresponding ans for each question
   this.questions.forEach(q => {
     //get ans to the question based on the question ID
@@ -566,14 +564,22 @@ handleSubmit(): void {
   //get the current user object from authservice
   const currentUser = this.authService.getCurrentUser();
   //pass only the user id (a string) to the quiz service
-  this.quizService.storeQuizResult(currentUser.id, this.result).subscribe(
-    response => {
-      console.log('Quiz result stored:', response);
+  
+  this.quizService.storeQuizResult(currentUser.id, this.result).subscribe({
+    next: () => {
+      // compatibility storing added here -jenna
+      this.quizService.storeCompatibility(currentUser.id, this.result).subscribe({
+        next: (response) => {
+          this.resultData = {
+            ...this.resultData,
+            matchedUsers: response.data.matchedUsers
+          };
+        },
+        error: (err) => console.error('Error storing compatibility:', err)
+      });
     },
-    error => {
-      console.error('Error storing quiz result:', error);
-    }
-  );
+    error: (err) => console.error('Error storing quiz result:', err)
+  });
 }
 
 // called when an answer choice is selected
@@ -615,28 +621,28 @@ isSelected(questionID: string, optionText: string): boolean {
 };
 
 // note to jenna:
-// ADD THE COMPATIBILITY STORING INTO THE ABOVE HANDLESUBMIT()
-  // handleSubmit(): void {
-  //   const { ie, sn, tf, jp } = this.answers;
-  //   this.result = `${ie}${sn}${tf}${jp}`;
-  //   this.resultData = this.resultProfiles[this.result];
+// // ADD THE COMPATIBILITY STORING INTO THE ABOVE HANDLESUBMIT()
+//   handleSubmit(): void {
+//     const { ie, sn, tf, jp } = this.answers;
+//     this.result = `${ie}${sn}${tf}${jp}`;
+//     this.resultData = this.resultProfiles[this.result];
 
-  //   this.viewStep = 'complete';
+//     this.viewStep = 'complete';
 
-  //   const currentUser = this.authService.getCurrentUser();
+//     const currentUser = this.authService.getCurrentUser();
 
-  //   this.quizService.storeQuizResult(currentUser.id, this.result).subscribe({
-  //     next: () => {
-  //       this.quizService.storeCompatibility(currentUser.id, this.result).subscribe({
-  //         next: (response) => {
-  //           this.resultData = {
-  //             ...this.resultData,
-  //             matchedUsers: response.data.matchedUsers
-  //           };
-  //         },
-  //         error: (err) => console.error('Error storing compatibility:', err)
-  //       });
-  //     },
-  //     error: (err) => console.error('Error storing quiz result:', err)
-  //   });
-  // }
+//     this.quizService.storeQuizResult(currentUser.id, this.result).subscribe({
+//       next: () => {
+//         this.quizService.storeCompatibility(currentUser.id, this.result).subscribe({
+//           next: (response) => {
+//             this.resultData = {
+//               ...this.resultData,
+//               matchedUsers: response.data.matchedUsers
+//             };
+//           },
+//           error: (err) => console.error('Error storing compatibility:', err)
+//         });
+//       },
+//       error: (err) => console.error('Error storing quiz result:', err)
+//     });
+//   }
