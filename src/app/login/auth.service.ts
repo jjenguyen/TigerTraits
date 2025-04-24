@@ -10,15 +10,25 @@ export class AuthService {
   private currentUserSubject = new BehaviorSubject<any>(null);
   currentUser$ = this.currentUserSubject.asObservable();
 
+  // ✅ Holds app name to open after login
+  private loginRedirectAppSubject = new BehaviorSubject<string | null>(null);
+  loginRedirectApp$ = this.loginRedirectAppSubject.asObservable();
+
   constructor(private http: HttpClient) {
     // load any stored user data from local storage when the app starts
     const storedUser = localStorage.getItem('currentUser');
     if (storedUser) {
       this.currentUserSubject.next(JSON.parse(storedUser));
     }
+
+    // Load redirect app if previously set
+    const storedRedirectApp = localStorage.getItem('redirectApp');
+    if (storedRedirectApp) {
+      this.loginRedirectAppSubject.next(storedRedirectApp);
+    }
   }
 
-  // call this after a successful login
+  // ✅ Call this to store user after login
   setCurrentUser(user: any): void {
     this.currentUserSubject.next(user);
     localStorage.setItem('currentUser', JSON.stringify(user));
@@ -37,8 +47,23 @@ export class AuthService {
     return this.http.post('/quiz-results', quizResult, { headers });
   }
 
+  // ✅ Set app to open after login (e.g. "quiz")
+  setLoginRedirectApp(appName: string | null): void {
+    this.loginRedirectAppSubject.next(appName);
+    if (appName) {
+      localStorage.setItem('redirectApp', appName);
+    } else {
+      localStorage.removeItem('redirectApp');
+    }
+  }
+
+  getLoginRedirectApp(): string | null {
+    return localStorage.getItem('redirectApp');
+  }
+
   logout(): void {
     this.currentUserSubject.next(null);
     localStorage.removeItem('currentUser');
+    this.setLoginRedirectApp(null); // Reset any redirect
   }
 }

@@ -11,5 +11,101 @@
 </div> -->
 
 <!-- simpler version of previous code above-->
-<app-header *ngIf="isLoggedIn"></app-header>
-<router-outlet></router-outlet>
+<!-- <app-header *ngIf="isLoggedIn"></app-header>
+<router-outlet></router-outlet> -->
+
+<!-- <div class="window-wrapper">
+    <div class="window-header">tigertraits</div>
+    <app-header *ngIf="isLoggedIn"></app-header>
+    <router-outlet></router-outlet>
+</div> -->
+
+<!-- app.component.html -->
+
+<div class="desktop-container">
+  <!-- Floating App Icons -->
+  <div class="desktop-icons">
+    <div class="icon" (click)="openApp('about')">
+      <img src="assets/icons/about.png" />
+      <div class="icon-label">About</div>
+    </div>
+    <div class="icon" (click)="openApp('quiz')" [class.locked]="isAppLocked('quiz')">
+      <img src="assets/icons/quiz.png" />
+      <div class="icon-label">Quiz</div>
+    </div>
+    <div class="icon" (click)="openApp('profile')" [class.locked]="isAppLocked('profile')">
+      <img src="assets/icons/profile.png" />
+      <div class="icon-label">Contact</div>
+    </div>
+    <div class="icon" (click)="openApp('results')" [class.locked]="isAppLocked('results')">
+      <img src="assets/icons/results.png" />
+      <div class="icon-label">Results</div>
+    </div>
+    <div class="icon" (click)="openApp('feedback')">
+      <img src="assets/icons/feedback.png" />
+      <div class="icon-label">Feedback</div>
+    </div>
+    <!-- placeholder app -->
+    <!-- <div class="icon" (click)="openApp('notes')">
+      <img src="assets/icons/notes.png" />
+      <div class="icon-label">Notes</div>
+    </div> -->
+    <div class="icon" (click)="logout()" *ngIf="isLoggedIn">
+      <img src="assets/icons/logout.png" />
+      <div class="icon-label">Logout</div>
+    </div>
+  </div>
+
+  <!-- Floating App Windows -->
+  <div *ngFor="let app of openApps" class="floating-window" [ngClass]="getWindowClass(app.name)" [style.zIndex]="app.zIndex" (mousedown)="bringToFront(app)">
+    <div class="window-header-bar">
+      <span>
+        {{
+          app.name === 'welcome' ? 'Start here'
+          : app.name === 'viewProfile' ? 'Contact'
+          : (app.name | titlecase)
+        }}
+      </span>
+      <button (click)="closeApp(app.name)">✖</button>
+    </div>
+
+    <div class="window-body-wrapper">
+      <div class="window-body">
+        <app-welcome *ngIf="app.name === 'welcome'" (openLogin)="openApp('login')"></app-welcome>
+        <app-login *ngIf="app.name === 'login'" (loginSuccess)="onLoginSuccess($event)" (openRegister)="openApp('register')"></app-login>
+        <app-register *ngIf="app.name === 'register'" (openLogin)="openApp('login')"></app-register>
+        <app-quiz *ngIf="app.name === 'quiz'" (openProfile)="handleProfileOpen($event)"></app-quiz>
+        <app-profile *ngIf="app.name === 'profile'"></app-profile>
+        <app-results *ngIf="app.name === 'results'"></app-results>
+        <app-profile *ngIf="app.name === 'viewProfile'" [userId]="app.data"></app-profile>
+
+        <div *ngIf="app.name === 'about'">
+          <h2>What is this?</h2>
+          <p>This app is built by team 7!</p>
+        </div>
+        <div *ngIf="app.name === 'notes'">
+          <h2>Notes</h2>
+          <p>Coming soon...</p>
+        </div>
+        <div *ngIf="app.name === 'feedback'">
+          <h2>Projects</h2>
+          <p>This feature will be added later.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Taskbar -->
+  <div class="taskbar">
+    <div class="start-btn" (click)="handleStartClick()">
+      <img src="assets/icons/start-icon.png" alt="start" />
+      <span>Start</span>
+    </div>
+    <div class="taskbar-tabs">
+      <div class="task-tab" *ngFor="let tab of openApps">
+        {{ tab.name === 'viewProfile' ? 'Contact' : (tab.name | titlecase) }}
+      </div>
+    </div>
+    <div class="taskbar-clock">{{ currentTime }}</div>
+  </div>
+</div>

@@ -13,8 +13,16 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
   error: string = '';
+  isUnlocking: boolean = false;
+  unlocked: boolean = false;
 
   @Output() loginSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() openRegister = new EventEmitter<void>();
+
+  // call this when the register link is clicked
+  goToRegister() {
+    this.openRegister.emit();
+  }
 
   constructor(
     private http: HttpClient,
@@ -49,4 +57,41 @@ export class LoginComponent {
         }
       });
   }
+// ADD THIS TO THE ABOVE LOGIN()
+// login() {
+//     this.http.post<any>('http://tt-env.eba-ey2xk2m2.us-east-1.elasticbeanstalk.com/login', {
+//       email: this.email,
+//       password: this.password
+//     }).subscribe({
+//       next: (response) => {
+//         // ✅ Only show unlocking screen if login is successful
+//         this.isUnlocking = true;
+//         this.error = ''; // clear any previous error
+  
+//         setTimeout(() => {
+//           this.unlocked = true;
+  
+//           setTimeout(() => {
+//             localStorage.setItem('token', 'placeholder');
+//             localStorage.setItem('redirectApp', 'quiz');
+  
+//             this.authService.setCurrentUser({
+//               id: response.userId,
+//               email: response.email
+//             });
+  
+//             this.loginSuccess.emit(true);
+//             this.router.navigate(['/']);
+//           }, 1200); // time for checkmark animation
+//         }, 3200); // time for loading bar
+//       },
+  
+//       error: (err) => {
+//         // ✅ No loading bar at all if login fails
+//         this.error = err.error.message || 'Login failed.';
+//         this.isUnlocking = false;
+//         this.unlocked = false;
+//       }
+//     });
+//   }  
 }

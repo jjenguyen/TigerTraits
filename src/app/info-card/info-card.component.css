@@ -1,28 +1,23 @@
 /* im still working on this bc it's not styling like my original test info card, so pls dont delete anything -jenna */
 .card-wrapper {
-    transform: scale(0.8); /* adjustst the scale factor for the entire card */
+    transform: scale(0.65); /* adjustst the scale factor for the entire card */
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-top: -90px;
+    margin-top: -160px;
 }
   
 .card {
     background-color: white;
-    /* testing mobile friendly display */
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 60px;
-    padding-right: 60px;
+    padding-left: 30px;
+    padding-right: 30px;
     padding-top: 20px;
     padding-bottom: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     max-width: 550px; /* makes it a rectangle */
     text-align: center;
-    
-    
 }
 
 h1 {

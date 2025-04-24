@@ -3,9 +3,7 @@
 .completion-screen,
 .results-screen {
     text-align: center;
-    margin-top: 30px;
-    /* testing mobile friendly display */
-    
+    margin-top: -10px;
 }
 
 /* for all gifs */
@@ -13,7 +11,7 @@
     width: 200px;
     height: 200px;
     margin: 20px auto;
-    border: 2px solid black;
+    /* border: 2px solid black; */
 }
 .gif-image {
     width: 100%;
@@ -42,10 +40,9 @@
 }
 
 /* answer choice button */
-/* set height to auto for dynamic sizing, mobile friendly display */
 .option-button {
     width: 200px;
-    height: auto;
+    height: 85px;
     margin: 5px;
     padding: 10px;
     font-size: 16px;

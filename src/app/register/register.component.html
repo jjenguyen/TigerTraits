@@ -1,25 +1,3 @@
-<!-- <p>register works!</p> -->
-<!-- 
-<div class="form-container">
-    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
-    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
-    <h2>Sign Up</h2>
-    <form (ngSubmit)="register()" #registerForm="ngForm">
-    <div class="input-container">
-        <label for="email">Email: </label>
-        <input type="email" id="email" name="email" required [(ngModel)]="email">
-    </div>
-    <div class="input-container">
-        <label for="password">Password: </label>
-        <input type="password" id="password" name="password" required [(ngModel)]="password">
-    </div>
-    <button type="submit">Sign Up</button>
-    </form>
-    <p class="login-form">Returning user? <a routerLink="/login">Sign in here!</a></p>
-</div> -->
-
-<!-- new code -->
-<!-- <p>register works!</p> -->
 <div class="page-wrapper">
     <div class="form-container">
       <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
@@ -70,3 +48,23 @@
     </div>
   </div>
   
+<!-- NEED TO ADD HESUB'S CHANGES TO THIS HTML BELOW -->
+<!-- <div class="register-container">
+    <div class="form-container">
+    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+    <h2>Sign up</h2>
+    <form (ngSubmit)="register()" #registerForm="ngForm">
+    <div class="input-container">
+        <label for="email">Email: </label>
+        <input type="email" id="email" name="email" required [(ngModel)]="email">
+    </div>
+    <div class="input-container">
+        <label for="password">Password: </label>
+        <input type="password" id="password" name="password" required [(ngModel)]="password">
+    </div>
+    <button type="submit">Sign up</button>
+    </form>
+    <p class="login-form">Already have an account? <a (click)="goToLogin()">Sign in</a></p>
+    </div>
+</div> -->

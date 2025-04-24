@@ -1,3 +1,6 @@
+// importing the compatibiltiy map to use for returning for the info card
+const compatibilityMap = require('./compatibility-map');
+
 // configuring express to serve the angular build
 const path = require('path');
 
@@ -11,6 +14,9 @@ const app = express();
 const port = process.env.PORT || 3000
 
 const uri = process.env.MONGO_URI
+// jenna local
+// const uri = process.env.MONGO_URI || "mongodb+srv://jn4gz:jn4gz12345@clustera4.jcqksc9.mongodb.net/tigertraits?retryWrites=true&w=majority";
+
 console.log("Environment PORT:", process.env.PORT);
 
 const { MongoClient, ObjectId } = require('mongodb');
@@ -195,14 +201,101 @@ app.post('/quizResults',authenticateJWT, async (req, res) => {
     }
 });
 
+// 5. get and store the user's 3 compatibility matches based on their result type
+app.post('/compatibilities', async (req, res) => {
+  try {
+    const { userId, resultType } = req.body;
+
+    const db = await connectToMongoDB();
+    const usersCollection = db.collection('users');
+    const quizResultsCollection = db.collection('quizResults');
+    const compatCollection = db.collection('compatibilities');
+
+    const compatibleTypes = compatibilityMap[resultType];
+
+    if (!compatibleTypes) {
+      return res.status(400).json({ message: 'Invalid personality type' });
+    }
+
+    // Lookup users from quizResults with compatible personalityType
+    const compatibleResults = await quizResultsCollection.aggregate([
+      {
+        $match: {
+          personalityType: { $in: compatibleTypes },
+          userId: { $ne: userId }
+        }
+      },
+      {
+        $sample: { size: 3 }
+      }
+    ]).toArray();
+
+    // Optional: get their emails from the users collection (join)
+    const matchedUsers = await Promise.all(
+      compatibleResults.map(async (result) => {
+        const user = await usersCollection.findOne({ _id: new ObjectId(String(result.userId)) });
+        return {
+          userId: result.userId,
+          personalityType: result.personalityType,
+          email: user?.email || 'N/A'
+        };
+      })
+    );
+
+    const newEntry = {
+      userId: userId,
+      resultType: resultType,
+      matchedUsers
+    };
+
+    await compatCollection.updateOne(
+      { userId: userId },
+      { $set: newEntry },
+      { upsert: true }
+    );
+
+    // checking logic for finding matches for compatiblities
+    console.log('Compatible types for', resultType, ':', compatibleTypes);
+    console.log('Compatible quizResults found:', compatibleResults.length);
+    console.log('Matched Users:', matchedUsers);
+
+    res.status(200).json({ message: 'Compatibility stored', data: newEntry });
+  } catch (error) {
+    console.error('Error storing compatibility:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+// 6. get the compatible user contact cards from db to link in info card
+app.get('/profile/:id', async (req, res) => {
+  const { id } = req.params;
+  const db = await connectToMongoDB();
+  const usersCollection = db.collection('profiles'); // or your actual profile collection
+
+  try {
+    const user = await usersCollection.findOne({ _id: new ObjectId(id) });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.status(200).json(user);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+
 // serve static files from the angular app (i.e. the "dist" folder created from the production build command)
 app.use(express.static(path.join(__dirname, 'dist/tigertraits-deployed/browser')));
 // for any routes that don't match the api, serve the angular index.html
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/tigertraits-deployed/browser/index.html'));
 });
+
 app.get('/', (req, res) => {
-    res.send('hello from the server!');
+    res.send('Hello from the server!');
 });
 
 // start server

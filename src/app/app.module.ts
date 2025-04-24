@@ -24,6 +24,7 @@ import { QuizComponent } from './quiz/quiz.component';
 import { InfoCardComponent } from './info-card/info-card.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ResultsComponent } from './results/results.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ProfileComponent } from './profile/profile.component';
     QuizComponent,
     InfoCardComponent,
     WelcomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,

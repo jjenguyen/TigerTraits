@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -15,6 +15,13 @@ export class RegisterComponent {
   hasUpperCase: boolean = false;
   hasNumber: boolean = false;
   hasSpecialChar: boolean = false;
+
+  @Output() openLogin = new EventEmitter<void>();
+
+  // call this when the sign in link is clicked
+  goToLogin() {
+    this.openLogin.emit();
+  }
 
   constructor(private http: HttpClient) {}
 

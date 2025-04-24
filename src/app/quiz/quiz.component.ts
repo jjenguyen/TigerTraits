@@ -613,3 +613,28 @@ isSelected(questionID: string, optionText: string): boolean {
   return this.answers[questionID] === this.map[optionText];
 }
 };
+// ADD THE COMPATIBILITY STORING INTO THE ABOVE HANDLESUBMIT()
+  // handleSubmit(): void {
+  //   const { ie, sn, tf, jp } = this.answers;
+  //   this.result = `${ie}${sn}${tf}${jp}`;
+  //   this.resultData = this.resultProfiles[this.result];
+
+  //   this.viewStep = 'complete';
+
+  //   const currentUser = this.authService.getCurrentUser();
+
+  //   this.quizService.storeQuizResult(currentUser.id, this.result).subscribe({
+  //     next: () => {
+  //       this.quizService.storeCompatibility(currentUser.id, this.result).subscribe({
+  //         next: (response) => {
+  //           this.resultData = {
+  //             ...this.resultData,
+  //             matchedUsers: response.data.matchedUsers
+  //           };
+  //         },
+  //         error: (err) => console.error('Error storing compatibility:', err)
+  //       });
+  //     },
+  //     error: (err) => console.error('Error storing quiz result:', err)
+  //   });
+  // }

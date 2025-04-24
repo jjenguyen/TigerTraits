@@ -1,13 +1,14 @@
-<app-header></app-header>
+<!-- <p>quiz works!</p> -->
+
+<!-- <app-header></app-header> -->
 
 <!-- START SCREEN -->
 <div *ngIf="viewStep === 'start'" class="start-screen">
   <div class="gif-container">
-    <img src="assets/gifs/Test.gif" alt="GIF" class="gif-image" />
+    <img src="assets/gifs/Test1.gif" alt="GIF" class="gif-image" />
   </div>
-  <h2>It's Homecoming Weekend at the University of Missouri!</h2>
-  <h2>Ready to start the day and discover your TigerTraits?</h2>
-  <button class="button" (click)="viewStep = 'quiz'">Let's Do It!</button>
+  <h2>Ready to find out your Tiger Traits?</h2>
+  <button class="button" (click)="viewStep = 'quiz'">Start Quiz</button>
 </div>
 
 <!-- QUIZ SCREEN -->
@@ -35,18 +36,15 @@
 <!-- COMPLETION SCREEN -->
 <div *ngIf="viewStep === 'complete'" class="completion-screen">
   <div class="gif-container">
-    <img src="assets/gifs/Test.gif" alt="GIF" class="gif-image" />
+    <img src="assets/gifs/Complete.gif" alt="GIF" class="gif-image" />
   </div>
-  <h2>What a day! Ready to see your TigerTraits?</h2>
-  <button class="button" (click)="viewStep = 'result'">Take Me There!</button>
+  <h2>All done! Ready to see your results?</h2>
+  <button class="button" (click)="viewStep = 'result'">Show Results</button>
 </div>
 
 <!-- RESULTS SCREEN -->
- <!--take note that tagColor is hard coded to hex #FFD17D 'gold tint 1', set back to resultData.tagColor if we want to change colors based on profile -->
 <div *ngIf="viewStep === 'result'" class="results-screen">
-  <h2>Your Tiger Trait: {{ result }}</h2>
   <app-info-card
-    *ngIf="resultData"
     [personaName]="resultData.name"
     [traits]="resultData.traits"
     [leftTags]="resultData.leftTags"

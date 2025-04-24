@@ -9,13 +9,14 @@ import { ProfileComponent } from './profile/profile.component';
 // add more components here as we need them
 
 const routes: Routes = [
-  { path: '', redirectTo: '/welcome', pathMatch: 'full' }, // redirect to the welcome page by default
+  // { path: '', redirectTo: '/welcome', pathMatch: 'full' }, // redirect to the welcome page by default
   { path: 'welcome', component: WelcomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'home', component: HomeComponent },
+  // { path: 'home', component: HomeComponent },
   { path: 'quiz', component: QuizComponent},
-  { path: 'profile', component: ProfileComponent},
+  // { path: 'profile', component: ProfileComponent},
+  { path: 'profile/:id', component: ProfileComponent },
   // add more routes here as we need them
 ];
 

@@ -1,68 +1,74 @@
-/* Make the whole page a flexbox to center content */
-
-/* original :host styling */
-/* :host {
+.welcome-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  text-align: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   padding: 20px;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-} */
+  text-align: center;
+  gap: 12px;
+}
 
-/* working :host */
-/* :host {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  flex-direction: column;
-  background-color: #FFD17D;
-} */
-
+/* Big bold 2000s-style title */
 .title {
-  font-size: 5rem;
-  margin: 4px 0;
+  margin-top: -30px;
+  font-size: 35px;
+  font-weight: bold;
+  color: #008486;
+  text-shadow: 2px 2px #FFD17D;
   letter-spacing: 1px;
+  margin-bottom: 4px;
 }
 
+/* Funky slogan text */
 .slogan {
-  margin-top: 40px;
-  font-size: 1.2rem;
+  font-size: 16px;
+  font-weight: normal;
   color: #444;
-  font-style: italic;
+  background-color: #FFEDCF;
+  border: 2px dashed #FDB719;
+  padding: 6px 12px;
+  border-radius: 12px;
+  margin-bottom: 12px;
 }
 
+/* Bouncy gif styling */
 .top-image {
-  width: 300px;
-  max-width: 80%;
+  max-width: 180px;
   height: auto;
-  margin: 20px 0;
-  border-radius: 20px;
+  border: 3px dotted #FDB719;
+  border-radius: 16px;
+  box-shadow: 4px 4px #989898;
+  margin-bottom: 12px;
 }
 
+/* Big button with attitude */
 .start-button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  margin: 10px 0;
+  background-color: #99CECF;
+  border: 3px outset #008486;
+  color: #000;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 16px;
+  font-family: 'Comic Sans MS', cursive;
+  box-shadow: 3px 3px #888;
   cursor: pointer;
-  border: none;
-  background-color: #2979ff;
-  color: white;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: all 0.2s ease-in-out;
 }
 
 .start-button:hover {
-  background-color: #1565c0;
+  background-color: #008486;
+  transform: scale(1.05);
 }
 
+/* Footer text */
 .description,
 .creator-credit {
-  font-size: 0.9rem;
+  font-size: 13px;
   color: #555;
-  margin-top: 5px;
+  background-color: #f3f3f3;
+  border: 1px dashed #bbb;
+  padding: 4px 10px;
+  border-radius: 8px;
 }

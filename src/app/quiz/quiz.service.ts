@@ -27,4 +27,11 @@ export class QuizService {
       personalityType
     });
   }
+
+  storeCompatibility(userId: string, resultType: string) {
+    return this.http.post<any>('http://localhost:3000/compatibilities', {
+      userId,
+      resultType
+    });
+  }  
 }
