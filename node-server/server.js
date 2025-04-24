@@ -219,7 +219,7 @@ app.post('/compatibilities', async (req, res) => {
       return res.status(400).json({ message: 'Invalid personality type' });
     }
 
-    // Lookup users from quizResults with compatible personalityType
+    // lookup users from quizResults with compatible personalityType
     const compatibleResults = await quizResultsCollection.aggregate([
       {
         $match: {
@@ -232,7 +232,7 @@ app.post('/compatibilities', async (req, res) => {
       }
     ]).toArray();
 
-    // Optional: get their emails from the users collection (join)
+    // might be useful?: get their emails from the users collection (join)
     const matchedUsers = await Promise.all(
       compatibleResults.map(async (result) => {
         const user = await usersCollection.findOne({ _id: new ObjectId(String(result.userId)) });
@@ -272,7 +272,7 @@ app.post('/compatibilities', async (req, res) => {
 app.get('/profile/:id', async (req, res) => {
   const { id } = req.params;
   const db = await connectToMongoDB();
-  const usersCollection = db.collection('profiles'); // or your actual profile collection
+  const usersCollection = db.collection('profiles');
 
   try {
     const user = await usersCollection.findOne({ _id: new ObjectId(id) });

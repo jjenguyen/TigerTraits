@@ -10,7 +10,7 @@ export class AuthService {
   private currentUserSubject = new BehaviorSubject<any>(null);
   currentUser$ = this.currentUserSubject.asObservable();
 
-  // ✅ Holds app name to open after login
+  // holds app name to open after login
   private loginRedirectAppSubject = new BehaviorSubject<string | null>(null);
   loginRedirectApp$ = this.loginRedirectAppSubject.asObservable();
 
@@ -21,14 +21,14 @@ export class AuthService {
       this.currentUserSubject.next(JSON.parse(storedUser));
     }
 
-    // Load redirect app if previously set
+    // load redirect app if previously set
     const storedRedirectApp = localStorage.getItem('redirectApp');
     if (storedRedirectApp) {
       this.loginRedirectAppSubject.next(storedRedirectApp);
     }
   }
 
-  // ✅ Call this to store user after login
+  // call this to store user after login
   setCurrentUser(user: any): void {
     this.currentUserSubject.next(user);
     localStorage.setItem('currentUser', JSON.stringify(user));
@@ -47,7 +47,7 @@ export class AuthService {
     return this.http.post('/quiz-results', quizResult, { headers });
   }
 
-  // ✅ Set app to open after login (e.g. "quiz")
+  // set app to open after login (e.g. "quiz")
   setLoginRedirectApp(appName: string | null): void {
     this.loginRedirectAppSubject.next(appName);
     if (appName) {
@@ -64,6 +64,6 @@ export class AuthService {
   logout(): void {
     this.currentUserSubject.next(null);
     localStorage.removeItem('currentUser');
-    this.setLoginRedirectApp(null); // Reset any redirect
+    this.setLoginRedirectApp(null); // reset any redirect
   }
 }
