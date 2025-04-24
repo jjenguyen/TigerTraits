@@ -9,7 +9,6 @@
   gap: 12px;
 }
 
-/* Big bold 2000s-style title */
 .title {
   margin-top: -30px;
   font-size: 35px;
@@ -20,7 +19,6 @@
   margin-bottom: 4px;
 }
 
-/* Funky slogan text */
 .slogan {
   font-size: 16px;
   font-weight: normal;
@@ -32,7 +30,6 @@
   margin-bottom: 12px;
 }
 
-/* Bouncy gif styling */
 .top-image {
   max-width: 180px;
   height: auto;
@@ -42,7 +39,6 @@
   margin-bottom: 12px;
 }
 
-/* Big button with attitude */
 .start-button {
   background-color: #99CECF;
   border: 3px outset #008486;
@@ -62,7 +58,6 @@
   transform: scale(1.05);
 }
 
-/* Footer text */
 .description,
 .creator-credit {
   font-size: 13px;

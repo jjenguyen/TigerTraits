@@ -60,7 +60,7 @@ export class QuizComponent {
         "I perfected that plan! We are sticking to it!",
         "How exciting! So much to be determined, so many possibilities!"
       ],
-      gif: 'assets/gifs/Test.gif'
+      gif: 'assets/gifs/gif1.5.gif'
     },
     {
       id: "Q2",
@@ -90,7 +90,7 @@ export class QuizComponent {
         "At a quieter spot with a friend!",
         "On Tiger Ave losing my voice and being lively with the crowd!"
       ],
-      gif: 'assets/gifs/Test.gif'
+      gif: 'assets/gifs/gif2.gif'
     },
     {
       id: "Q5",
@@ -100,7 +100,7 @@ export class QuizComponent {
         "Shakespeare's Pizza or Booche's! Can't turn down a Columbia classic!",
         "I'm tired of the same old rotation. Let's try something new!"
       ],
-      gif: 'assets/gifs/Test.gif'
+      gif: 'assets/gifs/gif3.gif'
     },
     {
       id: "Q6",
@@ -613,6 +613,8 @@ isSelected(questionID: string, optionText: string): boolean {
   return this.answers[questionID] === this.map[optionText];
 }
 };
+
+// note to jenna:
 // ADD THE COMPATIBILITY STORING INTO THE ABOVE HANDLESUBMIT()
   // handleSubmit(): void {
   //   const { ie, sn, tf, jp } = this.answers;

@@ -21,7 +21,7 @@ body, html {
   border-radius: 8px;
 }
 
-/* App Icons */
+/* app icons */
 .desktop-icons {
     position: absolute;
     top: 35px;
@@ -46,26 +46,11 @@ body, html {
   margin-top: 4px;
 }
 
-/* Locked icon style */
-/* .icon.locked {
-  opacity: 0.4;
-  pointer-events: none;
-}
-
-.icon.locked::after {
-  content: '🔒';
-  position: absolute;
-  top: -6px;
-  right: -6px;
-  font-size: 16px;
-  background-color: #fff;
-  border-radius: 50%;
-} */
 .icon {
   width: 80px;
   text-align: center;
   cursor: pointer;
-  position: relative; /* Required so ::after uses this as a reference */
+  position: relative; /* required so ::after uses this as a ref */
 }
 
 .icon.locked {
@@ -73,7 +58,8 @@ body, html {
   pointer-events: none;
 }
 
-/* 🔒 emoji positioned over the locked icon */
+/* lock positioned over the locked icon */
+/* maybe change if we want to not use the emoji */
 .icon.locked::after {
   content: '🔒';
   position: absolute;
@@ -86,66 +72,43 @@ body, html {
   line-height: 1;
 }
 
-/* App Window */
-/* .floating-window {
-  position: absolute;
-  top: 30px;
-  left: 250px;
-  width: 700px;
-  height: 620px;
-  background-color: #fff;
-  border: 2px solid #444;
-  border-radius: 10px;
-  box-shadow: 5px 5px #d4d4d4;
-  display: flex;
-  flex-direction: column;
-  z-index: 1;
-  animation: popIn 0.25s ease-out;
-  transform-origin: top left;
-}  */
-
 .window-default {
   background-color: #fff;
 }
 
 .window-quiz {
-  background-color: #FFEDCF; /* light cyan */
+  background-color: #FFEDCF;
   max-width: 600px;
   max-height: 650px;
 }
 
 .window-profile {
-  background-color: #fff3e0; /* peach */
+  background-color: #fff3e0;
   width: 800px;
   height: 500px;
 }
 
 .window-about {
-  background-color: #f3e5f5; /* lavender */
+  background-color: #f3e5f5;
 }
 
 .window-feedback {
-  background-color: #e8f5e9; /* mint */
+  background-color: #e8f5e9;
 }
 
 .window-notes {
-  background-color: #fffde7; /* pale yellow */
+  background-color: #fffde7;
 }
 
 .window-register {
-  background-color: #FFEDCF; /* soft pink */
+  background-color: #FFEDCF;
 }
 
 .window-login {
-  background-color: #FFEDCF; /* light blue */
+  background-color: #FFEDCF;
   width: 500px;
   height: 500px;
 }
-
-/* .window-welcome {
-    width: 300px;
-    height: 20px;
-} */
 
 @keyframes popIn {
   0% {
@@ -172,21 +135,6 @@ body, html {
     transform: scale(0.8);
   }
 }
-
-
-/* .window-header-bar {
-  background-color: #008486;
-  color: white;
-  font-weight: bold;
-  letter-spacing: 2px;
-  padding: 4px 16px;
-  font-size: 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-} */
 
 .window-header-bar button {
   background: transparent;
@@ -253,7 +201,7 @@ body, html {
 }
 
 /* test */
-/* Overall app window (no border anymore) */
+/* overall app window (no border anymore) */
 .floating-window {
   position: absolute;
   top: 30px;
@@ -269,7 +217,7 @@ body, html {
   box-shadow: 5px 5px #d4d4d4;
 }
 
-/* Header bar - clean no border look */
+/* header bar */
 .window-header-bar {
   background-color: #3b7d82;
   color: white;
@@ -284,7 +232,7 @@ body, html {
   border-top-right-radius: 10px;
 }
 
-/* Wraps the body with a border and bottom radius only */
+/* wraps the body with a border and bottom radius only */
 .window-body-wrapper {
   border: 2px solid #989898;
   border-top: 2px solid #989898;

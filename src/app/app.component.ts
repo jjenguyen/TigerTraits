@@ -92,7 +92,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       // clear all the current windows
       this.openApps = [];
   
-      // give angualr some time to update `isLoggedIn` before opening new window
+      // give angular some time to update `isLoggedIn` before opening new window
       setTimeout(() => {
         this.openApp('quiz');
       }, 50);

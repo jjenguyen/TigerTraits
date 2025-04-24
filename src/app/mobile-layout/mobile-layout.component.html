@@ -2,12 +2,12 @@
 
 <!-- src/app/mobile-layout/mobile-layout.component.html -->
 <div class="window-container">
-    <!-- Header Bar -->
+    <!-- window header bar -->
     <div class="window-header-bar">
         <span>{{ getHeaderTitle() }}</span>
         <button class="hamburger-btn" (click)="toggleMenu()">☰</button>
 
-        <!-- Navigation Menu (slides open) -->
+        <!-- nav menu (slides open) -->
         <div class="nav-menu" *ngIf="menuOpen">
             <button (click)="switchScreen('welcome')">Welcome</button>
             <button (click)="switchScreen('about')">About</button>
@@ -24,7 +24,7 @@
                 [disabled]="!isLoggedIn" 
                 [ngClass]="{ 'disabled-link': !isLoggedIn }"
                 (click)="isLoggedIn && switchScreen('profile')">
-                Contact
+                Contact Card
             </button>
             
             <button 
@@ -39,18 +39,16 @@
         </div>
     </div>
 
-    
-
-    <!-- Unlocking Animation -->
-    <div class="unlock-popup" *ngIf="isUnlocking || unlocked">
+    <!-- unlocking animation -->
+    <!-- <div class="unlock-popup" *ngIf="isUnlocking || unlocked">
         <div class="popup-body">
-        <p *ngIf="!unlocked">🔐 Unlocking App...</p>
-        <p *ngIf="unlocked">✔ App Unlocked!</p>
+        <p *ngIf="!unlocked">Unlocking App...</p>
+        <p *ngIf="unlocked">App Unlocked!</p>
         </div>
-    </div>
+    </div> -->
 
     <div class="window-body-wrapper">
-        <!-- Content Area -->
+        <!-- window body, where content goes -->
         <div class="window-body">
             <app-welcome *ngIf="currentScreen === 'welcome'" (openLogin)="switchScreen('login')"></app-welcome>
             <app-login *ngIf="currentScreen === 'login'" (loginSuccess)="runUnlockAnimation()"></app-login>
@@ -60,13 +58,13 @@
             <app-results *ngIf="currentScreen === 'results'"></app-results>
             
             <div *ngIf="currentScreen === 'about'">
-            <h2>Welcome to TigerTraits!</h2>
-            <p>This mobile version is simplified for smaller screens.</p>
+            <h2>What is this?</h2>
+            <p>Mobile/browser responsiveness layout is working</p>
             </div>
 
             <div *ngIf="currentScreen === 'feedback'">
             <h2>Feedback</h2>
-            <p>We'd love to hear what you think!</p>
+            <p>Need to add feedback form</p>
             </div>
         </div>
     </div>

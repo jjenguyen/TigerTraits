@@ -32,7 +32,7 @@
     </div>
   </div>
 
-  <!-- Floating App Windows -->
+  <!-- floating app windows -->
   <div *ngFor="let app of openApps" class="floating-window" [ngClass]="getWindowClass(app.name)" [style.zIndex]="app.zIndex" (mousedown)="bringToFront(app)">
     <div class="window-header-bar">
       <span>
@@ -71,7 +71,7 @@
     </div>
   </div>
 
-  <!-- Taskbar -->
+  <!-- taskbar -->
   <div class="taskbar">
     <div class="start-btn" (click)="handleStartClick()">
       <img src="assets/icons/start-icon.png" alt="start" />

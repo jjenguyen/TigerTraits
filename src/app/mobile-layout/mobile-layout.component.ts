@@ -12,7 +12,7 @@ export class MobileLayoutComponent implements OnInit {
   menuOpen: boolean = false;
   isUnlocking: boolean = false;
   unlocked: boolean = false;
-  isLoggedIn: boolean = false; // ✅ track login status
+  isLoggedIn: boolean = false; // track login status
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -55,7 +55,7 @@ export class MobileLayoutComponent implements OnInit {
   logout(): void {
     this.authService.logout();
     localStorage.removeItem('token');
-    this.isLoggedIn = false; // ✅ update login state
+    this.isLoggedIn = false; // update login state
     this.currentScreen = 'welcome';
     this.menuOpen = false;
   }

@@ -41,25 +41,25 @@ export class LoginComponent {
         this.isUnlocking = true;
         this.error = '';
   
-        // ✅ Start animation delay
+        // start animation delay
         setTimeout(() => {
           this.unlocked = true;
   
           setTimeout(() => {
-            // ✅ Save JWT
-            localStorage.setItem('token', response.token); // don't use 'placeholder' anymore!
+            // save JWT
+            localStorage.setItem('token', response.token); // replaced my placeholder token with hesub token
             localStorage.setItem('redirectApp', 'quiz');
   
-            // ✅ Store user info
+            // store user info
             this.authService.setCurrentUser({
               id: response.userId,
               email: response.email
             });
   
-            // ✅ Tell parent app that login succeeded
+            // tell parent app that login succeeded
             this.loginSuccess.emit(true);
   
-            // ✅ Navigate to quiz or home
+            // navigate to quiz or home
             this.router.navigate(['/']);
           }, 1200); // checkmark animation time
         }, 3200); // loading bar time

@@ -13,7 +13,6 @@
   background-color: #FFFAF0;
 }
 
-/* Header bar - clean no border look */
 .window-header-bar {
     position: relative;
   background-color: #3b7d82;
@@ -44,33 +43,7 @@
   overflow-y: auto;
 }
 
-/* Container for the entire mobile app layout */
-/* .mobile-window-container {
-  max-width: 420px;
-  margin: 40px auto;
-  border: 2px solid #000;
-  background-color: #f4f4f4;
-  box-shadow: 4px 4px 0px #999;
-  font-family: 'Verdana', sans-serif;
-  display: flex;
-  flex-direction: column;
-  border-radius: 4px;
-  overflow: hidden;
-} */
-
-/* Retro-style header bar */
-/* .mobile-window-header-bar {
-  background-color: #c0c0c0;
-  padding: 10px 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid #000;
-  font-weight: bold;
-  font-size: 16px;
-} */
-
-/* Navigation hamburger button */
+/* nav hamburger button */
 .hamburger-btn {
   background: none;
   border: none;
@@ -79,7 +52,7 @@
   padding: 0;
 }
 
-/* Unlocking animation overlay */
+/* unlocking animation */
 .unlocking-overlay {
   position: fixed;
   top: 0;
@@ -226,7 +199,6 @@
     background-color: #FFFAF0;
     }
 
-    /* Header bar - clean no border look */
     .window-header-bar {
     position: relative;
     background-color: #3b7d82;
