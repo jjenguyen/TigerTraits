@@ -2,51 +2,72 @@
 
 <!-- src/app/mobile-layout/mobile-layout.component.html -->
 <div class="window-container">
-  <!-- Header Bar -->
-  <div class="window-header-bar">
-    <span>{{ getHeaderTitle() }}</span>
-    <button class="hamburger-btn" (click)="toggleMenu()">☰</button>
-  </div>
+    <!-- Header Bar -->
+    <div class="window-header-bar">
+        <span>{{ getHeaderTitle() }}</span>
+        <button class="hamburger-btn" (click)="toggleMenu()">☰</button>
 
-  <!-- Navigation Menu (slides open) -->
-  <div class="nav-menu" *ngIf="menuOpen">
-    <button (click)="switchScreen('about')">About</button>
-    <button (click)="switchScreen('quiz')">Quiz</button>
-    <button (click)="switchScreen('profile')">Contact</button>
-    <button (click)="switchScreen('results')">My Results</button>
-    <button (click)="switchScreen('feedback')">Feedback</button>
-    <button (click)="logout()">Logout</button>
-  </div>
-
-  <!-- Unlocking Animation -->
-  <div class="unlock-popup" *ngIf="isUnlocking || unlocked">
-    <div class="popup-body">
-      <p *ngIf="!unlocked">🔐 Unlocking App...</p>
-      <p *ngIf="unlocked">✔ App Unlocked!</p>
+        <!-- Navigation Menu (slides open) -->
+        <div class="nav-menu" *ngIf="menuOpen">
+            <button (click)="switchScreen('welcome')">Welcome</button>
+            <button (click)="switchScreen('about')">About</button>
+            
+            <button 
+                [disabled]="!isLoggedIn"
+                [ngClass]="{ 'disabled-link': !isLoggedIn }"
+                title="Please log in to access this"
+                (click)="isLoggedIn && switchScreen('quiz')">
+                Quiz
+            </button>
+            
+            <button 
+                [disabled]="!isLoggedIn" 
+                [ngClass]="{ 'disabled-link': !isLoggedIn }"
+                (click)="isLoggedIn && switchScreen('profile')">
+                Contact
+            </button>
+            
+            <button 
+                [disabled]="!isLoggedIn" 
+                [ngClass]="{ 'disabled-link': !isLoggedIn }"
+                (click)="isLoggedIn && switchScreen('results')">
+                My Results
+            </button>
+            
+            <button (click)="switchScreen('feedback')">Feedback</button>
+            <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+        </div>
     </div>
-  </div>
 
-<div class="window-body-wrapper">
-    <!-- Content Area -->
-  <div class="window-body">
-    <app-welcome *ngIf="currentScreen === 'welcome'" (openLogin)="switchScreen('login')"></app-welcome>
-    <app-login *ngIf="currentScreen === 'login'" (loginSuccess)="runUnlockAnimation()"></app-login>
-    <app-register *ngIf="currentScreen === 'register'" (openLogin)="switchScreen('login')"></app-register>
-    <app-quiz *ngIf="currentScreen === 'quiz'"></app-quiz>
-    <app-profile *ngIf="currentScreen === 'profile'"></app-profile>
-    <app-results *ngIf="currentScreen === 'results'"></app-results>
     
-    <div *ngIf="currentScreen === 'about'">
-      <h2>Welcome to TigerTraits!</h2>
-      <p>This mobile version is simplified for smaller screens.</p>
-      <button (click)="switchScreen('quiz')">Take the Quiz</button>
+
+    <!-- Unlocking Animation -->
+    <div class="unlock-popup" *ngIf="isUnlocking || unlocked">
+        <div class="popup-body">
+        <p *ngIf="!unlocked">🔐 Unlocking App...</p>
+        <p *ngIf="unlocked">✔ App Unlocked!</p>
+        </div>
     </div>
 
-    <div *ngIf="currentScreen === 'feedback'">
-      <h2>Feedback</h2>
-      <p>We'd love to hear what you think!</p>
+    <div class="window-body-wrapper">
+        <!-- Content Area -->
+        <div class="window-body">
+            <app-welcome *ngIf="currentScreen === 'welcome'" (openLogin)="switchScreen('login')"></app-welcome>
+            <app-login *ngIf="currentScreen === 'login'" (loginSuccess)="runUnlockAnimation()"></app-login>
+            <app-register *ngIf="currentScreen === 'register'" (openLogin)="switchScreen('login')"></app-register>
+            <app-quiz *ngIf="currentScreen === 'quiz'"></app-quiz>
+            <app-profile *ngIf="currentScreen === 'profile'"></app-profile>
+            <app-results *ngIf="currentScreen === 'results'"></app-results>
+            
+            <div *ngIf="currentScreen === 'about'">
+            <h2>Welcome to TigerTraits!</h2>
+            <p>This mobile version is simplified for smaller screens.</p>
+            </div>
+
+            <div *ngIf="currentScreen === 'feedback'">
+            <h2>Feedback</h2>
+            <p>We'd love to hear what you think!</p>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-  
 </div>

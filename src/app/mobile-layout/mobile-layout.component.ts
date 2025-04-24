@@ -8,15 +8,18 @@ import { Router } from '@angular/router';
   styleUrl: './mobile-layout.component.css'
 })
 export class MobileLayoutComponent implements OnInit {
-  currentScreen: string = 'about';  // default after login
+  currentScreen: string = 'about';
   menuOpen: boolean = false;
   isUnlocking: boolean = false;
   unlocked: boolean = false;
+  isLoggedIn: boolean = false; // ✅ track login status
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     const token = localStorage.getItem('token');
+    this.isLoggedIn = !!token;
+
     const justLoggedIn = localStorage.getItem('redirectApp') === 'quiz';
 
     if (!token) {
@@ -27,16 +30,17 @@ export class MobileLayoutComponent implements OnInit {
   }
 
   runUnlockAnimation(): void {
+    this.isLoggedIn = true;
     this.isUnlocking = true;
     setTimeout(() => {
       this.unlocked = true;
       setTimeout(() => {
         this.isUnlocking = false;
         this.unlocked = false;
-        this.currentScreen = 'quiz'; // or set to 'about'
+        this.currentScreen = 'quiz';
         localStorage.removeItem('redirectApp');
-      }, 1000); // unlocked delay
-    }, 2000); // loading delay
+      }, 1000);
+    }, 2000);
   }
 
   switchScreen(screen: string): void {
@@ -51,6 +55,7 @@ export class MobileLayoutComponent implements OnInit {
   logout(): void {
     this.authService.logout();
     localStorage.removeItem('token');
+    this.isLoggedIn = false; // ✅ update login state
     this.currentScreen = 'welcome';
     this.menuOpen = false;
   }

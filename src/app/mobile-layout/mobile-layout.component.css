@@ -15,6 +15,7 @@
 
 /* Header bar - clean no border look */
 .window-header-bar {
+    position: relative;
   background-color: #3b7d82;
   color: white;
   padding: 13px 20px;
@@ -78,42 +79,6 @@
   padding: 0;
 }
 
-.nav-menu {
-    position: absolute;
-    top: 45px;
-    right: 0;
-    width: 180px;
-    background-color: #3b7d82;
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    z-index: 1000;
-    border: 2px dashed #FFD17D;
-    border-radius: 0 0 10px 10px;
-    box-shadow: 4px 4px 0px #555;
-    animation: slideDown 0.2s ease-out;
-  }
-  
-  .nav-menu button {
-    all: unset;
-    padding: 12px 16px;
-    color: #fff;
-    font-family: 'Comic Sans MS', cursive;
-    font-size: 15px;
-    cursor: pointer;
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    text-align: left;
-  }
-  
-  .nav-menu button:hover {
-
-    color: #FFD17D;
-
-    transform: scale(1.035);
-
-  }  
-
 /* Unlocking animation overlay */
 .unlocking-overlay {
   position: fixed;
@@ -167,6 +132,50 @@
   margin-bottom: 10px;
 }
 
+.nav-menu {
+  position: absolute;
+  top: 100%;
+  /* top: 45px; */
+  right: 0;
+  width: 180px;
+  background-color: #3b7d82;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  z-index: 1000;
+  border: 2px dashed #FFD17D;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 4px 4px 0px #555;
+  animation: slideDown 0.2s ease-out;
+}
+
+.nav-menu button {
+  all: unset;
+  display: block;
+  padding: 12px 16px;
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 15px;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.nav-menu button:hover {
+  color: #FFD17D;
+  transform: scale(1.035);
+}
+
+.nav-menu button.disabled-link {
+  color: #ccc;
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none;
+}
+
 /* smallest screen size (mobile avg. 360-375px width), fits well to go down to 350 */
 @media screen and (max-width: 629px) {
   .window-container {
@@ -196,6 +205,8 @@
   .window-body {
     margin-top: 15px;
   }
+
+    
 }
 
 /* mid size screens (between desktop and mobile) */
@@ -217,6 +228,7 @@
 
     /* Header bar - clean no border look */
     .window-header-bar {
+    position: relative;
     background-color: #3b7d82;
     color: white;
     padding: 13px 20px;
