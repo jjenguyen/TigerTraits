@@ -1,0 +1,168 @@
+.success-message {
+    color: green;
+}
+
+.error-message {
+    color: red;
+}
+
+/* =========================
+   RESET + BASE STYLES
+========================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+  background: #FFD17D;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('assets/Bkg.png');
+  background-repeat: repeat;
+  background-size: 600px;
+  opacity: 0.65; /* 👈 adjust this value */
+  pointer-events: none; /* lets you click through */
+  z-index: -1; /* keep it behind everything */
+}
+
+/* =========================
+   MAIN WINDOW FRAME
+========================= */
+.window-wrapper {
+  width: 1000px; /* Fixed width like Shar's site */
+  height: 700px; /* Fixed height */
+  background-color: #ffffff;
+  border: 2px solid #444;
+  border-radius: 12px;
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* =========================
+   HEADER BAR
+========================= */
+.window-header {
+  background-color: #444;
+  color: white;
+  padding: 20px 20px;
+  font-size: 20px;
+  /* font-weight: bold; */
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+/* As nav when logged in */
+nav.window-header {
+  justify-content: space-between;
+  gap: 12px;
+}
+
+nav .nav-left,
+nav .nav-right {
+  display: flex;
+  gap: 12px;
+}
+
+nav.window-header a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+nav.window-header a:hover {
+  background-color: #666;
+}
+
+/* =========================
+   CONTENT INSIDE THE WINDOW
+========================= */
+.window-content {
+  flex: 1;
+  padding: 32px;
+  overflow-y: auto;
+  text-align: center;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+button {
+  background-color: #ffcc33;
+  border: 2px solid #222;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #444;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #fff599;
+  transform: scale(1.05);
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer-container {
+  text-align: center;
+  font-size: 13px;
+  padding: 12px;
+  background-color: #fceaff;
+  color: #666;
+  border-top: 1px dashed #aaa;
+}
+
+/* =========================
+   HEADINGS & TEXT
+========================= */
+h1, h2, h3 {
+  font-family: 'Comic Sans MS', cursive;
+  color: #222;
+  margin-bottom: 12px;
+}
+
+p {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+/* =========================
+   LINKS
+========================= */
+a {
+  color: #6a0572;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

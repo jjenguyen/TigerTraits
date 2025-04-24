@@ -1,0 +1,44 @@
+<!-- <p>info-card works!</p> -->
+
+<div class="card-wrapper" [ngStyle]="{'background-color': cardColor}">
+    <div class="card">
+      <div class="traits-container" [ngStyle]="{'background-color': tagColor}">
+        <h1><span class="highlight">{{ personaName }}</span></h1>
+        <p class="traits">{{ traits.join(' - ') }}</p>
+      </div>
+  
+      <div class="qualities-image-container">
+        <div class="qualities left">
+          <span class="tag" *ngFor="let tag of leftTags" [ngStyle]="{'background-color': tagColor}">{{ tag }}</span>
+        </div>
+  
+        <div class="image-container">
+          <img [src]="imageUrl" alt="Personality Image" />
+        </div>
+  
+        <div class="qualities right">
+          <span class="tag" *ngFor="let tag of rightTags" [ngStyle]="{'background-color': tagColor}">{{ tag }}</span>
+        </div>
+      </div>
+  
+      <div class="section-box" [ngStyle]="{'background-color': tagColor}">
+        <h2>Mizzou Resources & Activities:</h2>
+        <div class="resources-grid">
+          <a *ngFor="let resource of resources" [href]="resource.link" class="resource" target="_blank">
+            {{ resource.name }}
+          </a>
+        </div>
+      </div>
+
+      <div class="section-box" [ngStyle]="{'background-color': tagColor}">
+        <h2>Your Possible Compatibilities:</h2>
+        <div class="images-box">
+          <div class="compatibilities">
+            <a *ngFor="let user of matchedUsers" (click)="handleProfileClick(user.userId)">
+              <img [src]="getPersonaImage(user.personalityType)" [alt]="user.personalityType" />
+            </a>
+          </div>
+        </div>
+      </div>      
+    </div>
+</div>
