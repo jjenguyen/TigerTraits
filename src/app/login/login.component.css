@@ -211,3 +211,43 @@ button[type="submit"]:hover {
     padding: 0 12px;
   }
 }
+
+/* short viewport fix - ipads in landscape, foldables, etc., takes care of vertical responsiveness */
+@media screen and (max-height: 799px) {
+  .form-container {
+    width: 100%;
+    height: 100%;
+    min-height: 800px;
+    padding: 32px 24px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border-radius: 0;
+    border: 3px dashed #FDB719;
+    background-color: #FFEDCF;
+    box-shadow: none;
+  }
+
+  .input-container {
+    margin: 12px auto;
+    max-width: 67%;
+    padding: 0 12px;
+  }
+
+  .input-container label {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    font-size: 16px;
+  }
+
+  button[type="submit"] {
+    margin-top: 8px;
+  }
+
+  .register-form {
+    margin-top: 18px;
+  }
+}

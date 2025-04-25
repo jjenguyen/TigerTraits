@@ -20,8 +20,6 @@ export class MobileLayoutComponent implements OnInit {
     const token = localStorage.getItem('token');
     this.isLoggedIn = !!token;
   
-    const justLoggedIn = localStorage.getItem('redirectApp') === 'quiz';
-  
     if (!token) {
       this.currentScreen = 'welcome';
     } else {

@@ -71,7 +71,13 @@
 
 /* mobile overide re-styling */
 /* i think this might affect all 3 layouts because its the parent container... */
-@media screen and (max-width: 629px), screen and (min-width: 630px) {
+@media screen and (max-width: 629px) {
+  .welcome-container {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 630px) {
   .welcome-container {
     margin-top: 30px;
   }
