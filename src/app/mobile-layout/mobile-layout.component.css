@@ -52,12 +52,12 @@
 /* nav hamburger button */
 .hamburger-btn {
   all: unset; /* removes all browser default styles */
-  font-size: 25px; /* control icon size */
+  font-size: 25px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff; /* adjust based on your header bg */
+  color: #fff;
 }
 
 .hamburger-btn:hover {

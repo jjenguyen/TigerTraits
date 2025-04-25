@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     // http://localhost:3000/login
-    this.http.post<any>('http://localhost:3000/login', {
+    this.http.post<any>('/login', {
       email: this.email,
       password: this.password
     }).subscribe({
@@ -67,7 +67,9 @@ export class LoginComponent implements OnInit {
 
             // mobile: emit directly and skip full page reload
             if (this.isMobileLayout) {
-              this.loginSuccessMobile.emit(); // let the mobile layout handle animation and screen switch
+              setTimeout(() => {
+                this.loginSuccessMobile.emit(); // let the mobile layout handle animation and screen switch
+              }, 500);
             } else {
               // desktop layout
               // tell parent app that login succeeded

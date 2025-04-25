@@ -4,7 +4,14 @@
   <!-- <p class="slogan">Where you can turn your traits into connections!</p> -->
 
   <img src="assets/gifs/Test1.gif" class="top-image" alt="welcome animation" />
-  <p class="login-note">Log in or register to gain full access</p>
+  
+  <!-- desktop and mobile messages -->
+  <p class="login-note">
+    {{ isMobileLayout ? 'Log in or register to gain full access' : 'Log in or register to unlock your remaining apps' }}
+  </p>
 
-  <button class="start-button" (click)="proceedToForms()">Give me access!</button>
+  <!-- desktop and mobile messages -->
+  <button class="start-button" (click)="proceedToForms()">
+    {{ isMobileLayout ? 'Give me access!' : 'Unlock apps!' }}
+  </button>
 </div>

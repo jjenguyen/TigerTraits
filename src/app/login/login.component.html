@@ -4,6 +4,7 @@
     <!-- unlocking screen -->
     <div *ngIf="isUnlocking" class="unlocking-screen">
       <p *ngIf="!unlocked">
+        <!-- desktop and mobile messages -->
         {{ isMobileLayout ? 'Unlocking app access...' : 'Unlocking your apps...' }}
       </p>      
 
@@ -14,6 +15,7 @@
       <!-- final confirmation -->
       <div *ngIf="unlocked" class="unlock-confirmation">
         <div class="checkmark">✔</div>
+        <!-- desktop and mobile messages -->
         <p>{{ isMobileLayout ? 'Full access granted!' : 'Apps unlocked!' }}</p>
       </div>
     </div>

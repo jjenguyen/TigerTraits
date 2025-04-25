@@ -82,6 +82,10 @@ body, html {
   max-height: 650px;
 }
 
+.window-results {
+  background-color: #FFEDCF;
+}
+
 .window-profile {
   background-color: #fff3e0;
   width: 800px;
@@ -89,17 +93,19 @@ body, html {
 }
 
 .window-about {
-  background-color: #f3e5f5;
+  background-color: #FFEDCF;
   width: 700px;
   height: 500px;
 }
 
 .window-feedback {
   background-color: #e8f5e9;
+  width: 700px;
+  height: 650px;
 }
 
 .window-notes {
-  background-color: #fffde7;
+  background-color: #FFEDCF;
 }
 
 .window-register {

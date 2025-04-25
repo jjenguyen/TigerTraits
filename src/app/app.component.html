@@ -56,16 +56,22 @@
         <app-profile *ngIf="app.name === 'viewProfile'" [userId]="app.data"></app-profile>
 
         <div *ngIf="app.name === 'about'">
-          <h2>About Us</h2>
-          <p>An interactive personality test that gives you currated campus resources and person-to-person compatibility recommendations based on your personality type</p>
+          <h2 class="about-heading">About Us</h2>
+              <div class="about-body">
+                  <p>TigerTraits is an interactive personality test that gives you currated campus resources and person-to-person compatibility recommendations based on your personality type.
+                  </p>
+                  <p>The personas are based on pre-existing Mizzou related activities, places, traditions, etc. They represent the different things you may encounter as a student at the University of Missouri.</p>
+              </div>
         </div>
+
         <div *ngIf="app.name === 'notes'">
           <h2>Notes</h2>
           <p>Coming soon...</p>
         </div>
+
         <div *ngIf="app.name === 'feedback'">
-          <h2>Projects</h2>
-          <p>This feature will be added later.</p>
+          <!-- <h2>Feedback</h2> -->
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdZZ0m5W5CYUCrCpZLhsvfvZiPT4G4JRgGFuC2XYipTSustBw/viewform?embedded=true" width="640" height="2163" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
       </div>
     </div>
