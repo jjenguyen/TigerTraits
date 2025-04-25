@@ -14,7 +14,7 @@ export class RegisterComponent {
 
   hasUpperCase: boolean = false;
   hasNumber: boolean = false;
-  hasSpecialChar: boolean = false;
+  hasLowerCase: boolean = false;
 
   @Output() openLogin = new EventEmitter<void>();
 
@@ -28,13 +28,14 @@ export class RegisterComponent {
   validatePassword(password: string) {
     this.hasUpperCase = /[A-Z]/.test(password);
     this.hasNumber = /\d/.test(password);
+    this.hasLowerCase = /[a-z]/.test(password);
   }
 
 
   register() {
     // change localhost route to new api when deployed!!!
     // http://localhost:3000/register
-    this.http.post<any>('/register', { email: this.email, password: this.password })
+    this.http.post<any>('http://localhost:3000/register', { email: this.email, password: this.password })
     //this.http.post<any>('http://tt-env.eba-ey2xk2m2.us-east-1.elasticbeanstalk.com/register', { email: this.email, password: this.password })
       .subscribe({
         next: (response) => {

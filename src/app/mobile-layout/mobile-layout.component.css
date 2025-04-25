@@ -36,7 +36,9 @@
     text-align: center;
 }
 
+/* change the full background color for the windows here */
 .window-body-wrapper {
+  background-color: #FFEDCF;
   border: 2px solid #989898;
   border-top: 2px solid #989898;
   border-bottom-left-radius: 10px;
@@ -49,12 +51,20 @@
 
 /* nav hamburger button */
 .hamburger-btn {
-  background: none;
-  border: none;
-  font-size: 20px;
+  all: unset; /* removes all browser default styles */
+  font-size: 25px; /* control icon size */
   cursor: pointer;
-  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff; /* adjust based on your header bg */
 }
+
+.hamburger-btn:hover {
+  color: #FFD17D;
+  transform: scale(1.1);
+}
+
 
 /* unlocking animation */
 .unlocking-overlay {
@@ -151,6 +161,28 @@
   cursor: not-allowed;
   pointer-events: none;
   transform: none;
+}
+
+.about-page {
+  padding: 24px;
+  text-align: center;
+  font-family: 'Comic Neue', sans-serif;
+  color: #333;
+}
+
+.about-heading {
+  font-size: 30px;
+  color: #008486;
+  text-shadow: 2px 2px #FFD17D;
+  margin-bottom: 16px;
+}
+
+.about-body {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
 /* smallest screen size (mobile avg. 360-375px width), fits well to go down to 350 */

@@ -148,6 +148,7 @@ app.post('/register',[
     .isLength({ min: 8 }).withMessage('Password must be at least 8 characters long.')
     .matches(/\d/).withMessage('Password must contain at least one number.')
     .matches(/[a-z]/).withMessage('Password must contain at least one lowercase letter.')
+    .withMessage('Password must contain at least one uppercase letter.')
     ],
     async (req, res) => {
         const errors = validationResult(req);

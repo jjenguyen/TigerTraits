@@ -166,3 +166,9 @@ h5 {
     margin-top: 0;
     color: #333;
 }
+
+@media screen and (max-width: 1124px) {
+    .card {
+        margin-top: 20px;
+    }
+}
