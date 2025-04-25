@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     // http://localhost:3000/login
-    this.http.post<any>('http://localhost:3000/login', {
+    this.http.post<any>('/login', {
       email: this.email,
       password: this.password
     }).subscribe({
