@@ -9,7 +9,7 @@
       <img src="assets/icons/quiz.png" />
       <div class="icon-label">Quiz</div>
     </div>
-    <div class="icon" (click)="openApp('profile')" [class.locked]="isAppLocked('profile')">
+    <div class="icon" (click)="openApp('contact')" [class.locked]="isAppLocked('contact')">
       <img src="assets/icons/profile.png" />
       <div class="icon-label">Contact</div>
     </div>
@@ -51,7 +51,7 @@
         <app-login *ngIf="app.name === 'login'" (loginSuccess)="onLoginSuccess($event)" (openRegister)="openApp('register')"></app-login>
         <app-register *ngIf="app.name === 'register'" (openLogin)="openApp('login')"></app-register>
         <app-quiz *ngIf="app.name === 'quiz'" (openProfile)="handleProfileOpen($event)"></app-quiz>
-        <app-profile *ngIf="app.name === 'profile'"></app-profile>
+        <app-contact *ngIf="app.name === 'contact'"></app-contact>
         <app-results *ngIf="app.name === 'results'"></app-results>
         <app-profile *ngIf="app.name === 'viewProfile'" [userId]="app.data"></app-profile>
 

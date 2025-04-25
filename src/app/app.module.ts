@@ -27,6 +27,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ResultsComponent } from './results/results.component';
 import { MobileLayoutComponent } from './mobile-layout/mobile-layout.component';
 import { LayoutDeciderComponent } from './layout-decider/layout-decider.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { LayoutDeciderComponent } from './layout-decider/layout-decider.componen
     ProfileComponent,
     ResultsComponent,
     MobileLayoutComponent,
-    LayoutDeciderComponent
+    LayoutDeciderComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

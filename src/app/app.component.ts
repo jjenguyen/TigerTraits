@@ -121,7 +121,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   getWindowClass(app: string): string {
     switch (app) {
       case 'quiz': return 'window-quiz';
-      case 'profile': return 'window-profile';
+      case 'contact': return 'window-contact';
       case 'results': return 'window-results';
       case 'about': return 'window-about';
       case 'feedback': return 'window-feedback';

@@ -82,7 +82,7 @@ export class MobileLayoutComponent implements OnInit {
       case 'quiz': return 'Quiz';
       case 'about': return 'About';
       case 'results': return 'My Results';
-      case 'profile': return 'Contact Card';
+      case 'contact': return 'Contact Card';
       case 'feedback': return 'Feedback';
       default: return 'Login';
     }

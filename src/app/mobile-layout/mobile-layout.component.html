@@ -28,7 +28,7 @@
             <button 
                 [disabled]="!isLoggedIn" 
                 [ngClass]="{ 'disabled-link': !isLoggedIn }"
-                (click)="isLoggedIn && switchScreen('profile')">
+                (click)="isLoggedIn && switchScreen('contact')">
                 Contact Card
             </button>
             
@@ -64,7 +64,7 @@
             </app-register>
 
             <app-quiz *ngIf="currentScreen === 'quiz'"></app-quiz>
-            <app-profile *ngIf="currentScreen === 'profile'"></app-profile>
+            <app-contact *ngIf="currentScreen === 'contact'"></app-contact>
             <app-results *ngIf="currentScreen === 'results'"></app-results>
             
             <div *ngIf="currentScreen === 'about'" class="about-page">

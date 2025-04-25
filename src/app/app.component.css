@@ -86,6 +86,12 @@ body, html {
   background-color: #FFEDCF;
 }
 
+.window-contact {
+  background-color: #FFEDCF;
+  width: 800px;
+  height: 500px;
+}
+
 .window-profile {
   background-color: #fff3e0;
   width: 800px;
