@@ -19,29 +19,41 @@ export class MobileLayoutComponent implements OnInit {
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     this.isLoggedIn = !!token;
-
+  
     const justLoggedIn = localStorage.getItem('redirectApp') === 'quiz';
-
+  
     if (!token) {
       this.currentScreen = 'welcome';
-    } else if (justLoggedIn) {
-      this.runUnlockAnimation();
+    } else {
+      // no longer reloading the component after login, so ngOnInit() just needs to check for a valid token to set the initial screen
+      this.currentScreen = 'quiz';
+
+      // original code
+      // this.currentScreen = justLoggedIn ? 'quiz' : 'quiz';
+      // localStorage.removeItem('redirectApp');
     }
-  }
+  }  
 
   runUnlockAnimation(): void {
     this.isLoggedIn = true;
     this.isUnlocking = true;
+
     setTimeout(() => {
       this.unlocked = true;
+
       setTimeout(() => {
         this.isUnlocking = false;
         this.unlocked = false;
         this.currentScreen = 'quiz';
         localStorage.removeItem('redirectApp');
-      }, 1000);
-    }, 2000);
+      }, 1200);
+    }, 3200);
   }
+
+  // used to update the login status after animation completes to properly unlock the restricted links in nav menu
+  onMobileLoginSuccess(): void {
+    this.isLoggedIn = true;
+  }  
 
   switchScreen(screen: string): void {
     if (this.isLoggedIn && screen === 'welcome') {
@@ -74,5 +86,5 @@ export class MobileLayoutComponent implements OnInit {
       case 'feedback': return 'Feedback';
       default: return 'Login';
     }
-  }  
+  }
 }

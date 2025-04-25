@@ -1,5 +1,5 @@
 // version with authservice to get user id to log quiz results to db
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
@@ -9,15 +9,19 @@ import { AuthService } from './auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
   error: string = '';
   isUnlocking: boolean = false;
   unlocked: boolean = false;
+  isMobileLayout: boolean = false;
 
   @Output() loginSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() openRegister = new EventEmitter<void>();
+
+  // trying to speed up the time in between animation completion and redirect
+  @Output() loginSuccessMobile = new EventEmitter<void>();
 
   // call this when the register link is clicked
   goToRegister() {
@@ -30,9 +34,13 @@ export class LoginComponent {
     private authService: AuthService  // inject authservice
   ) {}
 
+  ngOnInit(): void {
+    this.isMobileLayout = window.innerWidth < 1125 || window.innerHeight < 800;
+  }  
+
   login() {
     // http://localhost:3000/login
-    this.http.post<any>('/login', {
+    this.http.post<any>('http://localhost:3000/login', {
       email: this.email,
       password: this.password
     }).subscribe({
@@ -56,12 +64,18 @@ export class LoginComponent {
               id: response.userId,
               email: response.email
             });
-  
-            // tell parent app that login succeeded
-            this.loginSuccess.emit(true);
-  
-            // navigate to quiz or home
-            this.router.navigate(['/']);
+
+            // mobile: emit directly and skip full page reload
+            if (this.isMobileLayout) {
+              this.loginSuccessMobile.emit(); // let the mobile layout handle animation and screen switch
+            } else {
+              // desktop layout
+              // tell parent app that login succeeded
+              this.loginSuccess.emit(true);
+              // nav to root
+              this.router.navigate(['/']);
+            }
+
           }, 1200); // checkmark animation time
         }, 3200); // loading bar time
       },

@@ -62,13 +62,16 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.isLoggedIn = !!token;
   }
 
+  // opens the window if its not open, or brings it to the front if it is already open
   openApp(appName: string, data?: any): void {
     if (this.isLoggedIn || this.isAppAlwaysUnlocked(appName)) {
-      const exists = this.openApps.find(app => app.name === appName && (!data || app.data === data));
-      if (!exists) {
+      const existing = this.openApps.find(app => app.name === appName && (!data || app.data === data));
+      if (!existing) {
         this.zIndexCounter++;
         this.openApps.push({ name: appName, data, zIndex: this.zIndexCounter });
         setTimeout(() => this.reapplyDraggable(), 50);
+      } else {
+        this.bringToFront(existing);
       }
     }
   }  

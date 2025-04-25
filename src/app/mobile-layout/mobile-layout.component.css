@@ -18,7 +18,7 @@
 }
 
 .window-header-bar {
-    position: relative;
+  position: relative;
   background-color: #3b7d82;
   color: white;
   padding: 13px 20px;
@@ -166,7 +166,7 @@
     background-color: #FFFAF0;
     z-index: 1000;
   }
-
+  
   .window-header-bar {
     border-radius: 0;
     font-size: 16px;
@@ -179,10 +179,9 @@
     padding: 12px;
   }
 
-  .window-body {
+  /* .window-body {
     margin-top: 15px;
-  }
-
+  } */
     
 }
 
@@ -218,9 +217,9 @@
     border-top-right-radius: 10px;
     }
 
-    .window-body {
+    /* .window-body {
         margin-top: 20px;
-    }
+    } */
 
     .window-body-wrapper {
     border: 2px solid #989898;

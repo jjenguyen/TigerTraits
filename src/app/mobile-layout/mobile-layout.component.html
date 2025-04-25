@@ -39,20 +39,25 @@
         </div>
     </div>
 
-    <!-- unlocking animation -->
-    <!-- <div class="unlock-popup" *ngIf="isUnlocking || unlocked">
-        <div class="popup-body">
-        <p *ngIf="!unlocked">Unlocking App...</p>
-        <p *ngIf="unlocked">App Unlocked!</p>
-        </div>
-    </div> -->
-
     <div class="window-body-wrapper">
         <!-- window body, where content goes -->
         <div class="window-body">
-            <app-welcome *ngIf="currentScreen === 'welcome'" (openLogin)="switchScreen('login')"></app-welcome>
-            <app-login *ngIf="currentScreen === 'login'" (loginSuccess)="runUnlockAnimation()"></app-login>
-            <app-register *ngIf="currentScreen === 'register'" (openLogin)="switchScreen('login')"></app-register>
+            <app-welcome
+                *ngIf="currentScreen === 'welcome'"
+                (openLogin)="switchScreen('login')">
+            </app-welcome>
+
+            <app-login
+                *ngIf="currentScreen === 'login'"
+                (loginSuccessMobile)="onMobileLoginSuccess(); switchScreen('quiz')"
+                (openRegister)="switchScreen('register')">
+            </app-login>
+
+            <app-register
+                *ngIf="currentScreen === 'register'"
+                (openLogin)="switchScreen('login')">
+            </app-register>
+
             <app-quiz *ngIf="currentScreen === 'quiz'"></app-quiz>
             <app-profile *ngIf="currentScreen === 'profile'"></app-profile>
             <app-results *ngIf="currentScreen === 'results'"></app-results>

@@ -3,7 +3,9 @@
 
     <!-- unlocking screen -->
     <div *ngIf="isUnlocking" class="unlocking-screen">
-      <p *ngIf="!unlocked">Unlocking your apps...</p>
+      <p *ngIf="!unlocked">
+        {{ isMobileLayout ? 'Unlocking app access...' : 'Unlocking your apps...' }}
+      </p>      
 
       <div class="loading-bar-container" *ngIf="!unlocked">
         <div class="loading-bar flicker"></div>
@@ -12,7 +14,7 @@
       <!-- final confirmation -->
       <div *ngIf="unlocked" class="unlock-confirmation">
         <div class="checkmark">✔</div>
-        <p>Apps unlocked!</p>
+        <p>{{ isMobileLayout ? 'Full access granted!' : 'Apps unlocked!' }}</p>
       </div>
     </div>
 
