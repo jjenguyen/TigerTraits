@@ -164,7 +164,7 @@ button[type="submit"]:hover {
   100% { transform: scale(1); opacity: 1; }
 }
 
-/* === MOBILE STYLES ONLY === */
+/* mobile styles */
 @media screen and (max-width: 1124px) {
   .form-container {
     width: 100%;

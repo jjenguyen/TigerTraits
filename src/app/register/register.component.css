@@ -95,7 +95,7 @@ button[type="submit"]:hover {
   cursor: pointer;
 }
 
-/* === MOBILE STYLES ONLY === */
+/* mobile styles */
 @media screen and (max-width: 1124px) {
   .form-container {
     width: 100%;
