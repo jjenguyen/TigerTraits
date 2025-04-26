@@ -1,0 +1,277 @@
+body, html {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+  background-color: #FFD17D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.desktop-container {
+  width: 1100px;
+  height: 750px;
+  background-color: #FFFAF0;
+  border: 2px solid #333;
+  position: relative;
+  overflow: hidden;
+  /* box-shadow: 8px 8px #aaa; */
+  border-radius: 8px;
+}
+
+/* app icons */
+.desktop-icons {
+    position: absolute;
+    top: 35px;
+    left: 18px;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    align-content: flex-start;
+    gap: 20px;
+    max-height: 600px;
+}
+
+.icon img {
+  width: 55px;
+  height: 55px;
+}
+
+.icon-label {
+  font-size: 13px;
+  color: #000;
+  margin-top: 4px;
+}
+
+.icon {
+  width: 80px;
+  text-align: center;
+  cursor: pointer;
+  position: relative; /* required so ::after uses this as a ref */
+}
+
+.icon.locked {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* lock positioned over the locked icon */
+/* maybe change if we want to not use the emoji */
+.icon.locked::after {
+  content: '🔒';
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 16px;
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 2px;
+  line-height: 1;
+}
+
+.window-default {
+  background-color: #FFEDCF;
+}
+
+.window-quiz {
+  background-color: #FFEDCF;
+  max-width: 600px;
+  max-height: 650px;
+}
+
+.window-results {
+  background-color: #FFEDCF;
+}
+
+.window-contact {
+  background-color: #FFEDCF;
+  width: 800px;
+  height: 500px;
+}
+
+.window-profile {
+  background-color: #fff3e0;
+  width: 800px;
+  height: 500px;
+}
+
+.window-about {
+  background-color: #FFEDCF;
+  width: 700px;
+  height: 500px;
+}
+
+.window-feedback {
+  background-color: #e8f5e9;
+  width: 700px;
+  height: 650px;
+}
+
+.window-notes {
+  background-color: #FFEDCF;
+}
+
+.window-register {
+  background-color: #FFEDCF;
+}
+
+.window-login {
+  background-color: #FFEDCF;
+  width: 500px;
+  height: 500px;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.floating-window.closing {
+  animation: popOut 0.2s ease-in forwards;
+}
+
+@keyframes popOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+.window-header-bar button {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.window-body {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.taskbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 55px;
+  background-color: #1f2a38;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1);
+  color: white;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+}
+
+.start-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #3c4a5d;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.start-btn img {
+  height: 16px;
+}
+
+.taskbar-tabs {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.task-tab {
+  background-color: #2d3b4e;
+  padding: 4px 10px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 4px #00000055;
+}
+
+.taskbar-clock {
+  min-width: 60px;
+  text-align: right;
+}
+
+/* test */
+/* overall app window (no border anymore) */
+.floating-window {
+  position: absolute;
+  top: 30px;
+  left: 250px;
+  /* width: 700px;
+  height: 620px; */
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  animation: popIn 0.25s ease-out;
+  transform-origin: top left;
+  border-radius: 10px;
+  box-shadow: 5px 5px #d4d4d4;
+}
+
+/* header bar */
+.window-header-bar {
+  background-color: #3b7d82;
+  color: white;
+  padding: 8px 16px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* wraps the body with a border and bottom radius only */
+.window-body-wrapper {
+  border: 2px solid #989898;
+  border-top: 2px solid #989898;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  /* box-shadow: 5px 5px #888; */
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+/* open tabs are draggable */
+#open-tab {
+  position: absolute;
+  /* z-index: 9;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center; */
+}
+
+#open-tab-header {
+  /* padding: 10px; */
+  cursor: grab;
+  /* z-index: 10; */
+  /* background-color: #2196F3; */
+  /* color: #fff; */
+  /* margin-left: 20; */
+}

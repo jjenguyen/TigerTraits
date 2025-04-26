@@ -1,0 +1,73 @@
+.profile-container {
+    padding: 20px 30px; /* shorthand for top/bottom and left/right */
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 550px;
+    text-align: center;
+    margin: 30px auto;  /* centers container horizontally, adds 30px top/bottom margin */
+}
+
+.profile-card {
+    padding: 20px;
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 5%;
+    margin-bottom: 10px;
+}
+
+.bio {
+    font-size: 16px;
+    color: #555;
+}
+
+.profile-details {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+/* .social-media img {
+    width: 40px;
+    margin: 10px;
+} */
+
+/* style all font awesome icons */
+.fa {
+    padding: 15px;
+    font-size: 30px;
+    width: 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+}
+.fa:hover {
+    opacity: 0.7;
+}
+  
+/* make sure to set background color for each icon */
+/* instagram */
+.fa-instagram {
+    background: purple;
+    color: white;
+}
+  
+/* facebook */
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+  
+/* linkedin */
+.fa-linkedin {
+    background: #55ACEE;
+    color: white;
+}
+
+.tiger-trait img {
+    width: 120px;
+    height: 120px;
+}

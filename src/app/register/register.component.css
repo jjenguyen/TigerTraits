@@ -1,0 +1,144 @@
+.form-container {
+  background-color: #FFEDCF;
+  border: 3px dashed #FDB719;
+  border-radius: 16px;
+  padding: 24px;
+  /* width: 100%; */
+  width: 420px;
+  height: 370px;
+  /* margin: 40px auto; */
+  box-shadow: 4px 4px #999;
+  text-align: center;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* form title */
+h2 {
+  font-size: 28px;
+  color: #008486;
+  font-weight: bold;
+  text-shadow: 1px 1px #FFD17D;
+  margin-bottom: 16px;
+}
+
+.input-container {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 57%;
+  margin-left: 80px;
+}
+
+.input-container label {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+/* input fields */
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #008486;
+  border-radius: 10px;
+  background-color: #fff;
+  font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+  font-size: 14px;
+  box-shadow: inset 2px 2px #ccc;
+  outline: none;
+}
+
+/* submit button */
+button[type="submit"] {
+  background-color: #99CECF;
+  border: 3px outset #008486;
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 24px;
+  border-radius: 16px;
+  font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+  box-shadow: 3px 3px #888;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  background-color: #008486;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* signup link */
+.login-form {
+  font-size: 14px;
+  margin-top: 16px;
+  color: #333;
+}
+
+.login-form a {
+  font-weight: bold;
+  color: #008486;
+  text-decoration: underline;
+}
+
+.login-form a:hover {
+  color: #005f60;
+  cursor: pointer;
+}
+
+/* mobile styles */
+@media screen and (max-width: 1124px) {
+  .form-container {
+    width: 100%;
+    height: 100%;
+    min-height: 800px;
+    padding: 32px 24px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border-radius: 0;
+    border: 3px dashed #FDB719;
+    background-color: #FFEDCF;
+    box-shadow: none;
+  }
+
+  .input-container {
+    margin: 12px auto;
+    max-width: 67%;
+    padding: 0 12px;
+  }
+
+  .input-container label {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    font-size: 16px;
+  }
+
+  button[type="submit"] {
+    margin-top: 8px;
+  }
+
+  .register-form {
+    margin-top: 18px;
+  }
+}
+
+@media screen and (min-width: 630px) {
+  .input-container {
+    margin: 12px auto;
+    max-width: 55%;
+    padding: 0 12px;
+  }
+}

@@ -1,0 +1,174 @@
+/* im still working on this bc it's not styling like my original test info card, so pls dont delete anything -jenna */
+.card-wrapper {
+    transform: scale(0.65); /* adjustst the scale factor for the entire card */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: -160px;
+}
+  
+.card {
+    background-color: white;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 12px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    max-width: 550px; /* makes it a rectangle */
+    text-align: center;
+}
+
+h1 {
+    color: #333333;
+}
+
+/* h3 {
+    color: orange;
+} */
+
+h5 {
+    text-align: left;
+}
+
+/* .highlight {
+    color: #333333;
+} */
+
+/* 1. TOP SECTION - PERSONA NAME, SHORT DESCRIPTION/TRAITS */
+.traits-container {
+    background-color: #FFDFA5;
+    border-radius: 12px;
+    padding: 1px;
+}
+.traits {
+    font-style: italic;
+    margin-top: -10px;
+}
+
+/* 2. PERSONA SECTION - PERSONA IMAGE, 6 CHARACTERISTIC BUBBLES */
+/* bubble and image container (persona image and 6 qualities, 3 on each side) */
+.qualities-image-container {
+    display: flex;
+    align-items: center; /* keeps everything vertically aligned */
+    justify-content: center;
+    gap: 8px;
+    margin: 13px 0;
+}
+
+/* left and right bubbles (persona qualities, 3 on each side) */
+.qualities {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1; /* Makes both sides take equal width, preventing shifting */
+    text-align: center;
+}
+
+/* align the left/right bubbles (qualities) */
+.left {
+    align-items: flex-end;
+    text-align: center;
+}
+.right {
+    align-items: flex-start;
+    text-align: center;
+}
+
+/* make sure all quality bubbles have a consistent max width */
+.tag {
+    background-color: #FFDFA5;
+    padding: 9px 12px;
+    border-radius: 20px;
+    font-size: small;
+    width: 120px; /* fixed width */
+    height: 55px; /* same height */
+    display: flex;
+    align-items: center; /* centers text vertically */
+    justify-content: center; /* centers text horizontally */
+    text-align: center;
+    word-wrap: break-word; /* if too long, wrap text */
+    overflow-wrap: break-word;
+}
+
+/* main persona image container */
+.image-container {
+    flex: 0 0 auto; /* prevents the image from resizing or shifting */
+    display: flex;
+    justify-content: center;
+}
+.image-container img {
+    max-width: 250px;
+    height: auto;
+    margin-top: -10px;
+}
+
+/* 3. RECOMMENDATIONS SECTION - mu resource recs */
+.resources-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.resource {
+    display: block;
+    background-color: whitesmoke;
+    color: #333333;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.resource:hover {
+    background-color: #FDB719;
+}
+
+/* 4. COMPATIBILITIES SECTION - compatible personas */
+.compatibilities {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 10px;
+}
+  
+/* box style for the persona compatibility images */
+.images-box {
+    background-color: whitesmoke;
+    border-radius: 12px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+}
+  
+.compatibilities a img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+  
+.compatibilities a img:hover {
+    transform: scale(1.1);
+}
+
+/* 5. GENERAL STYLING - resources and compatibilities section boxes */
+.section-box {
+    background-color: #FFDFA5;
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 17px; /* creates space between sections */
+}
+.section-box h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+@media screen and (max-width: 1124px) {
+    .card {
+        margin-top: 20px;
+    }
+}
