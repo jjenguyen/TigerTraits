@@ -21,12 +21,17 @@ export class QuizService {
     return this.http.post('/quizResults', data, { headers });
   }
 
+  // need to include JWT token in the header so backend can verify
   storeQuizResult(userId: string, personalityType: string): Observable<any> {
-    return this.http.post('/quizResults', {
-      userId,
-      personalityType
+    const user = this.authService.getCurrentUser();
+    const token = user?.token;
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
     });
+  
+    return this.http.post('/quizResults', { userId, personalityType }, { headers });
   }
+  
 
   storeCompatibility(userId: string, resultType: string) {
     // http://localhost:3000/compatibilities

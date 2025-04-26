@@ -566,20 +566,24 @@ handleSubmit(): void {
   //pass only the user id (a string) to the quiz service
   
   this.quizService.storeQuizResult(currentUser.id, this.result).subscribe({
-    next: () => {
+    next: (response) => {  // <<== ADD response parameter
+      console.log('Quiz result successfully stored. Server response:', response);
+  
       // compatibility storing added here -jenna
       this.quizService.storeCompatibility(currentUser.id, this.result).subscribe({
-        next: (response) => {
+        next: (compatibilityResponse) => {  // <<== ADD response for second call
+          console.log('Compatibility successfully stored. Server response:', compatibilityResponse);
+          
           this.resultData = {
             ...this.resultData,
-            matchedUsers: response.data.matchedUsers
+            matchedUsers: compatibilityResponse.data.matchedUsers
           };
         },
         error: (err) => console.error('Error storing compatibility:', err)
       });
     },
     error: (err) => console.error('Error storing quiz result:', err)
-  });
+  });  
 }
 
 // called when an answer choice is selected

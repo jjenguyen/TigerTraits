@@ -62,7 +62,8 @@ export class LoginComponent implements OnInit {
             // store user info
             this.authService.setCurrentUser({
               id: response.userId,
-              email: response.email
+              email: response.email,
+              token: response.token
             });
 
             // mobile: emit directly and skip full page reload
