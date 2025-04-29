@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.isMobileLayout = window.innerWidth < 1125 || window.innerHeight < 800;
-  }  
+  }
 
   login() {
     // http://localhost:3000/login
@@ -46,19 +46,19 @@ export class LoginComponent implements OnInit {
     }).subscribe({
       next: (response) => {
         console.log(response);
-  
+
         this.isUnlocking = true;
         this.error = '';
-  
+
         // start animation delay
         setTimeout(() => {
           this.unlocked = true;
-  
+
           setTimeout(() => {
             // save JWT
             localStorage.setItem('token', response.token); // replaced my placeholder token with hesub token
             localStorage.setItem('redirectApp', 'quiz');
-  
+
             // store user info
             this.authService.setCurrentUser({
               id: response.userId,
@@ -82,12 +82,12 @@ export class LoginComponent implements OnInit {
           }, 1200); // checkmark animation time
         }, 3200); // loading bar time
       },
-  
+
       error: (error) => {
         this.error = error.error.message || 'Login failed.';
         this.isUnlocking = false;
         this.unlocked = false;
       }
     });
-  }  
+  }
 }

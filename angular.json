@@ -68,6 +68,9 @@
           },
           "serve": {
             "builder": "@angular-devkit/build-angular:dev-server",
+            "options": {
+              "proxyConfig": "proxy.conf.json"
+            },
             "configurations": {
               "production": {
                 "buildTarget": "TigerTraits-deployed:build:production"
@@ -107,6 +110,9 @@
       }
     },
     "cli": {
-      "analytics": false
+      "analytics": false,
+      "cache": {
+        "enabled": false
+      }
     }
   }

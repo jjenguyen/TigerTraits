@@ -13,20 +13,23 @@ const app = express();
 // const port = 3000;
 const port = process.env.PORT || 3000
 
-const uri = process.env.MONGO_URI
+//const uri = process.env.MONGO_URI
 console.log("Loaded MONGO_URI:", process.env.MONGO_URI);
 
 // jenna local
-// const uri = process.env.MONGO_URI || "mongodb+srv://jn4gz:jn4gz12345@clustera4.jcqksc9.mongodb.net/tigertraits?retryWrites=true&w=majority";
+const uri = process.env.MONGO_URI || "mongodb+srv://jn4gz:jn4gz12345@clustera4.jcqksc9.mongodb.net/tigertraits?retryWrites=true&w=majority&appName=ClusterA4";
 
 console.log("Environment PORT:", process.env.PORT);
 
 const { MongoClient, ObjectId } = require('mongodb');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+//const JWT_SECRET = 'test-secret-123!';
+
 
 app.use(express.json());
 app.use(cors());
+
 
 // mongodb connection string from mongodb atlas (change db to "tigertraits")
 // const uri = "mongodb+srv://jn4gz:jn4gz12345@clustera4.jcqksc9.mongodb.net/tigertraits?retryWrites=true&w=majority";
@@ -64,9 +67,15 @@ function isPasswordHashed(password) {
 
 const authenticateJWT = (req, res, next) => {
     const token = req.headers['authorization']?.split(' ')[1]; // Bearer <token>
+    console.log('Received token:', token);
+    console.log('JWT_SECRET in middleware:', token);
+
     if (token) {
+
         jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
             if (err) {
+              //debugging
+              console.error('JWT verification failed:', err.message);
                 return res.sendStatus(403); // Forbidden
             }
             req.user = user;
@@ -78,14 +87,17 @@ const authenticateJWT = (req, res, next) => {
     if(!token) {
         return res.sendStatus(401).json({message: 'invalid token'}); // Unauthorized
     }
+    console.log('JWT_SECRET being used:', token);
+
 }
 
 // 2. user login auth
 app.post('/login', async (req, res) => {
     try {
-        
+
         console.log('Login request received:', req.body);
-        
+
+
         const db = await connectToMongoDB();
         const usersCollection = db.collection('users');
         const user = await usersCollection.findOne({ email: req.body.email });
@@ -120,9 +132,11 @@ app.post('/login', async (req, res) => {
             console.log('Incorrect password');
             return res.status(401).json({ message: 'Incorrect password. Please try again.' });
         }
+
         const token = jwt.sign(
             { userID: user._id, email: user.email },
             process.env.JWT_SECRET
+
         );
 
         console.log('Login successful!');
@@ -288,6 +302,43 @@ app.get('/profile/:id', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
+// 7. update user contact card info in db
+app.put('/update-contact-card', authenticateJWT, async (req, res) => {
+  //debugging
+  console.log('PUT /update-contact-card hit');
+  console.log('Request body:', req.body);
+  console.log('JWT user:', req.user);
+  console.log('PUT /update-contact-card hit with data:', req.body);
+  try {
+    const userId = req.user.userID;
+    const { name, bio, imageUrl, instagram, facebook, linkedin } = req.body;
+
+
+    const db = await connectToMongoDB();
+    console.log('Connected to MongoDB for contact card update.');
+    const profilesCollection = db.collection('profiles');
+
+    const updatedCard = await profilesCollection.updateOne(
+      { _id: new ObjectId(userId) },
+        { $set: {
+          name,
+          bio,
+          imageUrl,
+          instagram,
+          facebook,
+          linkedin
+        }
+    },
+  {upsert: true}
+    );
+
+    res.json({ message: 'Contact card updated successfully', updatedCard });
+  }catch (error){
+    console.error('Error updating contact card:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+})
 
 
 // serve static files from the angular app (i.e. the "dist" folder created from the production build command)
