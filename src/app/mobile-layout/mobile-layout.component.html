@@ -1,0 +1,88 @@
+<!-- <p>mobile-layout works!</p> -->
+
+<!-- src/app/mobile-layout/mobile-layout.component.html -->
+<div class="window-container">
+    <!-- window header bar -->
+    <div class="window-header-bar">
+        <span>{{ getHeaderTitle() }}</span>
+        <!-- <button class="hamburger-btn" (click)="toggleMenu()">☰</button> -->
+        <button class="hamburger-btn" (click)="toggleMenu()" aria-label="Open menu">
+            <i class="fas fa-bars"></i>
+        </button>
+
+          
+
+        <!-- nav menu (slides open) -->
+        <div class="nav-menu" *ngIf="menuOpen">
+            <button *ngIf="!isLoggedIn" (click)="switchScreen('welcome')">Welcome</button>
+            <button (click)="switchScreen('about')">About</button>
+            
+            <button 
+                [disabled]="!isLoggedIn"
+                [ngClass]="{ 'disabled-link': !isLoggedIn }"
+                title="Please log in to access this"
+                (click)="isLoggedIn && switchScreen('quiz')">
+                Quiz
+            </button>
+            
+            <button 
+                [disabled]="!isLoggedIn" 
+                [ngClass]="{ 'disabled-link': !isLoggedIn }"
+                (click)="isLoggedIn && switchScreen('contact')">
+                Contact Card
+            </button>
+            
+            <button 
+                [disabled]="!isLoggedIn" 
+                [ngClass]="{ 'disabled-link': !isLoggedIn }"
+                (click)="isLoggedIn && switchScreen('results')">
+                My Results
+            </button>
+            
+            <button (click)="switchScreen('feedback')">Feedback</button>
+            <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+        </div>
+    </div>
+
+    <div class="window-body-wrapper">
+        <!-- window body, where content goes -->
+        <div class="window-body">
+            <app-welcome
+                *ngIf="currentScreen === 'welcome'"
+                (openLogin)="switchScreen('login')">
+            </app-welcome>
+
+            <app-login
+                *ngIf="currentScreen === 'login'"
+                (loginSuccessMobile)="onMobileLoginSuccess(); switchScreen('quiz')"
+                (openRegister)="switchScreen('register')">
+            </app-login>
+
+            <app-register
+                *ngIf="currentScreen === 'register'"
+                (openLogin)="switchScreen('login')">
+            </app-register>
+
+            <app-quiz *ngIf="currentScreen === 'quiz'"></app-quiz>
+            <app-contact *ngIf="currentScreen === 'contact'"></app-contact>
+            <app-results *ngIf="currentScreen === 'results'"></app-results>
+            
+            <div *ngIf="currentScreen === 'about'" class="about-page">
+                <h2 class="about-heading">About Us</h2>
+                <div class="about-body">
+                    <p>TigerTraits is an interactive personality test that gives you currated campus resources and person-to-person compatibility recommendations based on your personality type.
+                    </p>
+                    <p>The personas are based on pre-existing Mizzou related activities, places, traditions, etc. They represent the different things you may encounter as a student at the University of Missouri.
+                    </p>
+                    <p>Thank you for checking out our capstone project! Please fill out the feedback form so we can adjust accordingly as we wrap up the app's development.
+                    </p>
+                </div>
+            </div>
+
+            <div *ngIf="currentScreen === 'feedback'">
+                <!-- <h2>Feedback</h2> -->
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdZZ0m5W5CYUCrCpZLhsvfvZiPT4G4JRgGFuC2XYipTSustBw/viewform?embedded=true" width="640" height="2163" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
+        </div>
+    </div>
+</div>

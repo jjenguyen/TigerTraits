@@ -1,0 +1,156 @@
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+  text-align: center;
+  gap: 12px;
+}
+
+.title {
+  margin-top: -30px;
+  font-size: 35px;
+  font-weight: bold;
+  color: #008486;
+  text-shadow: 2px 2px #FDB719;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.slogan {
+  font-size: 16px;
+  font-weight: normal;
+  color: #444;
+  background-color: #FFEDCF;
+  border: 2px dashed #FDB719;
+  padding: 6px 12px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.top-image {
+  max-width: 275px;
+  height: auto;
+  border: 3px dotted #FDB719;
+  border-radius: 16px;
+  box-shadow: 4px 4px #989898;
+  margin-bottom: 12px;
+}
+
+.start-button {
+  margin-top: -7px;
+  background-color: #99CECF;
+  border: 3px outset #008486;
+  color: #000;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 16px;
+  font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+  box-shadow: 3px 3px #888;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.start-button:hover {
+  background-color: #008486;
+  transform: scale(1.05);
+}
+
+.description,
+.creator-credit {
+  font-size: 13px;
+  color: #555;
+  background-color: #f3f3f3;
+  border: 1px dashed #bbb;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+/* mobile overide re-styling */
+/* i think this might affect all 3 layouts because its the parent container... */
+@media screen and (max-width: 629px) {
+  .welcome-container {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 630px) {
+  .welcome-container {
+    margin-top: 30px;
+  }
+}
+
+@media screen and (min-width: 1125px) {
+  .welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 20px;
+    text-align: center;
+    gap: 12px;
+  }
+  
+  .title {
+    margin-top: -55px;
+    font-size: 35px;
+    font-weight: bold;
+    color: #008486;
+    text-shadow: 2px 2px #FFD17D;
+    letter-spacing: 1px;
+    margin-bottom: 7px;
+  }
+  
+  .slogan {
+    font-size: 16px;
+    font-weight: normal;
+    color: #444;
+    background-color: #FFEDCF;
+    border: 2px dashed #FDB719;
+    padding: 6px 12px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+  }
+  
+  .top-image {
+    max-width: 220px;
+    height: auto;
+    border: 3px dotted #FDB719;
+    border-radius: 16px;
+    box-shadow: 4px 4px #989898;
+    margin-bottom: 12px;
+  }
+  
+  .start-button {
+    background-color: #99CECF;
+    border: 3px outset #008486;
+    color: #000;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 16px;
+    font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+    box-shadow: 3px 3px #888;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .start-button:hover {
+    background-color: #008486;
+    transform: scale(1.05);
+  }
+  
+  .description,
+  .creator-credit {
+    font-size: 13px;
+    color: #555;
+    background-color: #f3f3f3;
+    border: 1px dashed #bbb;
+    padding: 4px 10px;
+    border-radius: 8px;
+  } 
+}

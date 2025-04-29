@@ -1,0 +1,17 @@
+<div class="welcome-container">
+  <h1 class="title">Welcome to TigerTraits</h1>
+  <p class="slogan">We turn your traits into connections!</p>
+  <!-- <p class="slogan">Where you can turn your traits into connections!</p> -->
+
+  <img src="assets/gifs/Test1.gif" class="top-image" alt="welcome animation" />
+  
+  <!-- desktop and mobile messages -->
+  <p class="login-note">
+    {{ isMobileLayout ? 'Log in or register to gain full access' : 'Log in or register to unlock your remaining apps' }}
+  </p>
+
+  <!-- desktop and mobile messages -->
+  <button class="start-button" (click)="proceedToForms()">
+    {{ isMobileLayout ? 'Give me access!' : 'Unlock apps!' }}
+  </button>
+</div>

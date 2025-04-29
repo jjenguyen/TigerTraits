@@ -1,0 +1,41 @@
+<div class="login-container" [ngClass]="{ 'unlocking-mode': isUnlocking, 'form-mode': !isUnlocking }">
+  <div class="form-container">
+
+    <!-- unlocking screen -->
+    <div *ngIf="isUnlocking" class="unlocking-screen">
+      <p *ngIf="!unlocked">
+        <!-- desktop and mobile messages -->
+        {{ isMobileLayout ? 'Unlocking app access...' : 'Unlocking your apps...' }}
+      </p>      
+
+      <div class="loading-bar-container" *ngIf="!unlocked">
+        <div class="loading-bar flicker"></div>
+      </div>
+
+      <!-- final confirmation -->
+      <div *ngIf="unlocked" class="unlock-confirmation">
+        <div class="checkmark">✔</div>
+        <!-- desktop and mobile messages -->
+        <p>{{ isMobileLayout ? 'Full access granted!' : 'Apps unlocked!' }}</p>
+      </div>
+    </div>
+
+    <!-- login form -->
+    <div *ngIf="!isUnlocking">
+      <p *ngIf="error" class="error-message">{{ error }}</p>
+      <h2>Login</h2>
+      <form (ngSubmit)="login()">
+        <div class="input-container">
+          <label for="email">Email: </label>
+          <input type="email" id="email" name="email" [(ngModel)]="email" required>
+        </div>
+        <div class="input-container">
+          <label for="password">Password: </label>
+          <input type="password" id="password" name="password" [(ngModel)]="password" required>
+        </div>
+        <button type="submit">Log in</button>
+      </form>
+      <p class="register-form">Don't have an account? <a (click)="goToRegister()">Sign up</a></p>
+    </div>
+  </div>
+</div>
