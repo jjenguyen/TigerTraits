@@ -1,185 +1,31 @@
-// version that sends quiz results to db
-import { Component, EventEmitter, Output } from '@angular/core';
-import { QuizService } from './quiz.service';
-import { AuthService } from '../login/auth.service';
 
-@Component({
-  selector: 'app-quiz',
-  templateUrl: './quiz.component.html',
-  styleUrls: ['./quiz.component.css']
-})
-export class QuizComponent {
-  // define the view steps for different quiz screens
-  viewStep: 'start' | 'quiz' | 'complete' | 'result' = 'start';
-  result: string = '';
-  resultData: any = null;
+//resources exportable interface resouce to be used in InfoCard interface
+export interface resources {
+    name: string;
+    link: string;
+}
 
-  @Output() onSubmit = new EventEmitter<string>();
+//same as resources but different parameters, exportable interface resouce to be used in InfoCard interface
+export interface compatibilities {
+    name : string;
+    image: string;
+    link: string;
+}
 
-  //object to hold the answers for question ID
-  //handle select dynamically populates key/value pairs for each q.id to mapped letter
-  answers: { [questionID: string]: string } = {};
-  currentQuestion = 0;
+//'InfoCard' interface allows structured to be referenced in resultss page
+export interface InfoCard {
+    name: string;
+    traits: string[];
+    leftTags: string[];
+    rightTags: string[];
+    image: string;
+    resources: resources[];
+    compatibilities: compatibilities[];
+    tagColor: string; 
+}
 
-  //updated mapping to map each option Text to a MBTI letter
-  map: { [key: string]: string } = {
-    "I perfected that plan! We are sticking to it!": "J",
-    "How exciting! So much to be determined, so many possibilities!": "P",
-    "There’s a reason the line’s out the door, Goldie’s is a classic!": "S",
-    "That new menu looks incredible! Let’s try it out!": "N",
-    "Time for a battle of the minds! Which art display is the best?": "T",
-    "Let’s enjoy the good vibes for today, bring me the song and dance!": "F",
-    "At a quieter spot with a friend!": "I",
-    "On Tiger Ave losing my voice and being lively with the crowd!": "E",
-    "Shakespeare's Pizza or Booche's! Can't turn down a Columbia classic!": "S",
-    "I'm tired of the same old rotation. Let's try something new!": "N",
-    "Let’s relax for a while in a quieter spot!": "I",
-    "Too much to go do and see!": "E",
-    "I’ve been looking forward to this event on my calendar for weeks!": "J",
-    "This event looked like so much fun and a good cause, I had to jump in! What do you mean planned it out?": "P",
-    "Analyzing the process and making sure everything runs smoothly!": "T",
-    "Connecting with others, keeping spirits high, and making sure everyone’s doing okay!": "F",
-    "I want to help out practically! Give me the step-by-step guide!": "S",
-    "Let me try and figure it out myself first, I think I’ve got the big idea!": "N",
-    "Give me some time, let’s just text them!": "I",
-    "The phone is already ringing! Let’s talk about it together!": "E",
-    "Approaching it logically! Maybe the best thing is to move along, we won’t know unless we weigh the pros and cons!": "T",
-    "Checking in with friends to see how everyone’s doing! If the group consensus says we stay, I’m staying too!": "F",
-    "Why would we plan if we’re not following through? Gotta go with the plan!": "J",
-    "Let’s keep our options open so if something better comes up we can go!": "P"
-  };
-
-  //quiz questions array
-  //added ID field for easy reference to each q / option combos
-  questions = [
-    {
-      id: "Q1",
-      key: 'jp',
-      text: "Good morning! Was your plan for today set last night? Or are you keeping your options open and letting the day unfold?",
-      options: [
-        "I perfected that plan! We are sticking to it!",
-        "How exciting! So much to be determined, so many possibilities!"
-      ],
-      gif: 'assets/gifs/gif1.5.gif'
-    },
-    {
-      id: "Q2",
-      key: 'sn',
-      text: "Breakfast time! Are you grabbing your favorite, go-to bagel from Goldie’s? Or did that new food truck down the street spark your curiosity?",
-      options: [
-        "There’s a reason the line’s out the door, Goldie’s is a classic!",
-        "That new menu looks incredible! Let’s try it out!"
-      ],
-      gif: 'assets/gifs/Test.gif'
-    },
-    {
-      id: "Q3",
-      key: 'tf',
-      text: "After your breakfast, are you debating with friends to determine which artwork on display for Decorate the District is the best, or are you enjoying Fling’s comedy and dance at Jesse Hall?",
-      options: [
-        "Time for a battle of the minds! Which art display is the best?",
-        "Let’s enjoy the good vibes for today, bring me the song and dance!"
-      ],
-      gif: 'assets/gifs/Test.gif'
-    },
-    {
-      id: "Q4",
-      key: 'ie',
-      text: "It’s time to head to the Homecoming Parade! Are you on Tiger Ave, lively with the crowd? Or are you at a quieter balcony with a few friends overlooking the parade?",
-      options: [
-        "At a quieter spot with a friend!",
-        "On Tiger Ave losing my voice and being lively with the crowd!"
-      ],
-      gif: 'assets/gifs/gif2.gif'
-    },
-    {
-      id: "Q5",
-      key: 'sn',
-      text: "What a parade! It's time to eat! What kind of food is calling your name?",
-      options: [
-        "Shakespeare's Pizza or Booche's! Can't turn down a Columbia classic!",
-        "I'm tired of the same old rotation. Let's try something new!"
-      ],
-      gif: 'assets/gifs/gif3.gif'
-    },
-    {
-      id: "Q6",
-      key: 'ie',
-      text: "Woo! A bustling parade, followed by a great lunch! Is it time to retreat home and relax for a while? Or is there just too much to go do and see on a day like today?",
-      options: [
-        "Let’s relax for a while in a quieter spot!",
-        "Too much to go do and see!"
-      ],
-      gif: 'assets/gifs/Test.gif'
-    },
-    {
-      id: "Q7",
-      key: 'jp',
-      text: "You are volunteering at a service event for Homecoming weekend. Have you been looking forward to this event, planned for weeks? Or did you just happen to stumble upon it and jump at the opportunity to help out?",
-      options: [
-        "I’ve been looking forward to this event on my calendar for weeks!",
-        "This event looked like so much fun and a good cause, I had to jump in! What do you mean planned it out?"
-      ],
-      gif: 'assets/gifs/Test.gif'
-    },
-    {
-      id: "Q8",
-      key: 'tf',
-      text: "Are you analyzing the service event’s goal, jumping in where you can to help make sure everything runs smoothly? Or are you connecting with those around you, keeping spirits high, and making sure everyone’s doing okay?",
-      options: [
-        "Analyzing the process and making sure everything runs smoothly!",
-        "Connecting with others, keeping spirits high, and making sure everyone’s doing okay!"
-      ],
-      gif: 'assets/gifs/Test.gif'
-    },
-    {
-      id: "Q9",
-      key: 'sn',
-      text: "You’ve found a team at the service event that needs your help! Are you asking for step-by-step instructions so you can help out practically? Or are you looking at the big picture of the process and figuring out how to resolve the underlying issue yourself?",
-      options: [
-        "I want to help out practically! Give me the step-by-step guide!",
-        "Let me try and figure it out myself first, I think I’ve got the big idea!"
-      ],
-      gif: 'assets/gifs/Test.gif'
-    },
-    {
-      id: "Q10",
-      key: 'ie',
-      text: "After the service event, your phone buzzes. It’s your friends, wondering what you’re doing and your plan for the rest of the day. Do you prefer texting them back to give yourself time to reflect and think? Or do you excitedly call them to talk about it?",
-      options: [
-        "Give me some time, let’s just text them!",
-        "The phone is already ringing! Let’s talk about it together!"
-      ],
-      gif: 'assets/gifs/Test.gif'
-    },
-    {
-      id: "Q11",
-      key: 'tf',
-      text: "You’ve been at a downtown business for a while. Are you weighing the pros and cons of moving to the next spot? Or are you going when the group consensus says it’s time?",
-      options: [
-        "Approaching it logically! Maybe the best thing is to move along, we won’t know unless we weigh the pros and cons!",
-        "Checking in with friends to see how everyone’s doing! If the group consensus says we stay, I’m staying too!"
-      ],
-      gif: 'assets/gifs/Test.gif'
-    },
-    {
-      id: "Q12",
-      key: 'jp',
-      text: "It’s almost evening in Columbia. Are you sticking with your evening plans you discussed this morning? Or did you keep your options open and go with the flow?",
-      options: [
-        "Why would we plan if we’re not following through? Gotta go with the plan!",
-        "Let’s keep our options open so if something better comes up we can go!"
-      ],
-      gif: 'assets/gifs/Test.gif'
-    }
-  ];
-
-  // in reverse order from MBTI mapping table
-  //ps '#99CECF' is listed as the tag color for all 16 types, currently not being referenced in the .html for the component, maybe we change this, maybe not? 
-  //could do tag coloring based off persona image colors, group them by 'SF', 'ST', 'NT', 'NF', etc, 
-  resultProfiles: { [key: string]: any } = {
-    // sm validated 042125
-    //template
+//export all the info cards from quiz.component.ts
+export const infoCards: {[type: string]: InfoCard} = {
     'ESFP': {
       name: 'Sparky`s',
       traits: ['Spontaneous', 'Great Performer', 'Enthusiastic'],
@@ -510,125 +356,8 @@ export class QuizComponent {
       compatibilities: [
         { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' },
         { name: 'Speaker`s Circle', image: "assets/personas/ENTP.png", link: '/profile/ENTP' },
-        { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: `/profile/INFJ` }
+        { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: '/profile/INFJ' }
       ],
       tagColor: '#99CECF',
     }
-  };
-
-  constructor(private quizService: QuizService, private authService: AuthService
-  ) {}
-
-  
-// called by handleSelect when all questions have been answered
-handleSubmit(): void {
-  //tallies obj to hold increments by dimension (ie) v (sn) v (tf) v  (jp) 
-  const tallies = {
-    ie: { E: 0, I: 0 },
-    sn: { S: 0, N: 0 },
-    tf: { T: 0, F: 0 },
-    jp: { J: 0, P: 0 }
-  };
-
-  //iterate through each question and grab corresponding ans for each question
-  this.questions.forEach(q => {
-    //get ans to the question based on the question ID
-    const ans = this.answers[q.id];
-    //debugging submission issue keep for altering quiz logic during testing
-    //console.log(`Question ${q.id} answer: `, ans);
-
-    if (ans) {
-      //increment tally at the question 'key' (dimension)... think IvE, SvN, TvF, JvP, and incremement at that letter 
-      tallies[q.key][ans]++;
-    }
-  });
-
-  //keep debugging in if we alter quiz logic during testing
-  //console.log('Tallies:', tallies);
-
-  //return 4 character string based on majority split from tallies obj
-  const returnedType =
-    (tallies.ie["E"] >= 2 ? "E" : "I") +
-    (tallies.sn["S"] >= 2 ? "S" : "N") +
-    (tallies.tf["T"] >= 2 ? "T" : "F") +
-    (tallies.jp["J"] >= 2 ? "J" : "P");
-
-  //keep debugging in if we alter quiz logic during testing
-  //console.log('returnedtype is:', returnedType);
-
-  this.result = returnedType;
-  this.resultData = this.resultProfiles[this.result];
-  this.viewStep = 'complete';
-
-  //send the quiz result to the backend
-  //get the current user object from authservice
-  const currentUser = this.authService.getCurrentUser();
-
-
-  //verify here we're passing the user data correctly for results page
-  if(currentUser){
-    currentUser.personalityType = this.result;
-    //update current user to resolve displaying past results bug
-    this.authService.setCurrentUser(currentUser);
-    //console.log("Updated currentuser with authservice:", currentUser)
-  }
-  //pass only the user id (a string) to the quiz service
-  
-  this.quizService.storeQuizResult(currentUser.id, this.result).subscribe({
-    next: (response) => {  // <<== ADD response parameter
-      console.log('Quiz result successfully stored. Server response:', response);
-  
-      // compatibility storing added here -jenna
-      this.quizService.storeCompatibility(currentUser.id, this.result).subscribe({
-        next: (compatibilityResponse) => {  // <<== ADD response for second call
-          console.log('Compatibility successfully stored. Server response:', compatibilityResponse);
-          
-          this.resultData = {
-            ...this.resultData,
-            matchedUsers: compatibilityResponse.data.matchedUsers
-          };
-        },
-        error: (err) => console.error('Error storing compatibility:', err)
-      });
-    },
-    error: (err) => console.error('Error storing quiz result:', err)
-  });  
 }
-
-// called when an answer choice is selected
-handleSelect(optionText: string): void {
-  
-  //identify ques obj to reference all elements of current question 
-  const ques = this.questions[this.currentQuestion];
-  if (!ques) {
-    console.error("Question not found for index:", this.currentQuestion);
-    return;
-  }
-
-  //debugging select issue, log the option text func using, keep for quiz testing
-  //console.log(`Option text: [${optionText}]`);
-
-  //convert the option text taken in and convert to single letter based on the mappingg
-  const mappedAnswer = this.map[optionText];
-  //debugging make sure letter is mapped properly from text, keep for quiz testing
-  //console.log('Mapped letter:', mappedAnswer);
-
-  //create and store key/value -> ques.id:letter, in the answers set at the question ID
-  //ex: q1 : 'J'
-  this.answers[ques.id] = mappedAnswer;
-  //logg updated answers to show current answers set is taking in /updating the selection properly
-  console.log("Updated answers object:", this.answers);
-
-  //iterate over length of the questions to move to next question after setting answers in set
-  if (this.currentQuestion < this.questions.length - 1) {
-    setTimeout(() => {this.currentQuestion++;}, 150);
-  } else {
-    this.handleSubmit();
-  }
-}
-
-
-isSelected(questionID: string, optionText: string): boolean {
-  return this.answers[questionID] === this.map[optionText];
-}
-};

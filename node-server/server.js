@@ -125,6 +125,18 @@ app.post('/login', async (req, res) => {
             process.env.JWT_SECRET
         );
 
+        //include personalityType as a response parameter on login for results page
+        const quizResults = db.collection('quizResults');
+        
+        //append quiz results here to return results upon login
+        const userQuizData = await quizResults.findOne({ userId: user._id.toString()});
+        //return the type if found, null if no match
+        const userType = userQuizData?.personalityType || null;
+
+        //.post/login is at least returning correct user type now from db
+        //console.log("userType:", userType);
+
+
         console.log('Login successful!');
         // res.status(200).json({ message: 'Login successful!' });
         // modified the above code to send the info needed for authservice (userId)
@@ -132,7 +144,8 @@ app.post('/login', async (req, res) => {
             message: 'Login successful!',
             userId: user._id.toString(),
             email: user.email,
-            token: token
+            token: token,
+            personalityType: userType
           });
           console.log('Token:', token);
     } catch (error) {

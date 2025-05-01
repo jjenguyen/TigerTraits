@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ContactComponent } from './contact/contact.component';
+import { ResultsComponent } from './results/results.component';
 // add more components here as we need them
 
 const routes: Routes = [
@@ -16,7 +17,9 @@ const routes: Routes = [
   { path: 'quiz', component: QuizComponent},
   // { path: 'profile', component: ProfileComponent},
   { path: 'contact', component: ContactComponent },
-  // add more routes here as we need them
+ 
+  { path: 'results', component: ResultsComponent}
+   // add more routes here as we need them
 ];
 
 @NgModule({

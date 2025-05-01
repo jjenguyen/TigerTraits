@@ -60,10 +60,12 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('redirectApp', 'quiz');
   
             // store user info
+            //added personalityType to get response to use in results page on login
             this.authService.setCurrentUser({
               id: response.userId,
               email: response.email,
-              token: response.token
+              token: response.token,
+              personalityType: response.personalityType
             });
 
             // mobile: emit directly and skip full page reload
@@ -114,3 +116,4 @@ export class LoginComponent implements OnInit {
     });
   }  
 }
+

@@ -1,4 +1,24 @@
 <!-- <p>results works!</p> -->
 
 <!-- leaving a note for when we send it out for user testing -->
-<h1>we are currently working on this page :P</h1>
+<!-- RESULTS SCREEN from quiz component, checks if card is null or not -->
+<ng-container *ngIf="card; else noCard" class="results-screen">
+    <app-info-card
+      [personaName]="card.name"
+      [traits]="card.traits"
+      [leftTags]="card.leftTags"
+      [rightTags]="card.rightTags"
+      [imageUrl]="card.image"
+      [resources]="card.resources"
+      [compatibilities]="card.compatibilities"
+      [cardColor]="card.cardColor"
+      [tagColor]="FFD17D"
+    ></app-info-card>
+</ng-container>
+
+<!--logging in defaults users to quiz, so users would have to go out of their way to try to see results before theyve taken it-->
+<ng-template #noCard>
+    <p>Hmmm... looks like you haven't taken our quiz yet.</p>
+    <p>Try taking the quiz first, then check back here to see your results.</p>
+</ng-template>
+
