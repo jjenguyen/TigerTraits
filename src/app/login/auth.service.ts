@@ -67,3 +67,4 @@ export class AuthService {
     this.setLoginRedirectApp(null); // reset any redirect
   }
 }
+
