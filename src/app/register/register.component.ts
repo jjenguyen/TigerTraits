@@ -35,7 +35,7 @@ export class RegisterComponent {
   register() {
     // change localhost route to new api when deployed!!!
     // http://localhost:3000/register
-    this.http.post<any>('/register', { email: this.email, password: this.password })
+    this.http.post<any>('http://localhost:3000/register', { email: this.email, password: this.password })
     //this.http.post<any>('http://tt-env.eba-ey2xk2m2.us-east-1.elasticbeanstalk.com/register', { email: this.email, password: this.password })
       .subscribe({
         next: (response) => {
