@@ -510,7 +510,7 @@ export class QuizComponent {
       compatibilities: [
         { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' },
         { name: 'Speaker`s Circle', image: "assets/personas/ENTP.png", link: '/profile/ENTP' },
-        { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: '/profile/INFJ' }
+        { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: `/profile/INFJ` }
       ],
       tagColor: '#99CECF',
     }
@@ -563,6 +563,15 @@ handleSubmit(): void {
   //send the quiz result to the backend
   //get the current user object from authservice
   const currentUser = this.authService.getCurrentUser();
+
+
+  //verify here we're passing the user data correctly for results page
+  if(currentUser){
+    currentUser.personalityType = this.result;
+    //update current user to resolve displaying past results bug
+    this.authService.setCurrentUser(currentUser);
+    //console.log("Updated currentuser with authservice:", currentUser)
+  }
   //pass only the user id (a string) to the quiz service
   
   this.quizService.storeQuizResult(currentUser.id, this.result).subscribe({

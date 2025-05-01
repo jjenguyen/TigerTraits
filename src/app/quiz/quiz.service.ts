@@ -18,7 +18,7 @@ export class QuizService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
-    return this.http.post('http://localhost:3000/quizResults', data, { headers });
+    return this.http.post('/quizResults', data, { headers });
   }
 
   // need to include JWT token in the header so backend can verify
@@ -29,13 +29,13 @@ export class QuizService {
       Authorization: `Bearer ${token}`
     });
   
-    return this.http.post('http://localhost:3000/quizResults', { userId, personalityType }, { headers });
+    return this.http.post('/quizResults', { userId, personalityType }, { headers });
   }
   
 
   storeCompatibility(userId: string, resultType: string) {
     // http://localhost:3000/compatibilities
-    return this.http.post<any>('http://localhost:3000/compatibilities', {
+    return this.http.post<any>('/compatibilities', {
       userId,
       resultType
     });
