@@ -1,0 +1,14 @@
+<div>
+    <h2 *ngIf="!deleting && !deleted">Delete Account</h2>
+  
+    <p *ngIf="!deleting && !deleted">This action cannot be undone. Are you sure?</p>
+  
+    <div *ngIf="!deleting && !deleted">
+      <button (click)="confirmDelete()">Confirm</button>
+
+    </div>
+  
+    <p *ngIf="deleting">Deleting account...</p>
+    <p *ngIf="deleted">Account deleted.</p>
+  </div>
+  
