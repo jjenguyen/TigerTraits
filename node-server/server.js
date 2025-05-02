@@ -11,7 +11,7 @@ const { body, validationResult } = require('express-validator');
 // create an express app
 const app = express();
 // const port = 3000;
-const port = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000
 
 const uri = process.env.MONGO_URI
 console.log("Loaded MONGO_URI:", process.env.MONGO_URI);
@@ -61,6 +61,7 @@ function isPasswordHashed(password) {
     // check if password starts with the bcrypt hash identifier
     return password.startsWith('$2b$');
 }
+
 
 const authenticateJWT = (req, res, next) => {
     const token = req.headers['authorization']?.split(' ')[1]; // Bearer <token>
@@ -302,6 +303,24 @@ app.get('/profile/:id', async (req, res) => {
   }
 });
 
+app.delete('/api/delete-account', authenticateJWT, async (req, res) => {
+  const userId = req.user.userID; // adjust to match JWT payload
+  console.log("Deleting account for:", userId);
+
+  try {
+    const db = await connectToMongoDB();
+    const usersCollection = db.collection('users');
+    await usersCollection.deleteOne({ _id: new ObjectId(userId) });
+
+    res.status(200).json({ message: 'Account deleted successfully.' });
+  } catch (error) {
+    console.error('Error deleting account:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
+
 
 // serve static files from the angular app (i.e. the "dist" folder created from the production build command)
 app.use(express.static(path.join(__dirname, 'dist/tigertraits-deployed/browser')));
@@ -315,6 +334,6 @@ app.get('/', (req, res) => {
 });
 
 // start server
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
 });

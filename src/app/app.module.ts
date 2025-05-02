@@ -24,6 +24,7 @@ import { ResultsComponent } from './results/results.component';
 import { MobileLayoutComponent } from './mobile-layout/mobile-layout.component';
 import { LayoutDeciderComponent } from './layout-decider/layout-decider.component';
 import { ContactComponent } from './contact/contact.component';
+import { DeleteAccountComponent } from './delete-account/delete-account.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ContactComponent } from './contact/contact.component';
     ResultsComponent,
     MobileLayoutComponent,
     LayoutDeciderComponent,
-    ContactComponent
+    ContactComponent,
+    DeleteAccountComponent
   ],
   imports: [
     BrowserModule,
