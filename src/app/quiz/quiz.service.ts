@@ -18,6 +18,7 @@ export class QuizService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
+    
     return this.http.post('/quizResults', data, { headers });
   }
 
@@ -28,14 +29,14 @@ export class QuizService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
-  
-    return this.http.post('/quizResults', { userId, personalityType }, { headers });
+    //http://localhost:3000/quizResults
+    return this.http.post('http://localhost:3000/quizResults', { userId, personalityType }, { headers });
   }
   
 
   storeCompatibility(userId: string, resultType: string) {
     // http://localhost:3000/compatibilities
-    return this.http.post<any>('/compatibilities', {
+    return this.http.post<any>('http://localhost:3000/compatibilities', {
       userId,
       resultType
     });
