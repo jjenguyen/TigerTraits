@@ -13,6 +13,8 @@ export class MobileLayoutComponent implements OnInit {
   isUnlocking: boolean = false;
   unlocked: boolean = false;
   isLoggedIn: boolean = false; // track login status
+  isDeleting: boolean = false;
+  deleted: boolean = false; // track account deletion status
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -82,7 +84,11 @@ export class MobileLayoutComponent implements OnInit {
       case 'results': return 'My Results';
       case 'contact': return 'Contact Card';
       case 'feedback': return 'Feedback';
+      case 'notes': return 'Notes';
+      case 'register': return 'Register';
+      case 'deleteAccount': return 'Delete Account';
       default: return 'Login';
     }
   }
+  
 }

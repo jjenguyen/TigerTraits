@@ -66,5 +66,16 @@ export class AuthService {
     localStorage.removeItem('currentUser');
     this.setLoginRedirectApp(null); // reset any redirect
   }
+  deleteAccount() {
+    const user = this.getCurrentUser();
+    const token = user?.token;
+  
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+  
+    return this.http.delete('http://localhost:3000/api/delete-account', { headers });
+  }
+  
 }
 

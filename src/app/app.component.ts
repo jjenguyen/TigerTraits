@@ -112,6 +112,22 @@ export class AppComponent implements OnInit, AfterViewInit {
     setTimeout(() => this.reapplyDraggable(), 50);
   }
 
+  confirmDelete() {
+    if (confirm("This will permanently delete your account. Are you sure?")) {
+      this.authService.deleteAccount().subscribe({
+        next: () => {
+          alert("Your account has been deleted.");
+          this.logout(); 
+        },
+        error: err => {
+          console.error(err);
+          alert("There was an error deleting your account. Please try again.");
+        }
+      });
+    }
+  }
+  
+
   handleStartClick(): void {
     if (!this.isLoggedIn) {
       this.openApp('welcome');
@@ -127,6 +143,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       case 'feedback': return 'window-feedback';
       case 'notes': return 'window-notes';
       case 'register': return 'window-register';
+      case 'deleteAccount': return 'window-delete-account';
       case 'login': return 'window-login';
       case 'welcome':
       default: return 'window-default';

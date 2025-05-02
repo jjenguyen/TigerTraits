@@ -11,7 +11,7 @@ const { body, validationResult } = require('express-validator');
 // create an express app
 const app = express();
 // const port = 3000;
-const port = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000
 
 const uri = process.env.MONGO_URI
 console.log("Loaded MONGO_URI:", process.env.MONGO_URI);
@@ -22,7 +22,7 @@ console.log("Loaded MONGO_URI:", process.env.MONGO_URI);
 console.log("Environment PORT:", process.env.PORT);
 
 const { MongoClient, ObjectId } = require('mongodb');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 app.use(express.json());
@@ -62,6 +62,7 @@ function isPasswordHashed(password) {
     return password.startsWith('$2b$');
 }
 
+
 const authenticateJWT = (req, res, next) => {
     const token = req.headers['authorization']?.split(' ')[1]; // Bearer <token>
     if (token) {
@@ -88,8 +89,9 @@ app.post('/login', async (req, res) => {
         
         const db = await connectToMongoDB();
         const usersCollection = db.collection('users');
-        const user = await usersCollection.findOne({ email: req.body.email });
-
+        const email = req.body.email.toLowerCase();
+        const user = await usersCollection.findOne({ email });
+        
         if (!user) {
             console.log('User not found');
             return res.status(401).json({ message: 'User not found. Please try again or register an account.' });
@@ -172,16 +174,20 @@ app.post('/register',[
     try {
         const db = await connectToMongoDB();
         const usersCollection = db.collection('users');
-        const existingUser = await usersCollection.findOne({ email: req.body.email });
+        const email = req.body.email.toLowerCase();
+        const existingUser = await usersCollection.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ message: 'User already exists. Please go to the login page to log in.' });
         }
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         await usersCollection.insertOne({
-            email: req.body.email,
-            password: hashedPassword
+          email,
+          password: hashedPassword
         });
+        
         console.log('User registered successfully!');
+        console.log('case sensetivity test email:', email);
+
         return res.status(201).json({ message: 'Account successfully created! Please go to the login page to log in.' });
     } catch (error) {
         console.error('Error during registration:', error);
@@ -302,6 +308,24 @@ app.get('/profile/:id', async (req, res) => {
   }
 });
 
+app.delete('/api/delete-account', authenticateJWT, async (req, res) => {
+  const userId = req.user.userID; // adjust to match JWT payload
+  console.log("Deleting account for:", userId);
+
+  try {
+    const db = await connectToMongoDB();
+    const usersCollection = db.collection('users');
+    await usersCollection.deleteOne({ _id: new ObjectId(userId) });
+
+    res.status(200).json({ message: 'Account deleted successfully.' });
+  } catch (error) {
+    console.error('Error deleting account:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
+
 
 // serve static files from the angular app (i.e. the "dist" folder created from the production build command)
 app.use(express.static(path.join(__dirname, 'dist/tigertraits-deployed/browser')));
@@ -315,6 +339,6 @@ app.get('/', (req, res) => {
 });
 
 // start server
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
 });
