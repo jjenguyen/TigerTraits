@@ -143,6 +143,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       case 'feedback': return 'window-feedback';
       case 'notes': return 'window-notes';
       case 'register': return 'window-register';
+      case 'deleteAccount': return 'window-delete-account';
       case 'login': return 'window-login';
       case 'welcome':
       default: return 'window-default';

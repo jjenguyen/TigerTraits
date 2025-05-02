@@ -86,7 +86,7 @@ export class MobileLayoutComponent implements OnInit {
       case 'feedback': return 'Feedback';
       case 'notes': return 'Notes';
       case 'register': return 'Register';
-      case 'delete-account': return 'Delete Account';
+      case 'deleteAccount': return 'Delete Account';
       default: return 'Login';
     }
   }
