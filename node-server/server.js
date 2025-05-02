@@ -22,7 +22,7 @@ console.log("Loaded MONGO_URI:", process.env.MONGO_URI);
 console.log("Environment PORT:", process.env.PORT);
 
 const { MongoClient, ObjectId } = require('mongodb');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 app.use(express.json());
@@ -89,8 +89,9 @@ app.post('/login', async (req, res) => {
         
         const db = await connectToMongoDB();
         const usersCollection = db.collection('users');
-        const user = await usersCollection.findOne({ email: req.body.email });
-
+        const email = req.body.email.toLowerCase();
+        const user = await usersCollection.findOne({ email });
+        
         if (!user) {
             console.log('User not found');
             return res.status(401).json({ message: 'User not found. Please try again or register an account.' });
@@ -173,16 +174,20 @@ app.post('/register',[
     try {
         const db = await connectToMongoDB();
         const usersCollection = db.collection('users');
-        const existingUser = await usersCollection.findOne({ email: req.body.email });
+        const email = req.body.email.toLowerCase();
+        const existingUser = await usersCollection.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ message: 'User already exists. Please go to the login page to log in.' });
         }
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         await usersCollection.insertOne({
-            email: req.body.email,
-            password: hashedPassword
+          email,
+          password: hashedPassword
         });
+        
         console.log('User registered successfully!');
+        console.log('case sensetivity test email:', email);
+
         return res.status(201).json({ message: 'Account successfully created! Please go to the login page to log in.' });
     } catch (error) {
         console.error('Error during registration:', error);
