@@ -265,3 +265,14 @@
     }
 
 }
+
+.feedback-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.iframe {
+  width: 100%;
+  border: none;
+}
