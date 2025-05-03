@@ -21,6 +21,7 @@
 }
 
 h1 {
+    margin-top: 10px;
     color: #333333;
 }
 
@@ -83,7 +84,7 @@ h5 {
     border-radius: 20px;
     font-size: small;
     width: 120px; /* fixed width */
-    height: 55px; /* same height */
+    height: 75px; /* same height */
     display: flex;
     align-items: center; /* centers text vertically */
     justify-content: center; /* centers text horizontally */
@@ -112,13 +113,16 @@ h5 {
 }
 
 .resource {
-    display: block;
+    display: flex;
+    justify-content: center; /* horizontal centering */
+    align-items: center;     /* vertical centering */
     background-color: whitesmoke;
     color: #333333;
     text-decoration: none;
     padding: 10px;
     border-radius: 8px;
     text-align: center;
+    height: 50px; /* or whatever height you need */
 }
 
 .resource:hover {
@@ -129,7 +133,7 @@ h5 {
 .compatibilities {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 20px;
     margin-top: 10px;
 }
   
@@ -140,13 +144,13 @@ h5 {
     padding-bottom: 10px;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 25px;
     margin-top: 15px;
 }
   
 .compatibilities a img {
-    width: 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
     transition: transform 0.3s ease;
 }

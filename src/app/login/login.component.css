@@ -19,11 +19,12 @@
 
 /* form title */
 h2 {
-  font-size: 28px;
+  margin-bottom: 16px;
+  font-size: 35px;
   font-weight: bold;
   color: #008486;
-  text-shadow: 1px 1px #FFD17D;
-  margin-bottom: 16px;
+  text-shadow: 2px 2px #FDB719;
+  letter-spacing: 1px;
 }
 
 /* input label and field container */
