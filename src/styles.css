@@ -1,3 +1,11 @@
+/* Import Comic Neue from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
+
+/* Apply globally */
+body, html {
+  font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif !important;
+}
+
 /* default for desktop */
 body {
   background-color: #FFD17D;

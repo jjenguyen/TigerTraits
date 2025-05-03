@@ -23,30 +23,30 @@ export class QuizComponent {
 
   //updated mapping to map each option Text to a MBTI letter
   map: { [key: string]: string } = {
-    "I perfected that plan! We are sticking to it!": "J",
-    "How exciting! So much to be determined, so many possibilities!": "P",
-    "There’s a reason the line’s out the door, Goldie’s is a classic!": "S",
-    "That new menu looks incredible! Let’s try it out!": "N",
-    "Time for a battle of the minds! Which art display is the best?": "T",
-    "Let’s enjoy the good vibes for today, bring me the song and dance!": "F",
-    "At a quieter spot with a friend!": "I",
-    "On Tiger Ave losing my voice and being lively with the crowd!": "E",
-    "Shakespeare's Pizza or Booche's! Can't turn down a Columbia classic!": "S",
-    "I'm tired of the same old rotation. Let's try something new!": "N",
-    "Let’s relax for a while in a quieter spot!": "I",
-    "Too much to go do and see!": "E",
-    "I’ve been looking forward to this event on my calendar for weeks!": "J",
-    "This event looked like so much fun and a good cause, I had to jump in! What do you mean planned it out?": "P",
-    "Analyzing the process and making sure everything runs smoothly!": "T",
-    "Connecting with others, keeping spirits high, and making sure everyone’s doing okay!": "F",
-    "I want to help out practically! Give me the step-by-step guide!": "S",
-    "Let me try and figure it out myself first, I think I’ve got the big idea!": "N",
-    "Give me some time, let’s just text them!": "I",
-    "The phone is already ringing! Let’s talk about it together!": "E",
-    "Approaching it logically! Maybe the best thing is to move along, we won’t know unless we weigh the pros and cons!": "T",
-    "Checking in with friends to see how everyone’s doing! If the group consensus says we stay, I’m staying too!": "F",
-    "Why would we plan if we’re not following through? Gotta go with the plan!": "J",
-    "Let’s keep our options open so if something better comes up we can go!": "P"
+    "I've got them mapped out and ready to go!": "J",
+    "No plan, no problem. Let's see where the day takes us!": "P",
+    "I'm craving a bagel from Goldie's. It's such a classic!": "S",
+    "I heard a new food truck is in town?! I have to try it!": "N",
+    "Analyzing the artwork for Decorate the District": "T",
+    "Dancing my heart out at Jesse Hall": "F",
+    "You won't..": "I",
+    "Losing my voice in the crowd!": "E",
+    "Shakespeare's or Booche's! Don't mess with traditions man.": "S",
+    "Time to try something new! I'm tired of the usual..": "N",
+    "Quiet spot, please. I need to recharge.": "I",
+    "I'm gonna power through! I'm not missing a thing!": "E",
+    "Don't act suprised. I've had this on my calendar for weeks!": "J",
+    "I don't know how I got here, but I'm having a good time!": "P",
+    "Making sure everything's efficient and on track!": "T",
+    "Checking in with everyone and bringing the good vibes!": "F",
+    "What do you need from me?! Give me the step-by-step guide and I've got you.": "S",
+    "I can handle this, I think I’ve got the big picture!": "N",
+    "I'll text them back when I've thought it through": "I",
+    "I've already started the group facetime! We'll figure it out together": "E",
+    "Hang on, let's weigh the pros and cons first": "T",
+    "Hmmm, let's see what the group is feeling": "F",
+    "I'm checking off the last item on the itinerary!": "J",
+    "Not sure.. I'm going where the night takes me!": "P"
   };
 
   //quiz questions array
@@ -55,122 +55,133 @@ export class QuizComponent {
     {
       id: "Q1",
       key: 'jp',
-      text: "Good morning! Was your plan for today set last night? Or are you keeping your options open and letting the day unfold?",
+      // text: "Good morning! Was your plan for today set last night? Or are you keeping your options open and letting the day unfold?",
+      text: "The sun wakes you up bright and early. What are your plans for the day?",
       options: [
-        "I perfected that plan! We are sticking to it!",
-        "How exciting! So much to be determined, so many possibilities!"
+        "I've got them mapped out and ready to go!",
+        "No plan, no problem. Let's see where the day takes us!"
       ],
-      gif: 'assets/gifs/gif1.5.gif'
+      gif: 'assets/gifs/Sun2.gif'
     },
     {
       id: "Q2",
       key: 'sn',
-      text: "Breakfast time! Are you grabbing your favorite, go-to bagel from Goldie’s? Or did that new food truck down the street spark your curiosity?",
+      // text: "Breakfast time! Are you grabbing your favorite, go-to bagel from Goldie’s? Or did that new food truck down the street spark your curiosity?",
+      text: "Your stomach starts to growl. What will you feed it?",
       options: [
-        "There’s a reason the line’s out the door, Goldie’s is a classic!",
-        "That new menu looks incredible! Let’s try it out!"
+        "I'm craving a bagel from Goldie's. It's such a classic!",
+        "I heard a new food truck is in town?! I have to try it!"
       ],
-      gif: 'assets/gifs/Test.gif'
+      gif: 'assets/gifs/Growl.gif'
     },
     {
       id: "Q3",
       key: 'tf',
-      text: "After your breakfast, are you debating with friends to determine which artwork on display for Decorate the District is the best, or are you enjoying Fling’s comedy and dance at Jesse Hall?",
+      // text: "After your breakfast, are you debating with friends to determine which artwork on display for Decorate the District is the best, or are you enjoying Fling’s comedy and dance at Jesse Hall?",
+      text: "Now that you've silenced your stomach. What's your post-breakfast pick-me-up?",
       options: [
-        "Time for a battle of the minds! Which art display is the best?",
-        "Let’s enjoy the good vibes for today, bring me the song and dance!"
+        "Analyzing the artwork for Decorate the District",
+        "Dancing my heart out at Jesse Hall"
       ],
-      gif: 'assets/gifs/Test.gif'
+      gif: 'assets/gifs/Dance2.gif'
     },
     {
       id: "Q4",
       key: 'ie',
-      text: "It’s time to head to the Homecoming Parade! Are you on Tiger Ave, lively with the crowd? Or are you at a quieter balcony with a few friends overlooking the parade?",
+      // text: "It’s time to head to the Homecoming Parade! Are you on Tiger Ave, lively with the crowd? Or are you at a quieter balcony with a few friends overlooking the parade?",
+      text: "Hurry! The parade is starting. Where will we find you?",
       options: [
-        "At a quieter spot with a friend!",
-        "On Tiger Ave losing my voice and being lively with the crowd!"
+        "You won't..",
+        "Losing my voice in the crowd!"
       ],
       gif: 'assets/gifs/gif2.gif'
     },
     {
       id: "Q5",
       key: 'sn',
-      text: "What a parade! It's time to eat! What kind of food is calling your name?",
+      text: "Lunch break! Where to?",
       options: [
-        "Shakespeare's Pizza or Booche's! Can't turn down a Columbia classic!",
-        "I'm tired of the same old rotation. Let's try something new!"
+        "Shakespeare's or Booche's! Don't mess with traditions man.",
+        "Time to try something new! I'm tired of the usual.."
       ],
       gif: 'assets/gifs/gif3.gif'
     },
     {
       id: "Q6",
       key: 'ie',
-      text: "Woo! A bustling parade, followed by a great lunch! Is it time to retreat home and relax for a while? Or is there just too much to go do and see on a day like today?",
+      // text: "Woo! A bustling parade, followed by a great lunch! Is it time to retreat home and relax for a while? Or is there just too much to go do and see on a day like today?",
+      text: "You feel a food coma coming after lunch. What's your move?",
       options: [
-        "Let’s relax for a while in a quieter spot!",
-        "Too much to go do and see!"
+        "Quiet spot, please. I need to recharge.",
+        "I'm gonna power through! I'm not missing a thing!"
       ],
       gif: 'assets/gifs/Test.gif'
     },
     {
       id: "Q7",
       key: 'jp',
-      text: "You are volunteering at a service event for Homecoming weekend. Have you been looking forward to this event, planned for weeks? Or did you just happen to stumble upon it and jump at the opportunity to help out?",
+      // text: "You are volunteering at a service event for Homecoming weekend. Have you been looking forward to this event, planned for weeks? Or did you just happen to stumble upon it and jump at the opportunity to help out?",
+      text: "You find yourself volunterring at a service event. Why are you here?",
       options: [
-        "I’ve been looking forward to this event on my calendar for weeks!",
-        "This event looked like so much fun and a good cause, I had to jump in! What do you mean planned it out?"
+        "Don't act suprised. I've had this on my calendar for weeks!",
+        "I don't know how I got here, but I'm having a good time!"
       ],
       gif: 'assets/gifs/Test.gif'
     },
     {
       id: "Q8",
       key: 'tf',
-      text: "Are you analyzing the service event’s goal, jumping in where you can to help make sure everything runs smoothly? Or are you connecting with those around you, keeping spirits high, and making sure everyone’s doing okay?",
+      // text: "Are you analyzing the service event’s goal, jumping in where you can to help make sure everything runs smoothly? Or are you connecting with those around you, keeping spirits high, and making sure everyone’s doing okay?",
+      text: "What role do you take on at the service event?",
       options: [
-        "Analyzing the process and making sure everything runs smoothly!",
-        "Connecting with others, keeping spirits high, and making sure everyone’s doing okay!"
+        "Making sure everything's efficient and on track!",
+        "Checking in with everyone and bringing the good vibes!"
       ],
       gif: 'assets/gifs/Test.gif'
     },
     {
       id: "Q9",
       key: 'sn',
-      text: "You’ve found a team at the service event that needs your help! Are you asking for step-by-step instructions so you can help out practically? Or are you looking at the big picture of the process and figuring out how to resolve the underlying issue yourself?",
+      // text: "You’ve found a team at the service event that needs your help! Are you asking for step-by-step instructions so you can help out practically? Or are you looking at the big picture of the process and figuring out how to resolve the underlying issue yourself?",
+      text: "Urgent! Someone is asking for your help. How do you jump in?",
       options: [
-        "I want to help out practically! Give me the step-by-step guide!",
-        "Let me try and figure it out myself first, I think I’ve got the big idea!"
+        "What do you need from me?! Give me the step-by-step guide and I've got you.",
+        "I can handle this, I think I’ve got the big picture!"
       ],
       gif: 'assets/gifs/Test.gif'
     },
     {
       id: "Q10",
       key: 'ie',
-      text: "After the service event, your phone buzzes. It’s your friends, wondering what you’re doing and your plan for the rest of the day. Do you prefer texting them back to give yourself time to reflect and think? Or do you excitedly call them to talk about it?",
+      // text: "After the service event, your phone buzzes. It’s your friends, wondering what you’re doing and your plan for the rest of the day. Do you prefer texting them back to give yourself time to reflect and think? Or do you excitedly call them to talk about it?",
+      text: "Your phone buzzes with friends asking about plans. What's your call?",
       options: [
-        "Give me some time, let’s just text them!",
-        "The phone is already ringing! Let’s talk about it together!"
+        "I'll text them back when I've thought it through",
+        "I've already started the group facetime! We'll figure it out together"
       ],
-      gif: 'assets/gifs/Test.gif'
+      gif: 'assets/gifs/Buzz.gif'
     },
     {
       id: "Q11",
       key: 'tf',
-      text: "You’ve been at a downtown business for a while. Are you weighing the pros and cons of moving to the next spot? Or are you going when the group consensus says it’s time?",
+      // text: "You’ve been at a downtown business for a while. Are you weighing the pros and cons of moving to the next spot? Or are you going when the group consensus says it’s time?",
+      text: "You've been downtown for a while. Is it time to move or stay?",
       options: [
-        "Approaching it logically! Maybe the best thing is to move along, we won’t know unless we weigh the pros and cons!",
-        "Checking in with friends to see how everyone’s doing! If the group consensus says we stay, I’m staying too!"
+        "Hang on, let's weigh the pros and cons first",
+        "Hmmm, let's see what the group is feeling"
       ],
       gif: 'assets/gifs/Test.gif'
     },
     {
       id: "Q12",
       key: 'jp',
-      text: "It’s almost evening in Columbia. Are you sticking with your evening plans you discussed this morning? Or did you keep your options open and go with the flow?",
+      // text: "It’s almost evening in Columbia. Are you sticking with your evening plans you discussed this morning? Or did you keep your options open and go with the flow?",
+      text: "The night is coming to an end. How do you close it out?",
       options: [
-        "Why would we plan if we’re not following through? Gotta go with the plan!",
-        "Let’s keep our options open so if something better comes up we can go!"
+        "I'm checking off the last item on the itinerary!",
+        "Not sure.. I'm going where the night takes me!"
       ],
-      gif: 'assets/gifs/Test.gif'
+      gif: 'assets/gifs/Night.gif'
     }
   ];
 
@@ -225,8 +236,8 @@ export class QuizComponent {
     'ISFP': {
       name: 'Shamrock',
       traits: ['Self-Expressive', 'Charming & Flexible', 'Always Ready to Explore'],
-      leftTags: ['Stoic facial expressions', 'Very patient', 'First to speak up against people who act "badly"'],
-      rightTags: ['Adventure oriented', 'Suddenly vocal once their values are a talk', 'Doesn`t want the spotlight, wants to exist and express themselves'],
+      leftTags: ['Stoic facial expressions', 'Very patient', '1st to speak up against people who act "badly"'],
+      rightTags: ['Adventure oriented', 'Suddenly vocal once their values are a talk', 'Doesn`t want the spotlight, just wants to exist'],
       image: 'assets/personas/ISFP.png',
       resources: [
         { name: 'MU Outdoors', link: 'https://www.instagram.com/mu.outdoors/' },
@@ -393,8 +404,8 @@ export class QuizComponent {
     'INFP': {
       name: 'Truman`s Paw',
       traits: ['Poetic', 'Kind & Altruistic', 'Eager To Help A Good Cause'],
-      leftTags: ['Either a meme lord or a serious person', 'What is expressing feelings outwardly? ', 'Can be really oblivious'],
-      rightTags: ['* Random nostalgia *', 'Likes people who inspire easily', 'Once they start talking, they won`t stop'],
+      leftTags: ['Either a meme lord or a serious person', 'What is expressing feelings..?', 'Can be really oblivious'],
+      rightTags: ['*randomly nostalgic*', 'Likes people who inspire easily', 'Once they start talking, they won`t stop'],
       image: 'assets/personas/INFP.png',
       resources: [
         { name: 'Mindful Mizzou', link: 'https://www.umsystem.edu/totalrewards/wellness/mindfulness' },
@@ -435,8 +446,8 @@ export class QuizComponent {
     'ENTP': {
       name: 'Speaker`s Circle',
       traits: ['Smart', 'Curious Thinker', 'Loves Intellectual Challenges'],
-      leftTags: ['Probably up to no good', 'Exceptional music taste', 'Judgemental but understanding at the same time'],
-      rightTags: ['Enjoys 1 on 1 conversation more than group ones', 'Always in their head thinking', 'Funny and well informed'],
+      leftTags: ['Probably up to no good', 'Exceptional music taste', 'Judgemental but understanding'],
+      rightTags: ['Enjoys 1 on 1 convos more than group ones', 'Always in their head thinking', 'Funny and well informed'],
       image: 'assets/personas/ENTP.png',
       resources: [
         { name: 'Mizzou Mock Trial Association', link: 'https://www.instagram.com/mizzoumocktrial/?hl=en' },
@@ -477,8 +488,8 @@ export class QuizComponent {
     'INTP': {
       name: 'The Columns',
       traits: ['Innovative', 'Curious', 'Analytical'],
-      leftTags: ['Likes trying new things', '* random thought they want to tell you about *', 'Wants to understand the universe'], 
-      rightTags: ['* silently plots *', 'Secretly wants to meet new people', 'Can feel left out'],
+      leftTags: ['Likes trying new things', '*random thought they want to tell you*', 'Wants to understand the universe'], 
+      rightTags: ['*silently plots*', 'Secretly wants to meet new people', 'Can feel left out'],
       image: 'assets/personas/INTP.png',
       resources: [
         { name: 'Mizzou Philosophy Club', link: 'https://www.instagram.com/mizzouphilosophyclub/' },
@@ -498,7 +509,7 @@ export class QuizComponent {
     'INTJ': {
       name: 'The Big Tree',
       traits: ['Imaginative', 'Strategic Thinker', 'Future Oriented'],
-      leftTags: ['A human cat, basically', 'Hidden artistic / poetic side', 'Likes personal growth'],
+      leftTags: ['A human cat, basically', 'Hidden artistic and poetic side', 'Likes personal growth'],
       rightTags: ['Niche hobbies', 'Big softie inside', 'Likes being direct & honest'],
       image: 'assets/personas/INTJ.png',
       resources: [

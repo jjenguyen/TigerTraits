@@ -1,9 +1,13 @@
+h3 {
+    font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif !important;
+}
+
 .start-screen,
 .quiz-screen,
 .completion-screen,
 .results-screen {
     text-align: center;
-    margin-top: -10px;
+    margin-top: 10px;
 }
 
 /* for all gifs */
