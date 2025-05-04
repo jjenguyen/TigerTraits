@@ -308,8 +308,29 @@ app.get('/profile/:id', async (req, res) => {
   }
 });
 
+// Get personality type for a given user ID (contact.component.ts)
+app.get('/api/user/:id/personality', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const db = await connectToMongoDB();
+    const quizResults = db.collection('quizResults');
+
+    const result = await quizResults.findOne({ userId: id });
+
+    if (!result || !result.personalityType) {
+      return res.status(404).json({ message: 'Personality type not found for this user.' });
+    }
+
+    res.status(200).json({ personality: result.personalityType });
+  } catch (error) {
+    console.error('Error fetching personality type:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 app.delete('/api/delete-account', authenticateJWT, async (req, res) => {
-  const userId = req.user.userID; // adjust to match JWT payload
+  const userId = req.user.userID;
   console.log("Deleting account for:", userId);
 
   try {
