@@ -64,14 +64,14 @@ export class ContactComponent implements OnInit {
       this.contactForm.patchValue({
         name: info.name || '',
         bio: info.bio || '',
-        imageUrl: info.imageUrl ? `http://localhost:3000${info.imageUrl}` : '',
+        imageUrl: info.imageUrl || '',
         instagram: info.instagram || '',
         facebook: info.facebook || '',
         linkedin: info.linkedin || '',
         tigerTrait: info.tigerTrait || 'Truman’s Paw'
       });
       // Set the imagePreview to the current imageUrl
-      this.imagePreview = info.imageUrl ? `http://localhost:3000${info.imageUrl}` : null;
+      this.imagePreview = info.imageUrl || '';
       console.log('[DEBUG] imageUrl after loading contact card:', this.contactForm.get('imageUrl')?.value);
     },
     (err) => {
