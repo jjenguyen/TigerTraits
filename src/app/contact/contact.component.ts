@@ -58,6 +58,8 @@ export class ContactComponent implements OnInit {
     //NEED TO ADD a loader until html is fully rendered
     this.contactService.getContactCard(this.user.id).subscribe(info =>{
       console.log("Loader contact card: ", info)
+      //save info to initialContactInfo
+      this.initialContactInfo = { ...info };
       this.contactForm.patchValue({
         name: info.name || '',
         bio: info.bio || '',
