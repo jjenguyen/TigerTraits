@@ -21,7 +21,7 @@ export class ContactComponent implements OnInit {
     imageUrl: [''],
     instagram: [''],
     facebook: [''],
-    linkedIn: [''],
+    linkedin: [''],
     tigerTrait: [{value:'', disabled: true}]
   });
 
@@ -35,13 +35,14 @@ export class ContactComponent implements OnInit {
         imageUrl: this.user.imageUrl || '',
         instagram: this.user.instagram || '',
         facebook: this.user.facebook || '',
-        linkedIn: this.user.linkedin || ''
+        linkedin: this.user.linkedin || ''
       });
     }
     //default empty values
     else{
       // Initialize the form with default values
       this.contactForm.patchValue({
+        //Truman's Paw is default value until we can link MBTI quiz result
         tigerTrait: 'Truman’s Paw'
       });
     }
@@ -54,6 +55,7 @@ export class ContactComponent implements OnInit {
       console.error('User or user ID is undefined.');
       return;
     }
+    //NEED TO ADD a loader until html is fully rendered
     this.contactService.getContactCard(this.user.id).subscribe(info =>{
       console.log("Loader contact card: ", info)
       this.contactForm.patchValue({
@@ -62,7 +64,7 @@ export class ContactComponent implements OnInit {
         imageUrl: info.imageUrl || '',
         instagram: info.instagram || '',
         facebook: info.facebook || '',
-        linkedIn: info.linkedIn || '',
+        linkedin: info.linkedin || '',
         tigerTrait: info.tigerTrait || 'Truman’s Paw'
       });
     },
@@ -88,7 +90,7 @@ export class ContactComponent implements OnInit {
           imageUrl: data.imageUrl || '',
           instagram: data.instagram || '',
           facebook: data.facebook || '',
-          linkedIn: data.linkedin || '',
+          linkedin: data.linkedin || '',
           tigerTrait: data.tigerTrait || 'Truman’s Paw'
         };
         this.contactForm.patchValue(this.initialContactInfo);

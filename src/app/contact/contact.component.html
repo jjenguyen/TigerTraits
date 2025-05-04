@@ -12,7 +12,7 @@
 <div class="profile-container" *ngIf="!isEditing; else editForm">
     <div class="profile-card">
         <h1>Hi my name is</h1>
-        <h2 id="profile-name">{{ contactForm.get('name')?.value || 'Your Name' }}</h2>
+        <h2 id="profile-name"><u>{{ contactForm.get('name')?.value || 'Your Name' }}</u></h2>
         <img [src]="contactForm.get('imageUrl')?.value || '/assets/soba.JPG'" alt="Profile Photo" class="profile-pic">
         <h3>About Me</h3>
         <p class="bio">{{ contactForm.get('bio')?.value || 'Your bio goes here.' }}</p>
@@ -24,7 +24,7 @@
                 <!-- <a href="#" target="_blank"><img src="icons/instagram.png" alt="Instagram"></a> -->
                 <a [href]="contactForm.get('facebook')?.value" class="fa fa-facebook"></a>
                 <!-- <a href="#" target="_blank"><img src="icons/facebook.png" alt="Facebook"></a> -->
-                <a [href]="contactForm.get('linkedIn')?.value" class="fa fa-linkedin"></a>
+                <a [href]="contactForm.get('linkedin')?.value" class="fa fa-linkedin"></a>
                 <!-- <a href="#" target="_blank"><img src="icons/linkedin.png" alt="LinkedIn"></a> -->
             </div>
 
@@ -48,7 +48,7 @@
     <br>
     <input formControlName="instagram" placeholder="Instagram URL" />
     <input formControlName="facebook" placeholder="Facebook URL" />
-    <input formControlName="linkedIn" placeholder="LinkedIn URL" />
+    <input formControlName="linkedin" placeholder="Linkedin URL" />
 
     <!--<div class="readonly-field">
       <label>TigerTrait:</label>

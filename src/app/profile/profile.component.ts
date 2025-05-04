@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.userId) {
+      console.log('[DEBUG] Fetching profile data for user ID:', this.userId);
       // http://localhost:3000/profiles/${this.userId}
       this.http.get(`/profiles/${this.userId}`).subscribe({
         next: (data) => this.profileData = data,
