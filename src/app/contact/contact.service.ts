@@ -32,4 +32,8 @@ export class ContactService {
     //return this.http.put('https://tigertraits.com/update-contact-card',contactData);
 
   }
+
+  uploadImage(image: FormData): Observable<any> {
+    return this.http.post('/upload-image', image);
+  }
 }

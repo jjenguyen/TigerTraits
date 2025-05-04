@@ -44,7 +44,10 @@
     <textarea formControlName="bio" placeholder="Bio"></textarea>
     <br>
     <!--edit so that user can select photo with a preview?-->
-    <input formControlName="imageUrl" placeholder="Profile Image URL" />
+    <input type="file" (change)="onImagePicked($event)" placeholder="Profile Image URL" />
+    <div *ngIf="imagePreview" [alt]="contactForm.value.title" style="max-width: 300px">
+      <img [src]="imagePreview" alt="Preview" style="max-width: 100%; max-height: 100%;" />
+    </div>
     <br>
     <input formControlName="instagram" placeholder="Instagram URL" />
     <input formControlName="facebook" placeholder="Facebook URL" />

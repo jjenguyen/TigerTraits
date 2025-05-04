@@ -1,8 +1,21 @@
 // importing the compatibiltiy map to use for returning for the info card
 const compatibilityMap = require('./compatibility-map');
 
+const multer = require('multer');
 // configuring express to serve the angular build
 const path = require('path');
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    //directory for image storage
+    cb(null, 'uploads/');
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + '-' + file.originalname); // Unique filename
+  }
+});
+
+const upload = multer({ storage });
 
 require('dotenv').config();
 const express = require('express');
@@ -360,6 +373,24 @@ app.get('/contact-card/:id', async (req, res) => {
   }
 });
 
+//9. upload image to server
+app.post('/upload-image', upload.single('image'), (req, res) => {
+  try{
+    console.log('Request body:', req.body);
+    //change this for production
+    const fileUrl = `http://localhost:3000/uploads/${req.file.filename}`;
+    console.log('File uploaded successfully:', req.file);
+    res.status(200).json({ imageUrl: fileUrl });
+  } catch (err) {
+    console.error('Error uploading file:', err);
+    res.status(500).json({ message: 'Error uploading file' });
+
+  }
+
+});
+
+//make image folder publicly accessible
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // serve static files from the angular app (i.e. the "dist" folder created from the production build command)
 app.use(express.static(path.join(__dirname, 'dist/tigertraits-deployed/browser')));

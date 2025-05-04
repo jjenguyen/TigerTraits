@@ -12,13 +12,14 @@ export class ContactComponent implements OnInit {
   isEditing = false;
   contactCard: any;
   user: any;
-
+  imagePreview: string | null;
 
 
   contactForm = this.fb.group({
     name: ['', Validators.required],
     bio: ['', Validators.required],
-    imageUrl: [''],
+    //add asyncValidators: [mimeType]
+    imageUrl: [null as string | File | null, {validators: [Validators.required]}],
     instagram: [''],
     facebook: [''],
     linkedin: [''],
@@ -63,12 +64,15 @@ export class ContactComponent implements OnInit {
       this.contactForm.patchValue({
         name: info.name || '',
         bio: info.bio || '',
-        imageUrl: info.imageUrl || '',
+        imageUrl: info.imageUrl ? `http://localhost:3000${info.imageUrl}` : '',
         instagram: info.instagram || '',
         facebook: info.facebook || '',
         linkedin: info.linkedin || '',
         tigerTrait: info.tigerTrait || 'Truman’s Paw'
       });
+      // Set the imagePreview to the current imageUrl
+      this.imagePreview = info.imageUrl ? `http://localhost:3000${info.imageUrl}` : null;
+      console.log('[DEBUG] imageUrl after loading contact card:', this.contactForm.get('imageUrl')?.value);
     },
     (err) => {
       console.error('Error loading contact info:', err);
@@ -77,47 +81,41 @@ export class ContactComponent implements OnInit {
 
 }
 
+onImagePicked(event: Event) {
+  const fileInput = event.target as HTMLInputElement;
+  const file = fileInput.files?.[0];
+  if (file) {
 
-/*
-  loadUserContactInfo(){
-    const userId = this.authService.getUserId(); //
-    if (!userId) return;
+    const formData = new FormData();
+    formData.append('image', file);
 
-    this.contactService.getContactCard(userId).subscribe({
-      next: (data) => {
-        console.log('[DEBUG] profile data from DB:', data);
-        this.initialContactInfo = {
-          name: data.name || '',
-          bio: data.bio || '',
-          imageUrl: data.imageUrl || '',
-          instagram: data.instagram || '',
-          facebook: data.facebook || '',
-          linkedin: data.linkedin || '',
-          tigerTrait: data.tigerTrait || 'Truman’s Paw'
-        };
-        this.contactForm.patchValue(this.initialContactInfo);
+    this.contactService.uploadImage(formData).subscribe({
+      next: (response: any) => {
+        console.log('File upload response:', response);
+        if (response.imageUrl) {
+          this.contactForm.patchValue({ imageUrl: response.imageUrl }); // Update the form with the uploaded image URL
+          //update preview
+          this.imagePreview = response.imageUrl;
+          console.log('Image preview URL:', response.imageUrl);
+        }else{
+          console.error('Error: imageUrl is missing in the response.');
+        }
+        fileInput.value = '';
       },
       error: (err) => {
-        console.error('Failed to load contact info:', err);
+        console.error('Error uploading file:', err);
+        fileInput.value = '';
       }
     });
-*/
-    /*const user = this.authService.getCurrentUser();
+/*
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result as string; // Show a preview of the image
+    };
+    reader.readAsDataURL(file);*/
+  }
+}
 
-    //if user is logged in, get contact info from the db
-    if(user){
-      this.initialContactInfo = {
-        name: user.name || '',
-        bio: user.bio || '',
-        imageUrl: user.imageUrl || '',
-        instagram: user.instagram || '',
-        facebook: user.facebook || '',
-        linkedin: user.linkedin || '',
-        tigerTrait: user.tigerTrait || 'Truman’s Paw'
-      }
-      this.contactForm.patchValue(this.initialContactInfo);
-    }*/
-  //}
 
   enableEditing() {
     this.isEditing = true;
@@ -125,7 +123,8 @@ export class ContactComponent implements OnInit {
 
   cancelEditing() {
     this.isEditing = false;
-    this.contactForm.reset(this.initialContactInfo);
+    // Reset the form to the original values
+
   }
 
   saveContactInfo(){
@@ -133,10 +132,17 @@ export class ContactComponent implements OnInit {
     if (this.contactForm.valid) {
       const updatedContactInfo = this.contactForm.getRawValue();
 
+      // Preserve the existing imageUrl if no new photo is uploaded
+    if (!updatedContactInfo.imageUrl || updatedContactInfo.imageUrl === '') {
+      updatedContactInfo.imageUrl = this.initialContactInfo.imageUrl;
+    }
+
       this.contactService.updateContactCard(updatedContactInfo).subscribe({
         next: (response) => {
           console.log('Contact info updated successfully:', response);
           this.isEditing = false;
+          //update initialContactInfo
+          this.initialContactInfo = { ...updatedContactInfo };
         },
         error: (error) => {
 
