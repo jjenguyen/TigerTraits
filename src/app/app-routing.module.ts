@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ContactComponent } from './contact/contact.component';
 // add more components here as we need them
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'quiz', component: QuizComponent},
   // { path: 'profile', component: ProfileComponent},
   { path: 'profile/:id', component: ProfileComponent },
+  { path: 'contact-card/:id', component: ContactComponent}
   // add more routes here as we need them
 ];
 

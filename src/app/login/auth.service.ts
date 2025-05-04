@@ -66,4 +66,16 @@ export class AuthService {
     localStorage.removeItem('currentUser');
     this.setLoginRedirectApp(null); // reset any redirect
   }
+
+
+  //adding getUderId and getToken for updating user contact cards
+  getUserId(): string | null {
+    const user = this.getCurrentUser();
+    return user?.userId || null;
+  }
+
+  getToken(): string | null {
+    const user = this.getCurrentUser();
+    return user?.token || null;
+  }
 }

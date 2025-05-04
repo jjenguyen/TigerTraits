@@ -11,8 +11,10 @@
 <!-- <app-header></app-header> -->
 <div class="profile-container" *ngIf="!isEditing; else editForm">
     <div class="profile-card">
+        <h1>Hi my name is</h1>
         <h2 id="profile-name">{{ contactForm.get('name')?.value || 'Your Name' }}</h2>
         <img [src]="contactForm.get('imageUrl')?.value || '/assets/soba.JPG'" alt="Profile Photo" class="profile-pic">
+        <h3>About Me</h3>
         <p class="bio">{{ contactForm.get('bio')?.value || 'Your bio goes here.' }}</p>
 
         <div class="profile-details">

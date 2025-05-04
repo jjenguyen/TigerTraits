@@ -287,7 +287,7 @@ app.post('/compatibilities', async (req, res) => {
 app.get('/profile/:id', async (req, res) => {
   const { id } = req.params;
   const db = await connectToMongoDB();
-  const usersCollection = db.collection('profiles');
+  const usersCollection = db.collection('contactCards');
 
   try {
     const user = await usersCollection.findOne({ _id: new ObjectId(id) });
@@ -317,9 +317,9 @@ app.put('/update-contact-card', authenticateJWT, async (req, res) => {
 
     const db = await connectToMongoDB();
     console.log('Connected to MongoDB for contact card update.');
-    const profilesCollection = db.collection('profiles');
+    const contactCardsCollection = db.collection('contactCards');
 
-    const updatedCard = await profilesCollection.updateOne(
+    const updatedCard = await contactCardsCollection.updateOne(
       { _id: new ObjectId(userId) },
         { $set: {
           name,
@@ -339,6 +339,26 @@ app.put('/update-contact-card', authenticateJWT, async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 })
+
+//8. get user contact card info from db
+app.get('/contact-card/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    // Validate and convert the id to ObjectId
+    if (!ObjectId.isValid(id)) {
+      return res.status(400).json({ message: 'Invalid ID format' });
+    }
+    const db = await connectToMongoDB();
+    const usersCollection = db.collection('contactCards');
+    const user = await usersCollection.findOne({ _id: new ObjectId(id) });
+    if (!user) return res.status(404).json({ message: 'Card not found' });
+    res.status(200).json(user);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 
 
 // serve static files from the angular app (i.e. the "dist" folder created from the production build command)

@@ -17,6 +17,10 @@
     "changeOrigin": true,
     "logLevel": "debug"
   },
+  "/contact-card": {
+    "target": "http://localhost:3000",
+    "secure": false
+  },
   "/update-contact-card": {
     "target": "http://localhost:3000",
     "secure": false,

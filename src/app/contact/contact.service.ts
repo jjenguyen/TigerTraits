@@ -11,6 +11,13 @@ export class ContactService {
   constructor(private http: HttpClient, private authService: AuthService) {
   }
 
+  getContactCard(userId: string): Observable<any> {
+
+      return this.http.get(`/contact-card/${userId}`);
+
+    //return this.http.get(`https://tigertraits.com/contact-card/${userId}`);
+  }
+
   updateContactCard(contactData: any): Observable<any> {
     const user = this.authService.getCurrentUser();
     const token = user?.token;
@@ -18,6 +25,7 @@ export class ContactService {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
         });
+        console.log('Updated contact info being sent:', contactData);
         return this.http.put('/update-contact-card', contactData,
           { headers});
 
