@@ -71,3 +71,24 @@
     width: 120px;
     height: 120px;
 }
+
+/* start quiz button */
+.quiz-start-button {
+    background-color: #FFFFFF;
+    border: 3px outset #000000;
+    color: #000000;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 16px;
+    font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+    box-shadow: 3px 3px #888;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    margin-top: 10px;
+  }
+  
+.quiz-start-button:hover {
+    background-color: #f3f3f3;
+    transform: scale(1.05);
+}
