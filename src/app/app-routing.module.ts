@@ -28,7 +28,6 @@ const routes: Routes = [
   { path: 'results', component: ResultsComponent},
   { path: 'results', component: ResultsComponent},
    // add more routes here as we need them
-  { path: 'delete-account', component: DeleteAccountComponent },
 
 ];
 
