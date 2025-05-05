@@ -52,3 +52,10 @@
     white-space: normal;
     word-wrap: break-word;
 }
+.delete-section {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}

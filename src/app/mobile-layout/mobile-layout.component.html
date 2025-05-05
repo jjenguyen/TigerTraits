@@ -40,7 +40,6 @@
             </button>
             
             <button (click)="switchScreen('feedback')">Feedback</button>
-            <button *ngIf="isLoggedIn" (click)="switchScreen('deleteAccount')">Delete Account</button>
             <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
         </div>
     </div>

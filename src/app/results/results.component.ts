@@ -17,6 +17,8 @@ export class ResultsComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService
   ) {}
 
+  confirmingDelete = false;
+
   ngOnInit() {
     //get the current user object from authservice and access pType
     const currentUser = this.authService.getCurrentUser();
@@ -29,4 +31,30 @@ export class ResultsComponent implements OnInit {
       this.card = infoCards[userType];
     } 
   }
+
+  showConfirmDelete() {
+    this.confirmingDelete = true;
+  }
+
+  cancelDelete() {
+    this.confirmingDelete = false;
+  }
+
+  confirmAccountDelete() {
+    this.authService.deleteAccount().subscribe({
+      next: () => {
+        localStorage.removeItem('token');
+        this.authService.logout();
+        setTimeout(() => {
+          this.router.navigate(['/welcome']).then(() => {
+            location.reload(); 
+          });
+        }, 1000);
+      },
+      error: (err) => {
+        console.error('Account deletion failed:', err);
+      }
+    });
+  }
+
 }

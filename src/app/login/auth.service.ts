@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -66,9 +67,13 @@ export class AuthService {
     localStorage.removeItem('currentUser');
     this.setLoginRedirectApp(null); // reset any redirect
   }
-  deleteAccount() {
+  deleteAccount(): Observable<any> {
     const user = this.getCurrentUser();
     const token = user?.token;
+  
+    if (!token) {
+      return throwError(() => new Error('No token found'));
+    }
   
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`

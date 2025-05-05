@@ -331,19 +331,11 @@ app.get('/api/user/:id/personality', async (req, res) => {
 
 app.delete('/api/delete-account', authenticateJWT, async (req, res) => {
   const userId = req.user.userID;
-  console.log("Deleting account for:", userId);
-
-  try {
-    const db = await connectToMongoDB();
-    const usersCollection = db.collection('users');
-    await usersCollection.deleteOne({ _id: new ObjectId(userId) });
-
-    res.status(200).json({ message: 'Account deleted successfully.' });
-  } catch (error) {
-    console.error('Error deleting account:', error);
-    res.status(500).json({ message: 'Internal server error' });
-  }
+  const db = await connectToMongoDB();
+  await db.collection('users').deleteOne({ _id: new ObjectId(userId) });
+  res.status(200).json({ message: 'Account deleted successfully.' });
 });
+
 
 
 

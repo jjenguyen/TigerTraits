@@ -14,6 +14,10 @@
       [cardColor]="card.cardColor"
       [tagColor]="FFD17D"
     ></app-info-card>
+    <!-- Add this at the bottom of results.component.html -->
+    <!-- If not confirming, show delete button -->
+    
+
 </ng-container>
 
 <!--logging in defaults users to quiz, so users would have to go out of their way to try to see results before theyve taken it-->
@@ -21,4 +25,14 @@
     <p>Hmmm... looks like you haven't taken our quiz yet.</p>
     <p>Try taking the quiz first, then check back here to see your results.</p>
 </ng-template>
+<div *ngIf="!confirmingDelete">
+  <button (click)="showConfirmDelete()">Delete Account</button>
+</div>
+
+<!-- If confirming, show confirmation buttons -->
+<div *ngIf="confirmingDelete" >
+  <p>Are you sure you want to delete your account?</p>
+  <button (click)="confirmAccountDelete()">Yes, Delete</button>
+  <button (click)="cancelDelete()">Cancel</button>
+</div>
 
