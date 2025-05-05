@@ -1,8 +1,23 @@
 // importing the compatibiltiy map to use for returning for the info card
 const compatibilityMap = require('./compatibility-map');
 
+// use multer for image upload
+const multer = require('multer');
+
 // configuring express to serve the angular build
 const path = require('path');
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    //directory for image storage
+    cb(null, 'uploads/');
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + '-' + file.originalname); // Unique filename
+  }
+});
+
+const upload = multer({ storage });
 
 require('dotenv').config();
 const express = require('express');
@@ -84,14 +99,14 @@ const authenticateJWT = (req, res, next) => {
 // 2. user login auth
 app.post('/login', async (req, res) => {
     try {
-        
+
         console.log('Login request received:', req.body);
-        
+
         const db = await connectToMongoDB();
         const usersCollection = db.collection('users');
         const email = req.body.email.toLowerCase();
         const user = await usersCollection.findOne({ email });
-        
+
         if (!user) {
             console.log('User not found');
             return res.status(401).json({ message: 'User not found. Please try again or register an account.' });
@@ -129,7 +144,7 @@ app.post('/login', async (req, res) => {
 
         //include personalityType as a response parameter on login for results page
         const quizResults = db.collection('quizResults');
-        
+
         //append quiz results here to return results upon login
         const userQuizData = await quizResults.findOne({ userId: user._id.toString()});
         //return the type if found, null if no match
@@ -184,7 +199,7 @@ app.post('/register',[
           email,
           password: hashedPassword
         });
-        
+
         console.log('User registered successfully!');
         console.log('case sensetivity test email:', email);
 
@@ -308,7 +323,7 @@ app.get('/profile/:id', async (req, res) => {
   }
 });
 
-// Get personality type for a given user ID (contact.component.ts)
+// 7. Get personality type for a given user ID (contact.component.ts)
 app.get('/api/user/:id/personality', async (req, res) => {
   const { id } = req.params;
 
@@ -329,6 +344,7 @@ app.get('/api/user/:id/personality', async (req, res) => {
   }
 });
 
+// 8. Delete user account from db
 app.delete('/api/delete-account', authenticateJWT, async (req, res) => {
   const userId = req.user.userID;
   const db = await connectToMongoDB();
@@ -336,6 +352,81 @@ app.delete('/api/delete-account', authenticateJWT, async (req, res) => {
   res.status(200).json({ message: 'Account deleted successfully.' });
 });
 
+// 9. update user contact card info in db
+app.put('/update-contact-card', authenticateJWT, async (req, res) => {
+  //debugging
+  console.log('PUT /update-contact-card hit');
+  console.log('Request body:', req.body);
+  console.log('JWT user:', req.user);
+  console.log('PUT /update-contact-card hit with data:', req.body);
+  try {
+    const userId = req.user.userID;
+    const { name, bio, imageUrl, instagram, facebook, linkedin } = req.body;
+
+
+    const db = await connectToMongoDB();
+    console.log('Connected to MongoDB for contact card update.');
+    const contactCardsCollection = db.collection('contactCards');
+
+    const updatedCard = await contactCardsCollection.updateOne(
+      { _id: new ObjectId(userId) },
+        { $set: {
+          name,
+          bio,
+          imageUrl,
+          instagram,
+          facebook,
+          linkedin
+        }
+    },
+  {upsert: true}
+    );
+
+    res.json({ message: 'Contact card updated successfully', updatedCard });
+  }catch (error){
+    console.error('Error updating contact card:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+})
+
+// 10. get user contact card info from db
+app.get('/contact-card/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    // Validate and convert the id to ObjectId
+    if (!ObjectId.isValid(id)) {
+      return res.status(400).json({ message: 'Invalid ID format' });
+    }
+    const db = await connectToMongoDB();
+    const usersCollection = db.collection('contactCards');
+    const user = await usersCollection.findOne({ _id: new ObjectId(id) });
+    if (!user) return res.status(404).json({ message: 'Card not found' });
+    res.status(200).json(user);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// 11. upload image to server
+app.post('/upload-image', upload.single('image'), (req, res) => {
+  try{
+    console.log('Request body:', req.body);
+    //change this for production
+    const fileUrl = `http://localhost:3000/uploads/${req.file.filename}`;
+    console.log('File uploaded successfully:', req.file);
+    res.status(200).json({ imageUrl: fileUrl });
+  } catch (err) {
+    console.error('Error uploading file:', err);
+    res.status(500).json({ message: 'Error uploading file' });
+
+  }
+
+});
+
+//make image folder publicly accessible
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 

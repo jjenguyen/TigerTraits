@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../login/auth.service';
 import { MobileLayoutComponent } from '../mobile-layout/mobile-layout.component';
-
+import { ContactService } from './contact.service';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -13,29 +14,98 @@ export class ContactComponent implements OnInit {
   personality: string = '';
   hasPersonality: boolean = true;
 
+  initialContactInfo: any = {};
+  isEditing = false;
+  contactCard: any;
+  user: any;
+  imagePreview: string | null;
+
+  contactForm = this.fb.group({
+    name: ['', Validators.required],
+    bio: ['', Validators.required],
+    //add asyncValidators: [mimeType]
+    imageUrl: [null as string | File | null, {validators: [Validators.required]}],
+    instagram: [''],
+    facebook: [''],
+    linkedin: [''],
+    tigerTrait: [{value:'', disabled: true}]
+  });
+
   constructor(
     private http: HttpClient,
     private authService: AuthService,
-    private mobileLayout: MobileLayoutComponent  // inject mobile layout
-  ) {}
+    private mobileLayout: MobileLayoutComponent,  // inject mobile layout
+    private fb: FormBuilder,
+    private contactService: ContactService
+  ) {
+    this.user = this.authService.getCurrentUser();
+    //if contact Card exists, get contact info from the db
+    if(this.user){
+      this.contactForm.patchValue({
+        name: this.user.name || '',
+        bio: this.user.bio || '',
+        imageUrl: this.user.imageUrl || '',
+        instagram: this.user.instagram || '',
+        facebook: this.user.facebook || '',
+        linkedin: this.user.linkedin || ''
+      });
+    }
+    //default empty values
+    else{
+      // Initialize the form with default values
+      this.contactForm.patchValue({
+        //Truman's Paw is default value until we can link MBTI quiz result
+        tigerTrait: 'Truman’s Paw'
+      });
+    }
+
+  }
 
   ngOnInit(): void {
     //get current user form AuthService
-    let currentUser = this.authService.getCurrentUser();
-    
+    //let currentUser = this.authService.getCurrentUser();
+
+    console.log('[DEBUG] ngOnInit triggered');
+    if (!this.user || !this.user.id) {
+      console.error('User or user ID is undefined.');
+      return;
+    }
+    //NEED TO ADD a loader until html is fully rendered
+    this.contactService.getContactCard(this.user.id).subscribe(info =>{
+      console.log("Loader contact card: ", info)
+      //save info to initialContactInfo
+      this.initialContactInfo = { ...info };
+      this.contactForm.patchValue({
+        name: info.name || '',
+        bio: info.bio || '',
+        imageUrl: info.imageUrl || '',
+        instagram: info.instagram || '',
+        facebook: info.facebook || '',
+        linkedin: info.linkedin || '',
+        tigerTrait: info.tigerTrait || 'Truman’s Paw'
+      });
+      // Set the imagePreview to the current imageUrl
+      this.imagePreview = info.imageUrl || '';
+      console.log('[DEBUG] imageUrl after loading contact card:', this.contactForm.get('imageUrl')?.value);
+    },
+    (err) => {
+      console.error('Error loading contact info:', err);
+      console.error("[DEBUG] user ID: ", this.user.id);
+    });
+
     // If AuthService hasn't loaded the user yet, fall back to localStorage
-    if (!currentUser) {
+    if (!this.user) {
       const stored = localStorage.getItem('currentUser');
       if (stored) {
-        currentUser = JSON.parse(stored);
-        console.log('[Fallback] Loaded user from localStorage:', currentUser);
-        this.authService.setCurrentUser(currentUser); // sync back with Authservice
+        this.user = JSON.parse(stored);
+        console.log('[Fallback] Loaded user from localStorage:', this.user);
+        this.authService.setCurrentUser(this.user); // sync back with Authservice
       }
     }
-  
+
     // get user id to use in API call
-    const userId = currentUser?.id;
-  
+    const userId = this.user?.id;
+
     // Fetch personality type of user
     if (userId) {
       this.http.get<{ personality: string }>(`http://localhost:3000/api/user/${userId}/personality`)
@@ -61,6 +131,74 @@ export class ContactComponent implements OnInit {
       this.hasPersonality = false;
     }
   }
+  onImagePicked(event: Event) {
+    const fileInput = event.target as HTMLInputElement;
+    const file = fileInput.files?.[0];
+    if (file) {
+
+      const formData = new FormData();
+      formData.append('image', file);
+
+      this.contactService.uploadImage(formData).subscribe({
+        next: (response: any) => {
+          console.log('File upload response:', response);
+          if (response.imageUrl) {
+            this.contactForm.patchValue({ imageUrl: response.imageUrl }); // Update the form with the uploaded image URL
+            //update preview
+            this.imagePreview = response.imageUrl;
+            console.log('Image preview URL:', response.imageUrl);
+          }else{
+            console.error('Error: imageUrl is missing in the response.');
+          }
+          fileInput.value = '';
+        },
+        error: (err) => {
+          console.error('Error uploading file:', err);
+          fileInput.value = '';
+        }
+      });
+    }
+  }
+
+    enableEditing() {
+      this.isEditing = true;
+    }
+
+    cancelEditing() {
+      this.isEditing = false;
+      // Reset the form to the original values
+
+    }
+
+    saveContactInfo(){
+      console.log('Save button clicked!');
+      if (this.contactForm.valid) {
+        const updatedContactInfo = this.contactForm.getRawValue();
+
+        // Preserve the existing imageUrl if no new photo is uploaded
+      if (!updatedContactInfo.imageUrl || updatedContactInfo.imageUrl === '') {
+        updatedContactInfo.imageUrl = this.initialContactInfo.imageUrl;
+      }
+
+        this.contactService.updateContactCard(updatedContactInfo).subscribe({
+          next: (response) => {
+            console.log('Contact info updated successfully:', response);
+            this.isEditing = false;
+            //update initialContactInfo
+            this.initialContactInfo = { ...updatedContactInfo };
+          },
+          error: (error) => {
+
+            console.error('Error updating contact info:', error);
+          }
+
+        });
+      }
+      else {
+        console.warn('Form is invalid! Current form values:', this.contactForm.value);
+        console.warn('Form errors:', this.contactForm.errors);
+      }
+    }
 
   goToQuiz(): void {
     console.log('Quiz button clicked');

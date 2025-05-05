@@ -1,44 +1,61 @@
 <!-- <p>contact works!</p> -->
 
 <!-- leaving a note for when we send it out for user testing -->
-<h1>we are currently working on this page :P</h1>
-<h2>this is the new contact card component</h2>
+<!-- <h1>we are currently working on this page :P</h1> -->
+<!-- <h2>this is the new contact card component</h2> -->
 
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <!-- <app-header></app-header> -->
-<div class="profile-container">
+<div class="profile-container" *ngIf="!isEditing; else editForm">
   <div class="profile-card">
-    <h2 id="profile-name">Soba</h2>
-    <img src="/assets/soba.JPG" alt="Profile Photo" class="profile-pic">
-    <p class="bio">
-      Hi, I'm Soba! I'm a 10 year old male cat. I like to eat, sleep, and look at things outside the window.
-      I'm deathly scared of plastic grocery bags, so please never shake those around me.
-    </p>
+      <h1>Hi my name is</h1>
+      <h2 id="profile-name"><u>{{ contactForm.get('name')?.value || 'Your Name' }}</u></h2>
+      <img [src]="contactForm.get('imageUrl')?.value || '/assets/soba.JPG'" alt="Profile Photo" class="profile-pic">
+      <h3>About Me</h3>
+      <p class="bio">{{ contactForm.get('bio')?.value || 'Your bio goes here.' }}</p>
 
-    <div class="profile-details">
-      <div class="social-media">
-        <h3>Connect with me!</h3>
-        <a href="#" class="fa fa-instagram"></a>
-        <a href="#" class="fa fa-facebook"></a>
-        <a href="#" class="fa fa-linkedin"></a>
+      <div class="profile-details">
+          <div class="social-media">
+              <h3>Connect with me!</h3>
+              <a [href]="contactForm.get('instagram')?.value" class="fa fa-instagram"></a>
+              <!-- <a href="#" target="_blank"><img src="icons/instagram.png" alt="Instagram"></a> -->
+              <a [href]="contactForm.get('facebook')?.value" class="fa fa-facebook"></a>
+              <!-- <a href="#" target="_blank"><img src="icons/facebook.png" alt="Facebook"></a> -->
+              <a [href]="contactForm.get('linkedin')?.value" class="fa fa-linkedin"></a>
+              <!-- <a href="#" target="_blank"><img src="icons/linkedin.png" alt="LinkedIn"></a> -->
+          </div>
+
+          <div class="tiger-trait">
+              <h3>My TigerTrait</h3>
+              <img id="tiger-trait-img" [src]="'../assets/personas/' + contactForm.get('tigerTrait')?.value + '.png'" alt="TigerTrait Persona">
+          </div>
       </div>
-
-      <div class="tiger-trait">
-        <h3>My TigerTrait</h3>
-
-        <!-- If personality is available, show image -->
-        <div *ngIf="hasPersonality; else quizPrompt">
-          <img id="tiger-trait-img" [src]="imagePath" [alt]="personality">
-        </div>
-
-        <!-- Fallback if personality is missing -->
-        <ng-template #quizPrompt>
-          <button class="quiz-start-button" (click)="goToQuiz()">Take the Quiz!</button>
-        </ng-template>
-      </div>
-    </div>
+      <button class="edit-button" (click)="enableEditing()">Edit My Info</button>
   </div>
 </div>
+
+<ng-template #editForm>
+<form [formGroup]="contactForm" (ngSubmit)="saveContactInfo()" class="edit-form">
+  <input formControlName="name" placeholder="Name" />
+  <br>
+  <textarea formControlName="bio" placeholder="Bio"></textarea>
+  <br>
+  <!--edit so that user can select photo with a preview?-->
+  <input type="file" (change)="onImagePicked($event)" placeholder="Profile Image URL" />
+  <div *ngIf="imagePreview" [alt]="contactForm.value.title" style="max-width: 300px">
+    <img [src]="imagePreview" alt="Preview" style="max-width: 100%; max-height: 100%;" />
+  </div>
+  <br>
+  <input formControlName="instagram" placeholder="Instagram URL" />
+  <input formControlName="facebook" placeholder="Facebook URL" />
+  <input formControlName="linkedin" placeholder="Linkedin URL" />
+
+  <div class="edit-form-buttons">
+    <button type="submit" class="save-btn">Save Changes</button>
+    <button type="button" class="cancel-btn" (click)="cancelEditing()">Cancel</button>
+  </div>
+</form>
+</ng-template>
