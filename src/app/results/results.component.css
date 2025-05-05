@@ -5,6 +5,7 @@
 .results-screen {
     text-align: center;
     margin-top: 10px;
+    margin-top: 10px;
 }
 
 /* for all gifs */
@@ -52,6 +53,7 @@
     white-space: normal;
     word-wrap: break-word;
 }
+
 .delete-section {
     position: fixed;
     bottom: 20px;

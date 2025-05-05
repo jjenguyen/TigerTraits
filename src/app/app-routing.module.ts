@@ -6,6 +6,8 @@ import { QuizComponent } from './quiz/quiz.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 
+
+
 import { ContactComponent } from './contact/contact.component';
 import { ResultsComponent } from './results/results.component';
 
@@ -20,10 +22,14 @@ const routes: Routes = [
   { path: 'quiz', component: QuizComponent},
   // { path: 'profile', component: ProfileComponent},
 
+
   { path: 'contact', component: ContactComponent },
  
   { path: 'results', component: ResultsComponent},
+  { path: 'results', component: ResultsComponent},
    // add more routes here as we need them
+  { path: 'delete-account', component: DeleteAccountComponent },
+
 ];
 
 @NgModule({

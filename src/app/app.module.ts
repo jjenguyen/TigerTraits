@@ -35,7 +35,8 @@ import { ContactComponent } from './contact/contact.component';
     ResultsComponent,
     MobileLayoutComponent,
     LayoutDeciderComponent,
-    ContactComponent
+    ContactComponent,
+    DeleteAccountComponent
   ],
   imports: [
     BrowserModule,

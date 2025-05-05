@@ -46,6 +46,7 @@ export class AuthService {
       Authorization: `Bearer ${token}`
     });
     return this.http.post('http://localhost:3000/quiz-results', quizResult, { headers });
+    return this.http.post('http://localhost:3000/quiz-results', quizResult, { headers });
   }
 
   // set app to open after login (e.g. "quiz")
