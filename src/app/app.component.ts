@@ -37,6 +37,12 @@ export class AppComponent implements OnInit, AfterViewInit {
       }
     });
 
+    // listens for the custom event to open an app - implemented for "take the quiz" function in contact card under my tigertrait section
+    window.addEventListener('openApp', (event: any) => {
+      const appName = event.detail;
+      this.openApp(appName);
+    });
+
     // default to welcome
     if (!this.isLoggedIn) {
       this.openApp('welcome');

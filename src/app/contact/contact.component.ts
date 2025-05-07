@@ -201,9 +201,10 @@ export class ContactComponent implements OnInit {
 
   goToQuiz(): void {
     console.log('Quiz button clicked');
-    // this.mobileLayout.switchScreen('quiz'); // trigger screen change
+    // dispatch a custom event for both desktop and mobile layouts to nav user to take the quiz
+    window.dispatchEvent(new CustomEvent('openApp', { detail: 'quiz' }));
   }
-
+  
   // bio character counter
   charCount: number = 0;
   updateCharacterCount(event: Event): void {

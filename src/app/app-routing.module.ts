@@ -18,13 +18,8 @@ const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  // { path: 'home', component: HomeComponent },
   { path: 'quiz', component: QuizComponent},
-  // { path: 'profile', component: ProfileComponent},
-
-
   { path: 'contact', component: ContactComponent },
- 
   { path: 'results', component: ResultsComponent},
   { path: 'results', component: ResultsComponent},
    // add more routes here as we need them

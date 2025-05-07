@@ -145,7 +145,7 @@ h3 {
     transition: all 0.2s ease-in-out;
 }
 
-.edit-button:hover, .save-btn:hover, .cancel-btn:hover {
+.edit-button:hover, .save-btn:hover, .cancel-btn:hover, .quiz-start-button:hover {
   background-color: #008486;
   color: #fff;
   transform: scale(1.05);
@@ -194,7 +194,7 @@ input:focus, textarea:focus {
     gap: 15px;
 }
 
-.save-btn, .cancel-btn {
+.save-btn, .cancel-btn, .quiz-start-button {
     background-color: #99CECF;
     border: 3px outset #008486;
     color: #000;
@@ -206,6 +206,39 @@ input:focus, textarea:focus {
     box-shadow: 3px 3px #888;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+}
+
+.quiz-start-button {
+    display: inline-block;
+    margin: 5px auto;
+    max-width: 200px;
+    height: 150px;
+    background-color: #cccccc; /* Light gray to resemble a disabled image */
+    color: #666666;
+    text-align: center;
+    line-height: 120px; /* Center the text vertically */
+    font-size: 12px;
+    border: 2px solid #999999;
+    border-radius: 8px;
+    font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 3px 3px #888;
+
+    word-wrap: break-word;
+    text-align: center;
+    line-height: 1.2; /* Adjust for multi-line text */
+}
+
+.quiz-start-button:hover {
+    background-color: #b3b3b3; /* Darker gray on hover */
+    color: #333333;
+    transform: scale(1.05);
+}
+
+.quiz-start-button:active {
+    background-color: #999999; /* Even darker when clicked */
+    box-shadow: inset 2px 2px #666;
 }
 
 /* mobile */

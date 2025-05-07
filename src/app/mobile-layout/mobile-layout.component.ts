@@ -31,6 +31,13 @@ export class MobileLayoutComponent implements OnInit {
       // original code
       // this.currentScreen = justLoggedIn ? 'quiz' : 'quiz';
       // localStorage.removeItem('redirectApp');
+
+      // listen for custom events to open app - implemented for "take the quiz" function in contact card under my tigertrait section
+      window.addEventListener('openApp', (event: any) => {
+        const appName = event.detail;
+        console.log(`[MobileLayout] Switching to: ${appName}`);
+        this.switchScreen(appName);
+      });
     }
   }  
 
