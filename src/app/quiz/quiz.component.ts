@@ -36,7 +36,7 @@ export class QuizComponent {
     "Losing my voice in the crowd!": "E",
     "Shakespeare's or Booche's! Don't mess with traditions man.": "S",
     "Time to try something new! I'm tired of the usual...": "N",
-    "Quiet spot, please. I need to recharge.": "I",
+    "Find me a quiet spot, please. I need to recharge.": "I",
     "I'm gonna power through! I'm not missing a thing!": "E",
     "Don't act suprised. I've had this on my calendar for weeks!": "J",
     "I don't know how I got here, but I'm having a good time!": "P",
