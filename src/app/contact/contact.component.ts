@@ -55,7 +55,7 @@ export class ContactComponent implements OnInit {
       // Initialize the form with default values
       this.contactForm.patchValue({
         //Truman's Paw is default value until we can link MBTI quiz result
-        tigerTrait: 'Truman’s Paw'
+        tigerTrait: 'ENFP'
       });
     }
 
@@ -82,7 +82,7 @@ export class ContactComponent implements OnInit {
         instagram: info.instagram || '',
         facebook: info.facebook || '',
         linkedin: info.linkedin || '',
-        tigerTrait: info.tigerTrait || 'Truman’s Paw'
+        tigerTrait: info.tigerTrait || 'ENFP'
       });
       // Set the imagePreview to the current imageUrl
       this.imagePreview = info.imageUrl || '';
