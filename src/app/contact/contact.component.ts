@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../login/auth.service';
+// importing the mobile layout and made the desktop layout not render bc of the way it was used, so i commented the references out
 // import { MobileLayoutComponent } from '../mobile-layout/mobile-layout.component';
 import { ContactService } from './contact.service';
 @Component({
