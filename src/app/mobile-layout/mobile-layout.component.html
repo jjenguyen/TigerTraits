@@ -10,8 +10,6 @@
             <i class="fas fa-bars"></i>
         </button>
 
-          
-
         <!-- nav menu (slides open) -->
         <div class="nav-menu" *ngIf="menuOpen">
             <button *ngIf="!isLoggedIn" (click)="switchScreen('welcome')">Welcome</button>
@@ -40,7 +38,6 @@
             </button>
             
             <button (click)="switchScreen('feedback')">Feedback</button>
-            <button *ngIf="isLoggedIn" (click)="switchScreen('deleteAccount')">Delete Account</button>
             <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
         </div>
     </div>
@@ -84,8 +81,6 @@
                 <!-- <h2>Feedback</h2> -->
                 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdZZ0m5W5CYUCrCpZLhsvfvZiPT4G4JRgGFuC2XYipTSustBw/viewform?embedded=true" width="100%" height="2163" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
             </div>
-
-            <app-delete-account *ngIf="currentScreen === 'deleteAccount'"></app-delete-account>
         </div>
     </div>
 </div>

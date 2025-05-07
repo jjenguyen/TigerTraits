@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../login/auth.service';
-import { MobileLayoutComponent } from '../mobile-layout/mobile-layout.component';
+// import { MobileLayoutComponent } from '../mobile-layout/mobile-layout.component';
 import { ContactService } from './contact.service';
 @Component({
   selector: 'app-contact',
@@ -34,7 +34,7 @@ export class ContactComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private authService: AuthService,
-    private mobileLayout: MobileLayoutComponent,  // inject mobile layout
+    // private mobileLayout: MobileLayoutComponent,
     private fb: FormBuilder,
     private contactService: ContactService
   ) {
@@ -202,6 +202,6 @@ export class ContactComponent implements OnInit {
 
   goToQuiz(): void {
     console.log('Quiz button clicked');
-    this.mobileLayout.switchScreen('quiz'); // trigger screen change
+    // this.mobileLayout.switchScreen('quiz'); // trigger screen change
   }
 }

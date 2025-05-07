@@ -7,7 +7,7 @@ h3 {
 .completion-screen,
 .results-screen {
     text-align: center;
-    margin-top: 10px;
+    margin-top: -20px;
 }
 
 /* for all gifs */
@@ -54,4 +54,14 @@ h3 {
     border-radius: 10px;
     white-space: normal;
     word-wrap: break-word;
+}
+
+@media screen and (max-width: 1124px) {
+    .start-screen,
+    .quiz-screen,
+    .completion-screen,
+    .results-screen {
+        text-align: center;
+        margin-top: 10px;
+    }
 }

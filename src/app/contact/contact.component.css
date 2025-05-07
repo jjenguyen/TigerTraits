@@ -1,94 +1,279 @@
-.profile-container {
-    padding: 20px 30px; /* shorthand for top/bottom and left/right */
-    border-radius: 12px;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 550px;
-    text-align: center;
-    margin: 30px auto;  /* centers container horizontally, adds 30px top/bottom margin */
+h3 {
+    margin-bottom: 16px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #008486;
+    text-shadow: 1px 1px #FDB719;
+    letter-spacing: 1px;
 }
 
 .profile-card {
-    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: -15px;
+}
+
+.profile-section {
+    flex: 1;
+    min-width: 350px;
+}
+
+.right-sections {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    min-width: 350px;
+}
+
+.info-box1, .info-box3, .info-box4 {
+    background-color: white;
+    border: 3px dashed #008486;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.info-box1 {
+    height: 440px;
+}
+
+.info-box3 {
+    height: 155px;
+}
+
+.info-box4 {
+    height: 260px;
 }
 
 .profile-pic {
-    width: 200px;
-    height: 200px;
-    border-radius: 5%;
-    margin-bottom: 10px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    margin-top: 5px;
+    margin-bottom: 20px;
 }
 
 .bio {
-    font-size: 16px;
-    color: #555;
+    text-align: left;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
-.profile-details {
+.social-icons {
     display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
+    justify-content: center;
+    gap: 20px;
 }
 
-/* .social-media img {
-    width: 40px;
-    margin: 10px;
-} */
-
-/* style all font awesome icons */
-.fa {
-    padding: 15px;
-    font-size: 30px;
-    width: 20px;
-    text-align: center;
+/* get rid of dashed line when hovering on icons */
+.social-icons a, .social-icons a:focus, .social-icons a:active, .fa:focus, .fa:active {
+    outline: none;
+    border: none;
     text-decoration: none;
-    border-radius: 10px;
+    box-shadow: none;
+}
+.social-icons a:focus-visible, .fa:focus-visible {
+    outline: none;
+}
+.social-icons a:focus > .fa, .social-icons a:active > .fa {
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+
+/* icon styling */
+.social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 5px;
+    transition: all 0.3s ease-in-out;
+    background-color: #99CECF;
+    box-shadow: 3px 3px #888;
+}
+.social-icons a:hover {
+    background-color: #008486;
+    color: white;
+    transform: translateY(-3px); /* gives a lifted effect */
+    box-shadow: 5px 5px #555;
+}
+.fa {
+    font-size: 28px;
+    color: #008486;
+    transition: color 0.3s ease;
 }
 .fa:hover {
-    opacity: 0.7;
-}
-  
-/* make sure to set background color for each icon */
-/* instagram */
-.fa-instagram {
-    background: purple;
-    color: white;
-}
-  
-/* facebook */
-.fa-facebook {
-    background: #3B5998;
-    color: white;
-}
-  
-/* linkedin */
-.fa-linkedin {
-    background: #55ACEE;
     color: white;
 }
 
-.tiger-trait img {
-    width: 120px;
-    height: 120px;
+.persona-img {
+    margin-top: 10px;
+    width: 150px;
+    height: 150px;
 }
 
-/* start quiz button */
-.quiz-start-button {
-    background-color: #FFFFFF;
-    border: 3px outset #000000;
-    color: #000000;
-    font-size: 18px;
+.edit-button {
+    display: block;
+    background-color: #99CECF;
+    border: 3px outset #008486;
+    color: #000;
+    font-size: 16px;
     font-weight: bold;
-    padding: 12px 24px;
+    padding: 10px 24px;
     border-radius: 16px;
     font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
     box-shadow: 3px 3px #888;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-    margin-top: 10px;
-  }
-  
-.quiz-start-button:hover {
-    background-color: #f3f3f3;
-    transform: scale(1.05);
+}
+
+.edit-button:hover, .save-btn:hover, .cancel-btn:hover {
+  background-color: #008486;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* edit my details form */
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    background-color: var(--light-bg);
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    margin-top: -30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, textarea {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+    width: 100%;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+.edit-form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.save-btn, .cancel-btn {
+    background-color: #99CECF;
+    border: 3px outset #008486;
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 24px;
+    border-radius: 16px;
+    font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+    box-shadow: 3px 3px #888;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+/* mobile */
+@media screen and (max-width: 1124px) {
+    .profile-card, .right-sections {
+        width: 100%;
+        max-width: 90%; /* reduced width for mobile fit */
+        margin: auto;
+    }
+
+    .info-box1, .info-box3, .info-box4 {
+        width: calc(100% - 40px); /* prevents overflow */
+        margin: 15px auto;
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .info-box1 {
+        margin-top: -10px;
+        margin-bottom: -1px;
+    }
+
+    .info-box3 {
+        height: 170px;
+    }
+    
+    .info-box4 {
+        height: 263px;
+    }
+
+    .profile-section, .right-sections {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .profile-container {
+        padding: 20px 10px; /* reduced padding for mobile */
+        max-width: 550px;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .edit-button {
+        display: block;
+        margin-top: -7px;
+        background-color: #99CECF;
+        border: 3px outset #008486;
+        color: #000;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 10px 24px;
+        border-radius: 16px;
+        font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+        box-shadow: 3px 3px #888;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .edit-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        background-color: var(--light-bg);
+        border-radius: 10px;
+        box-shadow: var(--box-shadow);
+        margin-top: -15px;
+    }
+
+    label {
+        font-size: 14px;
+        margin-bottom: 5px;
+        font-weight: bold;
+        text-align: left;
+    }
 }

@@ -31,12 +31,6 @@
       <div class="icon-label">Logout</div>
     </div>
   </div>
-  <div class="icon" (click)="openApp('deleteAccount')" *ngIf="isLoggedIn">
-    <img src="assets/icons/logout.png" />
-    <div class="icon-label">Delete Account</div>
-  </div>
-  
-  
 
   <!-- floating app windows -->
   <div *ngFor="let app of openApps" class="floating-window" [ngClass]="getWindowClass(app.name)" [style.zIndex]="app.zIndex" (mousedown)="bringToFront(app)">
@@ -82,13 +76,6 @@
         <div *ngIf="app.name === 'feedback'">
           <!-- <h2>Feedback</h2> -->
           <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdZZ0m5W5CYUCrCpZLhsvfvZiPT4G4JRgGFuC2XYipTSustBw/viewform?embedded=true" width="640" height="2163" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-        </div>
-
-        <div *ngIf="app.name === 'deleteAccount'">
-          <h2>Delete Account</h2>
-          <p>TEST</p>
-          <p>Are you sure you want to delete your account? This action cannot be undone.</p>
-          <button (click)="confirmDelete()">Confirm</button>
         </div>
       </div>
     </div>
