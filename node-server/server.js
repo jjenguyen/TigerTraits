@@ -370,7 +370,7 @@ app.delete('/api/delete-account', authenticateJWT, async (req, res) => {
 });
 
 // 9. update user contact card info in db
-app.put('/update-contact-card', authenticateJWT, async (req, res) => {
+app.put('/api/update-contact-card', authenticateJWT, async (req, res) => {
   //debugging
   console.log('PUT /update-contact-card hit');
   console.log('Request body:', req.body);

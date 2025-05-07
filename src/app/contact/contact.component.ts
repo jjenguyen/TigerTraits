@@ -24,8 +24,8 @@ export class ContactComponent implements OnInit {
   contactForm = this.fb.group({
     name: ['', Validators.required],
     bio: ['', Validators.required],
-    //add asyncValidators: [mimeType]
-    imageUrl: [null as string | File | null, {validators: [Validators.required]}],
+    //removed {validators: [Validators.required]}
+    imageUrl: [null as string | File | null],
     instagram: [''],
     facebook: [''],
     linkedin: [''],
