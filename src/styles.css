@@ -56,8 +56,8 @@ body::before {
   height: 100vh;
   background-image: url('assets/Bkg.png');
   background-repeat: repeat;
-  background-size: 600px;
-  opacity: 0.65;
+  background-size: 700px;
+  opacity: 0.45;
   pointer-events: none;
   z-index: -1;
 }

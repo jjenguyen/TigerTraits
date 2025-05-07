@@ -30,7 +30,7 @@
               </div>
           </div>
       </div>
-      <button class="edit-button" (click)="enableEditing()">Edit My Info</button>
+      <button class="edit-button" (click)="enableEditing()">Edit Contact Info</button>
   </div>
 </div>
 
@@ -49,7 +49,9 @@
   </div>
   <div class="form-group">
     <label for="bio">Bio</label>
-    <textarea formControlName="bio" id="bio" placeholder="Bio"></textarea>
+    <textarea formControlName="bio" id="bio" placeholder="Bio" maxlength="250" 
+        (input)="updateCharacterCount($event)"></textarea>
+    <small class="char-limit">{{ charCount }}/250 characters</small>
   </div>
   <div class="form-group">
       <label for="instagram">Instagram</label>

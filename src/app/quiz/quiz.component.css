@@ -1,5 +1,19 @@
 h3 {
     font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif !important;
+    color: #333333;
+    font-size: 20px;
+    text-align: center;
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 10px;
+    line-height: 1.5;
+}
+
+h2 {
+    font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif !important;
+    color: #333333;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .start-screen,
@@ -35,6 +49,7 @@ h3 {
 }
 
 .question-text {
+    font-size: 20px;
     max-width: 300px;
     margin: 20px auto; /* centers the text */
     word-wrap: break-word;

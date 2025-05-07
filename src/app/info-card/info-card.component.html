@@ -3,7 +3,7 @@
 <div class="card-wrapper" [ngStyle]="{'background-color': cardColor}">
     <div class="card">
       <div class="traits-container" [ngStyle]="{'background-color': tagColor}">
-        <h1><span class="highlight">{{ personaName }}</span></h1>
+        <h1><span>{{ personaName }}</span></h1>
         <p class="traits">{{ traits.join(' - ') }}</p>
       </div>
   
@@ -22,7 +22,7 @@
       </div>
   
       <div class="section-box" [ngStyle]="{'background-color': tagColor}">
-        <h2>Mizzou Resources & Activities:</h2>
+        <h2>Recommended Activities:</h2>
         <div class="resources-grid">
           <a *ngFor="let resource of resources" [href]="resource.link" class="resource" target="_blank">
             {{ resource.name }}
@@ -31,7 +31,7 @@
       </div>
   
       <div class="section-box" [ngStyle]="{'background-color': tagColor}">
-        <h2>Your Possible Compatibilities:</h2>
+        <h2>Potential Compatibilities:</h2>
         <div class="images-box">
           <div class="compatibilities">
             <a *ngFor="let comp of compatibilities" [href]="comp.link">

@@ -205,4 +205,11 @@ export class ContactComponent implements OnInit {
     console.log('Quiz button clicked');
     // this.mobileLayout.switchScreen('quiz'); // trigger screen change
   }
+
+  // bio character counter
+  charCount: number = 0;
+  updateCharacterCount(event: Event): void {
+    const target = event.target as HTMLTextAreaElement;
+    this.charCount = target.value.length;
+  }
 }

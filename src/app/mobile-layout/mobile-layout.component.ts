@@ -85,9 +85,10 @@ export class MobileLayoutComponent implements OnInit {
       case 'contact': return 'Contact Card';
       case 'feedback': return 'Feedback';
       case 'notes': return 'Notes';
+      case 'login': return 'Login';
       case 'register': return 'Register';
       case 'deleteAccount': return 'Delete Account';
-      default: return 'Login';
+      default: return 'TigerTraits';
     }
   }
   

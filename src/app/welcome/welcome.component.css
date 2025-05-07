@@ -56,6 +56,7 @@
 
 .start-button:hover {
   background-color: #008486;
+  color: white;
   transform: scale(1.05);
 }
 
