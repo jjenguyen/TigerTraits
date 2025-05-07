@@ -15,20 +15,31 @@
           </div>
       </div>
       <div class="profile-section">
-          <div class="right-sections">
-              <div class="info-box3">
-                  <h3>Connect with Me!</h3>
-                  <div class="social-icons">
-                      <a [href]="contactForm.get('instagram')?.value" class="fa fa-instagram"></a>
-                      <a [href]="contactForm.get('facebook')?.value" class="fa fa-facebook"></a>
-                      <a [href]="contactForm.get('linkedin')?.value" class="fa fa-linkedin"></a>
-                  </div>
-              </div>
-              <div class="info-box4">
-                  <h3>My TigerTrait</h3>
-                  <img class="persona-img" id="tiger-trait-img" [src]="'../assets/personas/' + contactForm.get('tigerTrait')?.value + '.png'" alt="TigerTrait Persona">
-              </div>
+        <div class="right-sections">
+          <div class="info-box3">
+            <h3>Connect with Me!</h3>
+            <div class="social-icons">
+              <a [href]="contactForm.get('instagram')?.value" class="fa fa-instagram"></a>
+              <a [href]="contactForm.get('facebook')?.value" class="fa fa-facebook"></a>
+              <a [href]="contactForm.get('linkedin')?.value" class="fa fa-linkedin"></a>
+            </div>
           </div>
+      
+          <div class="info-box4">
+            <h3>My TigerTrait</h3>
+            <ng-container *ngIf="hasPersonality !== null">
+              <!-- If personality exists -->
+              <div *ngIf="hasPersonality; else quizPrompt">
+                <img class="persona-img" id="tiger-trait-img" [src]="imagePath" [alt]="personality">
+              </div>
+      
+              <!-- Else show quiz prompt -->
+              <ng-template #quizPrompt>
+                <button class="quiz-start-button" (click)="goToQuiz()">Take the Quiz!</button>
+              </ng-template>
+            </ng-container>
+          </div>
+        </div>
       </div>
       <button class="edit-button" (click)="enableEditing()">Edit My Info</button>
   </div>

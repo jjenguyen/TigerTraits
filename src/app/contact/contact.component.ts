@@ -13,7 +13,7 @@ import { ContactService } from './contact.service';
 export class ContactComponent implements OnInit {
   imagePath: string = '';
   personality: string = '';
-  hasPersonality: boolean = true;
+  hasPersonality: boolean | null = null;
 
   initialContactInfo: any = {};
   isEditing = false;
@@ -109,29 +109,27 @@ export class ContactComponent implements OnInit {
 
     // Fetch personality type of user
     if (userId) {
-      this.http.get<{ personality: string }>(`http://localhost:3000/api/user/${userId}/personality`)
-        .subscribe({
-          next: (res) => {
-            // update state if personality is returned
-            if (res?.personality) {
-              this.personality = res.personality;
-              this.imagePath = `assets/personas/${res.personality}.png`;
-              this.hasPersonality = true;
-            } else {
-              // if no personality found, user has not taken quiz
-              this.hasPersonality = false;
-            }
-          },
-          error: (err) => {
-            console.error('Failed to fetch personality:', err);
+      this.contactService.getPersonality(userId).subscribe({
+        next: (res) => {
+          if (res?.personality) {
+            this.personality = res.personality;
+            this.imagePath = `assets/personas/${res.personality}.png`;
+            this.hasPersonality = true;
+          } else {
             this.hasPersonality = false;
           }
-        });
+        },
+        error: (err) => {
+          console.error('Failed to fetch personality:', err);
+          this.hasPersonality = false;
+        }
+      });
     } else {
       console.warn('No user ID found, cannot fetch personality');
       this.hasPersonality = false;
     }
   }
+
   onImagePicked(event: Event) {
     const fileInput = event.target as HTMLInputElement;
     const file = fileInput.files?.[0];
