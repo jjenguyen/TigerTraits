@@ -6,11 +6,7 @@ export interface resources {
 }
 
 //same as resources but different parameters, exportable interface resouce to be used in InfoCard interface
-export interface compatibilities {
-  name : string;
-  image: string;
-  link: string;
-}
+
 
 //'InfoCard' interface allows structured to be referenced in resultss page
 export interface InfoCard {
@@ -20,9 +16,16 @@ export interface InfoCard {
   rightTags: string[];
   image: string;
   resources: resources[];
-  compatibilities: compatibilities[];
-  tagColor: string; 
+  tagColor: string;
+  compatibilities?: Compatibility[];
 }
+export interface Compatibility {
+  name: string;
+  image: string;
+  userId: string;
+  link: string;
+}
+
 
 //export all the info cards from quiz.component.ts
 export const infoCards: {[type: string]: InfoCard} = {
@@ -37,11 +40,6 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Caring for Columbia', link: 'https://www.instagram.com/caring4columbia/' },
       { name: 'Tigers For A Cause', link: 'https://getinvolved.missouri.edu/volunteer-opportunities/' },
       { name: 'Tiger Pantry and Truman`s Closet', link: 'https://www.instagram.com/tigerpantry/?hl=en' }
-    ],
-    compatibilities: [
-      { name: 'Kiss the 50', image: "assets/personas/ISFJ.png", link: '/profile/ISFJ' },
-      { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '/profile/ESFJ' },
-      { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' }
     ],
     tagColor: '#99CECF',
   },
@@ -59,11 +57,7 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Entrepreneurship Alliance', link: 'https://business.missouri.edu/entrepreneurship-alliance' },
       { name: 'Intramural Sports', link: 'https://mizzourec.missouri.edu/intramural-sports/' }
     ],
-    compatibilities: [
-      { name: 'Kiss The 50', image: "assets/personas/ISFJ.png", link: '/profile/ISFJ' },
-      { name: 'Sparky`s', image: "assets/personas/ESFP.png", link: '/profile/ESFP' },
-      { name: 'Mort`s Wall', image: "assets/personas/ISTJ.png", link: '/profile/ISTJ' }
-    ],
+
     tagColor: '#99CECF',
   },
   // sm validated 042125
@@ -79,11 +73,6 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Best Buddies', link: 'https://www.facebook.com/bestbuddiesmizcomo/' },
       { name: 'Comedy Wars', link: 'https://www.instagram.com/comedy_wars/' },
       { name: 'Freestyle Your Expression', link: 'https://www.instagram.com/fyemizzou/' }
-    ],
-    compatibilities: [
-      { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '/profile/ESFJ' },
-      { name: 'Jesse Hall Dome', image: "assets/personas/ENFJ.png", link: '/profile/ENFJ' },
-      { name: 'Kiss The 50', image: "assets/personas/ISFJ.png", link: '/profile/ISFJ' }
     ],
     tagColor: '#99CECF',
   },
@@ -101,11 +90,6 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Mizzou Club Running', link: 'https://www.instagram.com/mizclubrunning/?hl=en' },
       { name: 'Intramural Sports', link: 'https://mizzourec.missouri.edu/intramural-sports/' }
     ],
-    compatibilities: [
-      { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '/profile/ESFJ' },
-      { name: 'Shamrock', image: "assets/personas/ISFP.png", link: '/profile/ISFP' },
-      { name: 'Mizzou Helmet', image: "assets/personas/ESTP.png", link: '/profile/ESTP' }
-    ],
     tagColor: '#99CECF',
   },
   // sm validated 042125
@@ -121,11 +105,6 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Mizzou Homecoming Steering Committee', link: 'https://www.mizzou.com/s/1002/alumni/19/interior.aspx?sid=1002&gid=1001&sitebuilder=1&pgid=10482' },
       { name: 'STRIPES', link: 'https://stripes.missouri.edu/' },
       { name: 'Caring for Columbia', link: 'https://www.instagram.com/caring4columbia/' }
-    ],
-    compatibilities: [
-      { name: 'Shamrock', image: "assets/personas/ISFP.png", link: '/profile/ISFP' },
-      { name: 'BoatHenge', image: "assets/personas/ISTP.png", link: '/profile/ISTP' },
-      { name: 'Big MO', image: "assets/personas/ESTJ.png", link: '/profile/ESTJ' }
     ],
     tagColor: '#99CECF',
   },
@@ -143,11 +122,7 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Climate Leaders at Mizzou', link: 'https://www.instagram.com/climateleadersmu/?hl=en' },
       { name: 'MU Presidents` Council', link: 'https://studentaffairs.missouri.edu/presidents-council/' }
     ],
-    compatibilities: [
-      { name: 'Kiss The 50', image: "assets/personas/ISFJ.png", link: '/profile/ISFJ' },
-      { name: 'Mort`s Wall', image: "assets/personas/ISTJ.png", link: '/profile/ISTJ' },
-      { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '/profile/ESFJ' }
-    ],
+
     tagColor: '#99CECF',
   },
   // sm validated 042125
@@ -163,11 +138,6 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Sustain Mizzou', link: 'https://www.instagram.com/sustainmizzou/' },
       { name: 'STRIPES', link: 'https://stripes.missouri.edu/' },
       { name: 'Caring for Columbia', link: 'https://www.instagram.com/caring4columbia/' }
-    ],
-    compatibilities: [
-      { name: 'Sparky`s', image: "assets/personas/ESFP.png", link: '/profile/ESFP' },
-      { name: 'Mizzou Helmet', image: "assets/personas/ESTP.png", link: '/profile/ESTP' },
-      { name: 'Mort`s Wall', image: "assets/personas/ISTJ.png", link: '/profile/ISTJ' }
     ],
     tagColor: '#99CECF',
   },
@@ -185,11 +155,6 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Mizzou 2', link: 'https://www.instagram.com/mizzou2.mu/' },
       { name: 'Mizzou Billiards Club', link: 'https://www.instagram.com/mizzoubilliardsclub/' }
     ],
-    compatibilities: [
-      { name: 'Mizzou Helmet', image: "assets/personas/ESTP.png", link: '/profile/ESTP' },
-      { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '/profile/ESFJ' },
-      { name: 'Kiss The 50', image: "assets/personas/ISFJ.png", link: '/profile/ISFJ' }
-    ],
     tagColor: '#99CECF',
   },
   // sm validated 042125
@@ -205,11 +170,6 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'The Mizzou Education Bank', link: 'https://www.instagram.com/mizzoueducationbank/' },
       { name: 'Caring for Columbia', link: 'https://www.instagram.com/caring4columbia/' },
       { name: 'Campus Activities Programming Board', link: 'https://www.instagram.com/stufftodoatmu/?hl=en' }
-    ],
-    compatibilities: [
-      { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: '/profile/INFJ' },
-      { name: 'The Big Tree', image: "assets/personas/INTJ.png", link: '/profile/INTJ' },
-      { name: 'Truman`s Paw', image: "assets/personas/INFP.png", link: '/profile/INFP' }
     ],
     tagColor: '#99CECF',
   },
@@ -227,11 +187,6 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Camp Kesem', link: 'https://www.facebook.com/KesemMizzou/' },
       { name: 'College Mentors for Kids', link: 'https://www.instagram.com/collegementors.mizzou/' }
     ],
-    compatibilities: [
-      { name: 'Truman`s Paw', image: "assets/personas/INFP.png", link: '/profile/INFP' },
-      { name: 'Shamrock', image: "assets/personas/ISFP.png", link: '/profile/ISFP' },
-      { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: '/profile/INFJ' }
-    ],
     tagColor: '#99CECF',
   },
   // sm validated 042125
@@ -247,11 +202,6 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Creative Writing Club', link: 'https://x.com/cowclubmu' },
       { name: 'Sustain Mizzou', link: 'https://www.instagram.com/sustainmizzou/' },
       { name: 'Caring for Columbia', link: 'https://www.instagram.com/caring4columbia/' }
-    ],
-    compatibilities: [
-      { name: 'Jesse Hall Dome', image: "assets/personas/ENFJ.png", link: '/profile/ENFJ' },
-      { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: '/profile/INFJ' },
-      { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' }
     ],
     tagColor: '#99CECF',
   },
@@ -269,11 +219,6 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Climate Leaders at Mizzou', link: 'https://www.instagram.com/climateleadersmu/?hl=en' },
       { name: 'Mizzou MoreThan4 Club', link: 'https://www.instagram.com/mizzoumorethan4/' }
     ],
-    compatibilities: [
-      { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' },
-      { name: 'Speaker`s Circle', image: "assets/personas/ENTP.png", link: '/profile/ENTP' },
-      { name: 'Truman`s Paw', image: "assets/personas/INFP.png", link: '/profile/INFP' }
-    ],
     tagColor: '#99CECF',
   },
   // sm validated 042125
@@ -289,11 +234,6 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Missouri Debate Union', link: 'https://www.instagram.com/missouridebateunion/' },
       { name: 'MU Philanthropy', link: 'https://engage.missouri.edu/mup/home/' },
       { name: 'Comedy Wars', link: 'https://www.instagram.com/comedy_wars/' }
-    ],
-    compatibilities: [
-      { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: '/profile/INFJ' },
-      { name: 'Truman`s Paw', image: "assets/personas/INFP.png", link: '/profile/INFP' },
-      { name: 'The Big Tree', image: "assets/personas/INTJ.png", link: '/profile/INTJ' }
     ],
     tagColor: '#99CECF',
   },
@@ -311,11 +251,6 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Climate Leaders at Mizzou', link: 'https://www.instagram.com/climateleadersmu/?hl=en' },
       { name: 'University of Missouri Investment Group', link: 'https://business.missouri.edu/student-development/learning-doing/university-missouri-investment-group' }
     ],
-    compatibilities: [
-      { name: 'The Columns', image: "assets/personas/INTP.png", link: '/profile/INTP' },
-      { name: 'The Big Tree', image: "assets/personas/INTJ.png", link: '/profile/INTJ' },
-      { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' }
-    ],
     tagColor: '#99CECF',
   },
   // sm validated 042125
@@ -332,11 +267,6 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Show Me Research', link: 'https://www.instagram.com/ugradresearchmu/?hl=en' },
       { name: '3D Printing Club', link: 'https://www.instagram.com/mu3dpc/?hl=en' }
     ],
-    compatibilities: [
-      { name: 'David R. Francis Nose', image: "assets/personas/ENTJ.png", link: '/profile/ENTJ' },
-      { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' },
-      { name: 'Speaker`s Circle', image: "assets/personas/ENTP.png", link: '/profile/ENTP' }
-    ],
     tagColor: '#99CECF',
   },
   // sm validated 042125
@@ -352,11 +282,6 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'MU Chess Club', link: 'https://www.instagram.com/mizzouchessclub/' },
       { name: 'Mizzou Stock Exchange Club', link: 'https://www.instagram.com/mizzoustockexchange/' },
       { name: 'MU Documentary Club', link: 'https://www.instagram.com/mizzoudocclub/' }
-    ],
-    compatibilities: [
-      { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' },
-      { name: 'Speaker`s Circle', image: "assets/personas/ENTP.png", link: '/profile/ENTP' },
-      { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: `/profile/INFJ` }
     ],
     tagColor: '#99CECF',
   }

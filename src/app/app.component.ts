@@ -64,17 +64,29 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   // opens the window if its not open, or brings it to the front if it is already open
   openApp(appName: string, data?: any): void {
+    console.log(`Opening app: ${appName}`);
     if (this.isLoggedIn || this.isAppAlwaysUnlocked(appName)) {
-      const existing = this.openApps.find(app => app.name === appName && (!data || app.data === data));
-      if (!existing) {
-        this.zIndexCounter++;
-        this.openApps.push({ name: appName, data, zIndex: this.zIndexCounter });
-        setTimeout(() => this.reapplyDraggable(), 50);
-      } else {
-        this.bringToFront(existing);
+      const existingIndex = this.openApps.findIndex(app =>
+        app.name === appName && (app.data === data || app.data?.toString() === data?.toString())
+      );
+        if (existingIndex !== -1) {
+        const sameApp = this.openApps[existingIndex];
+        if (sameApp.data !== data) {
+          this.openApps.splice(existingIndex, 1);
+        } else {
+          this.bringToFront(sameApp);
+          return;
+        }
       }
+  
+      this.zIndexCounter++;
+      this.openApps.push({ name: appName, data, zIndex: this.zIndexCounter });
+  
+      setTimeout(() => this.reapplyDraggable(), 50);
     }
-  }  
+  }
+  
+  
 
   closeApp(appName: string): void {
     this.openApps = this.openApps.filter(app => app.name !== appName);
@@ -150,7 +162,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
   }
 
-  handleProfileOpen(userId: string): void {
+  handleProfileOpen(userId: string){
+    console.log(`Opening profile for user: ${userId}`);
     this.openApp('viewProfile', userId);
   }
 

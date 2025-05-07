@@ -1,0 +1,17 @@
+# Enforce Unix-style (LF) line endings for all text files
+* text=auto eol=lf
+
+# Treat these as binary, so no line ending normalization
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.exe binary
+
+# Specific overrides (optional)
+*.sh text eol=lf
+*.bat text eol=crlf
+*.ps1 text eol=crlf

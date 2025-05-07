@@ -12,7 +12,15 @@ export class InfoCardComponent {
   @Input() rightTags: string[] = [];
   @Input() imageUrl: string = '';
   @Input() resources: { name: string, link: string }[] = [];
-  @Input() compatibilities: { name: string, image: string, link: string }[] = [];
+  @Input() compatibilities: { name: string, image: string, userId: string, link: string }[] = [];
   @Input() cardColor: string = '';
   @Input() tagColor: string = '';
+
+  @Output() openProfile = new EventEmitter<string>();
+
+viewUser(userId: string): void {
+  this.openProfile.emit(userId);
+  console.log("User ID emitted:", userId);
+}
+
 }

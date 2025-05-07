@@ -65,8 +65,8 @@
             </app-register>
 
             <app-quiz *ngIf="currentScreen === 'quiz'"></app-quiz>
-            <app-contact *ngIf="currentScreen === 'contact'"></app-contact>
-            <app-results *ngIf="currentScreen === 'results'"></app-results>
+            <app-contact *ngIf="currentScreen === 'contact'" [userId]="selectedUserId"></app-contact>
+            <app-results *ngIf="currentScreen === 'results'" (openProfile)="viewProfile($event)"></app-results>
             
             <div *ngIf="currentScreen === 'about'" class="about-page">
                 <h2 class="about-heading">About Us</h2>

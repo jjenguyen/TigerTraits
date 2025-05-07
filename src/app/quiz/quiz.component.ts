@@ -204,9 +204,9 @@ export class QuizComponent {
         { name: 'Tiger Pantry and Truman`s Closet', link: 'https://www.instagram.com/tigerpantry/?hl=en' }
       ],
       compatibilities: [
-        { name: 'Kiss the 50', image: "assets/personas/ISFJ.png", link: '/profile/ISFJ' },
-        { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '/profile/ESFJ' },
-        { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' }
+        { name: 'Kiss the 50', image: "assets/personas/ISFJ.png", link: '' },
+        { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '' },
+        { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '' }
       ],
       tagColor: '#99CECF',
     },
@@ -225,9 +225,9 @@ export class QuizComponent {
         { name: 'Intramural Sports', link: 'https://mizzourec.missouri.edu/intramural-sports/' }
       ],
       compatibilities: [
-        { name: 'Kiss The 50', image: "assets/personas/ISFJ.png", link: '/profile/ISFJ' },
-        { name: 'Sparky`s', image: "assets/personas/ESFP.png", link: '/profile/ESFP' },
-        { name: 'Mort`s Wall', image: "assets/personas/ISTJ.png", link: '/profile/ISTJ' }
+        { name: 'Kiss The 50', image: "assets/personas/ISFJ.png", link: '' },
+        { name: 'Sparky`s', image: "assets/personas/ESFP.png", link: '' },
+        { name: 'Mort`s Wall', image: "assets/personas/ISTJ.png", link: '' }
       ],
       tagColor: '#99CECF',
     },
@@ -246,9 +246,9 @@ export class QuizComponent {
         { name: 'Freestyle Your Expression', link: 'https://www.instagram.com/fyemizzou/' }
       ],
       compatibilities: [
-        { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '/profile/ESFJ' },
-        { name: 'Jesse Hall Dome', image: "assets/personas/ENFJ.png", link: '/profile/ENFJ' },
-        { name: 'Kiss The 50', image: "assets/personas/ISFJ.png", link: '/profile/ISFJ' }
+        { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '' },
+        { name: 'Jesse Hall Dome', image: "assets/personas/ENFJ.png", link: '' },
+        { name: 'Kiss The 50', image: "assets/personas/ISFJ.png", link: '' }
       ],
       tagColor: '#99CECF',
     },
@@ -267,9 +267,9 @@ export class QuizComponent {
         { name: 'Intramural Sports', link: 'https://mizzourec.missouri.edu/intramural-sports/' }
       ],
       compatibilities: [
-        { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '/profile/ESFJ' },
-        { name: 'Shamrock', image: "assets/personas/ISFP.png", link: '/profile/ISFP' },
-        { name: 'Mizzou Helmet', image: "assets/personas/ESTP.png", link: '/profile/ESTP' }
+        { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '' },
+        { name: 'Shamrock', image: "assets/personas/ISFP.png", link: '' },
+        { name: 'Mizzou Helmet', image: "assets/personas/ESTP.png", link: '' }
       ],
       tagColor: '#99CECF',
     },
@@ -288,9 +288,9 @@ export class QuizComponent {
         { name: 'Caring for Columbia', link: 'https://www.instagram.com/caring4columbia/' }
       ],
       compatibilities: [
-        { name: 'Shamrock', image: "assets/personas/ISFP.png", link: '/profile/ISFP' },
-        { name: 'BoatHenge', image: "assets/personas/ISTP.png", link: '/profile/ISTP' },
-        { name: 'Big MO', image: "assets/personas/ESTJ.png", link: '/profile/ESTJ' }
+        { name: 'Shamrock', image: "assets/personas/ISFP.png", link: '' },
+        { name: 'BoatHenge', image: "assets/personas/ISTP.png", link: '' },
+        { name: 'Big MO', image: "assets/personas/ESTJ.png", link: '' }
       ],
       tagColor: '#99CECF',
     },
@@ -309,9 +309,9 @@ export class QuizComponent {
         { name: 'MU Presidents` Council', link: 'https://studentaffairs.missouri.edu/presidents-council/' }
       ],
       compatibilities: [
-        { name: 'Kiss The 50', image: "assets/personas/ISFJ.png", link: '/profile/ISFJ' },
-        { name: 'Mort`s Wall', image: "assets/personas/ISTJ.png", link: '/profile/ISTJ' },
-        { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '/profile/ESFJ' }
+        { name: 'Kiss The 50', image: "assets/personas/ISFJ.png", link: '' },
+        { name: 'Mort`s Wall', image: "assets/personas/ISTJ.png", link: '' },
+        { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '' }
       ],
       tagColor: '#99CECF',
     },
@@ -330,9 +330,9 @@ export class QuizComponent {
         { name: 'Caring for Columbia', link: 'https://www.instagram.com/caring4columbia/' }
       ],
       compatibilities: [
-        { name: 'Sparky`s', image: "assets/personas/ESFP.png", link: '/profile/ESFP' },
-        { name: 'Mizzou Helmet', image: "assets/personas/ESTP.png", link: '/profile/ESTP' },
-        { name: 'Mort`s Wall', image: "assets/personas/ISTJ.png", link: '/profile/ISTJ' }
+        { name: 'Sparky`s', image: "assets/personas/ESFP.png", link: '' },
+        { name: 'Mizzou Helmet', image: "assets/personas/ESTP.png", link: '' },
+        { name: 'Mort`s Wall', image: "assets/personas/ISTJ.png", link: '' }
       ],
       tagColor: '#99CECF',
     },
@@ -351,9 +351,9 @@ export class QuizComponent {
         { name: 'Mizzou Billiards Club', link: 'https://www.instagram.com/mizzoubilliardsclub/' }
       ],
       compatibilities: [
-        { name: 'Mizzou Helmet', image: "assets/personas/ESTP.png", link: '/profile/ESTP' },
-        { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '/profile/ESFJ' },
-        { name: 'Kiss The 50', image: "assets/personas/ISFJ.png", link: '/profile/ISFJ' }
+        { name: 'Mizzou Helmet', image: "assets/personas/ESTP.png", link: '' },
+        { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '' },
+        { name: 'Kiss The 50', image: "assets/personas/ISFJ.png", link: '' }
       ],
       tagColor: '#99CECF',
     },
@@ -372,9 +372,9 @@ export class QuizComponent {
         { name: 'Campus Activities Programming Board', link: 'https://www.instagram.com/stufftodoatmu/?hl=en' }
       ],
       compatibilities: [
-        { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: '/profile/INFJ' },
-        { name: 'The Big Tree', image: "assets/personas/INTJ.png", link: '/profile/INTJ' },
-        { name: 'Truman`s Paw', image: "assets/personas/INFP.png", link: '/profile/INFP' }
+        { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: '' },
+        { name: 'The Big Tree', image: "assets/personas/INTJ.png", link: '' },
+        { name: 'Truman`s Paw', image: "assets/personas/INFP.png", link: '' }
       ],
       tagColor: '#99CECF',
     },
@@ -393,9 +393,9 @@ export class QuizComponent {
         { name: 'College Mentors for Kids', link: 'https://www.instagram.com/collegementors.mizzou/' }
       ],
       compatibilities: [
-        { name: 'Truman`s Paw', image: "assets/personas/INFP.png", link: '/profile/INFP' },
-        { name: 'Shamrock', image: "assets/personas/ISFP.png", link: '/profile/ISFP' },
-        { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: '/profile/INFJ' }
+        { name: 'Truman`s Paw', image: "assets/personas/INFP.png", link: '' },
+        { name: 'Shamrock', image: "assets/personas/ISFP.png", link: '' },
+        { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: '' }
       ],
       tagColor: '#99CECF',
     },
@@ -414,9 +414,9 @@ export class QuizComponent {
         { name: 'Caring for Columbia', link: 'https://www.instagram.com/caring4columbia/' }
       ],
       compatibilities: [
-        { name: 'Jesse Hall Dome', image: "assets/personas/ENFJ.png", link: '/profile/ENFJ' },
-        { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: '/profile/INFJ' },
-        { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' }
+        { name: 'Jesse Hall Dome', image: "assets/personas/ENFJ.png", link: '' },
+        { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: '' },
+        { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '' }
       ],
       tagColor: '#99CECF',
     },
@@ -435,9 +435,9 @@ export class QuizComponent {
         { name: 'Mizzou MoreThan4 Club', link: 'https://www.instagram.com/mizzoumorethan4/' }
       ],
       compatibilities: [
-        { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' },
-        { name: 'Speaker`s Circle', image: "assets/personas/ENTP.png", link: '/profile/ENTP' },
-        { name: 'Truman`s Paw', image: "assets/personas/INFP.png", link: '/profile/INFP' }
+        { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '' },
+        { name: 'Speaker`s Circle', image: "assets/personas/ENTP.png", link: '' },
+        { name: 'Truman`s Paw', image: "assets/personas/INFP.png", link: '' }
       ],
       tagColor: '#99CECF',
     },
@@ -456,9 +456,9 @@ export class QuizComponent {
         { name: 'Comedy Wars', link: 'https://www.instagram.com/comedy_wars/' }
       ],
       compatibilities: [
-        { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: '/profile/INFJ' },
-        { name: 'Truman`s Paw', image: "assets/personas/INFP.png", link: '/profile/INFP' },
-        { name: 'The Big Tree', image: "assets/personas/INTJ.png", link: '/profile/INTJ' }
+        { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: '' },
+        { name: 'Truman`s Paw', image: "assets/personas/INFP.png", link: '' },
+        { name: 'The Big Tree', image: "assets/personas/INTJ.png", link: '' }
       ],
       tagColor: '#99CECF',
     },
@@ -477,9 +477,9 @@ export class QuizComponent {
         { name: 'University of Missouri Investment Group', link: 'https://business.missouri.edu/student-development/learning-doing/university-missouri-investment-group' }
       ],
       compatibilities: [
-        { name: 'The Columns', image: "assets/personas/INTP.png", link: '/profile/INTP' },
-        { name: 'The Big Tree', image: "assets/personas/INTJ.png", link: '/profile/INTJ' },
-        { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' }
+        { name: 'The Columns', image: "assets/personas/INTP.png", link: '' },
+        { name: 'The Big Tree', image: "assets/personas/INTJ.png", link: '' },
+        { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '' }
       ],
       tagColor: '#99CECF',
     },
@@ -498,9 +498,9 @@ export class QuizComponent {
         { name: '3D Printing Club', link: 'https://www.instagram.com/mu3dpc/?hl=en' }
       ],
       compatibilities: [
-        { name: 'David R. Francis Nose', image: "assets/personas/ENTJ.png", link: '/profile/ENTJ' },
-        { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' },
-        { name: 'Speaker`s Circle', image: "assets/personas/ENTP.png", link: '/profile/ENTP' }
+        { name: 'David R. Francis Nose', image: "assets/personas/ENTJ.png", link: '' },
+        { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '' },
+        { name: 'Speaker`s Circle', image: "assets/personas/ENTP.png", link: '' }
       ],
       tagColor: '#99CECF',
     },
@@ -519,9 +519,9 @@ export class QuizComponent {
         { name: 'MU Documentary Club', link: 'https://www.instagram.com/mizzoudocclub/' }
       ],
       compatibilities: [
-        { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' },
-        { name: 'Speaker`s Circle', image: "assets/personas/ENTP.png", link: '/profile/ENTP' },
-        { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: `/profile/INFJ` }
+        { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '' },
+        { name: 'Speaker`s Circle', image: "assets/personas/ENTP.png", link: ''},
+        { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: '' }
       ],
       tagColor: '#99CECF',
     }
@@ -596,7 +596,10 @@ handleSubmit(): void {
           
           this.resultData = {
             ...this.resultData,
-            matchedUsers: compatibilityResponse.data.matchedUsers
+            matchedUsers: compatibilityResponse.data.matchedUsers.map((user: any) => ({
+              ...user,
+              link: `/contact-card/${user.userId}`
+            }))
           };
         },
         error: (err) => console.error('Error storing compatibility:', err)

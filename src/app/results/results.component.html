@@ -13,7 +13,8 @@
       [compatibilities]="card.compatibilities"
       [cardColor]="card.cardColor"
       [tagColor]="FFD17D"
-    ></app-info-card>
+      (openProfile)="viewUser($event)">
+      ></app-info-card>
     <!-- Add this at the bottom of results.component.html -->
     <!-- If not confirming, show delete button -->
     

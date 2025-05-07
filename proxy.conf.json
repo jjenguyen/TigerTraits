@@ -17,10 +17,15 @@
     "changeOrigin": true,
     "logLevel": "debug"
   },
-  "/contact-card": {
-    "target": "http://localhost:3000",
-    "secure": false
-  },
+"/contact-card/*": {
+  "target": "http://localhost:3000",
+  "secure": false,
+  "changeOrigin": true,
+  "logLevel": "debug",
+  "pathRewrite": {
+    "^/contact-card": "/contact-card"
+  }
+},
   "/update-contact-card": {
     "target": "http://localhost:3000",
     "secure": false,

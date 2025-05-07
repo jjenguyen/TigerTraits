@@ -59,8 +59,9 @@
         <app-register *ngIf="app.name === 'register'" (openLogin)="openApp('login')"></app-register>
         <app-quiz *ngIf="app.name === 'quiz'" (openProfile)="handleProfileOpen($event)"></app-quiz>
         <app-contact *ngIf="app.name === 'contact'"></app-contact>
-        <app-results *ngIf="app.name === 'results'"></app-results>
-        <app-profile *ngIf="app.name === 'viewProfile'" [userId]="app.data"></app-profile>
+        <app-contact *ngIf="app.name === 'viewProfile'" [userId]="app.data" [attr.data-key]="app.data"></app-contact>
+
+        <app-results *ngIf="app.name === 'results'" (openProfile)="handleProfileOpen($event)"></app-results>
 
         <div *ngIf="app.name === 'about'">
           <h2 class="about-heading">About Us</h2>

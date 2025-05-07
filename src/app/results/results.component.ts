@@ -1,35 +1,51 @@
-import { Component, OnInit }    from '@angular/core';
-import { Router }               from '@angular/router';
-import { AuthService }    from '../login/auth.service';
-//pull info cards from models for easy access
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../login/auth.service';
 import { infoCards, InfoCard } from '../models/infocard';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
-  styleUrl: './results.component.css'
+  styleUrls: ['./results.component.css']
 })
-
 export class ResultsComponent implements OnInit {
-  //allow null info card results for newly registered users  (*ngIf="card; else noCard")
   card: InfoCard | null = null;
-
-  constructor(private router: Router, private authService: AuthService
-  ) {}
-
+  @Output() openProfile = new EventEmitter<string>();
   confirmingDelete = false;
 
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private http: HttpClient
+  ) {}
+
   ngOnInit() {
-    //get the current user object from authservice and access pType
     const currentUser = this.authService.getCurrentUser();
-    //console.log("Current user:", currentUser);
-    const userType = currentUser.personalityType;
-  
-    //userType isn't null and the type matches one from the cards model
+    const userType = currentUser?.personalityType;
+    const userId = currentUser?.userId;
+
     if (userType && infoCards[userType]) {
-      //pull from the infocard model and assign to card to populate 
-      this.card = infoCards[userType];
-    } 
+      // Start with static info
+      this.card = { ...infoCards[userType], compatibilities: [] };
+
+      // Fetch dynamic compatibility data
+      this.http.post('/compatibilities', {
+        userId: userId,
+        resultType: userType
+      }).subscribe((res: any) => {
+        const matched = res?.data?.matchedUsers || [];
+
+        // Safely update only compatibilities
+        if (this.card) {
+          this.card.compatibilities = matched;
+        }
+      });
+    }
+  }
+
+  viewUser(userId: string): void {
+    this.openProfile.emit(userId);
   }
 
   showConfirmDelete() {
@@ -46,9 +62,7 @@ export class ResultsComponent implements OnInit {
         localStorage.removeItem('token');
         this.authService.logout();
         setTimeout(() => {
-          this.router.navigate(['/welcome']).then(() => {
-            location.reload(); 
-          });
+          this.router.navigate(['/welcome']).then(() => location.reload());
         }, 1000);
       },
       error: (err) => {
@@ -56,5 +70,4 @@ export class ResultsComponent implements OnInit {
       }
     });
   }
-
 }

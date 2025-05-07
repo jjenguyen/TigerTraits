@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { FormBuilder, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../login/auth.service';
 import { MobileLayoutComponent } from '../mobile-layout/mobile-layout.component';
 import { ContactService } from './contact.service';
+import { ActivatedRoute } from '@angular/router';
+
+
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
-export class ContactComponent implements OnInit {
+
+
+
+export class ContactComponent implements OnInit, OnChanges{
+  @Input() userId?: string;
   imagePath: string = '';
   personality: string = '';
   hasPersonality: boolean = true;
@@ -36,44 +43,36 @@ export class ContactComponent implements OnInit {
     private authService: AuthService,
     private mobileLayout: MobileLayoutComponent,  // inject mobile layout
     private fb: FormBuilder,
-    private contactService: ContactService
+    private contactService: ContactService,
+    private route: ActivatedRoute
   ) {
     this.user = this.authService.getCurrentUser();
     //if contact Card exists, get contact info from the db
-    if(this.user){
-      this.contactForm.patchValue({
-        name: this.user.name || '',
-        bio: this.user.bio || '',
-        imageUrl: this.user.imageUrl || '',
-        instagram: this.user.instagram || '',
-        facebook: this.user.facebook || '',
-        linkedin: this.user.linkedin || ''
-      });
-    }
-    //default empty values
-    else{
-      // Initialize the form with default values
-      this.contactForm.patchValue({
-        //Truman's Paw is default value until we can link MBTI quiz result
-        tigerTrait: 'Truman’s Paw'
-      });
-    }
 
   }
 
   ngOnInit(): void {
-    //get current user form AuthService
-    //let currentUser = this.authService.getCurrentUser();
+    this.loadContactCard();
+  }
 
-    console.log('[DEBUG] ngOnInit triggered');
-    if (!this.user || !this.user.id) {
-      console.error('User or user ID is undefined.');
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['userId'] && !changes['userId'].firstChange) {
+      setTimeout(() => this.loadContactCard(), 0);
+    }
+  }
+
+  private loadContactCard(): void {
+    const fallbackUser = this.authService.getCurrentUser();
+    const userIdToLoad = this.userId || fallbackUser?.id;
+
+    if (!userIdToLoad) {
+      console.error('No user ID available.');
       return;
     }
-    //NEED TO ADD a loader until html is fully rendered
-    this.contactService.getContactCard(this.user.id).subscribe(info =>{
-      console.log("Loader contact card: ", info)
-      //save info to initialContactInfo
+
+    this.isEditing = !this.userId;
+
+    this.contactService.getContactCard(userIdToLoad).subscribe(info => {
       this.initialContactInfo = { ...info };
       this.contactForm.patchValue({
         name: info.name || '',
@@ -84,53 +83,28 @@ export class ContactComponent implements OnInit {
         linkedin: info.linkedin || '',
         tigerTrait: info.tigerTrait || 'Truman’s Paw'
       });
-      // Set the imagePreview to the current imageUrl
       this.imagePreview = info.imageUrl || '';
-      console.log('[DEBUG] imageUrl after loading contact card:', this.contactForm.get('imageUrl')?.value);
-    },
-    (err) => {
-      console.error('Error loading contact info:', err);
-      console.error("[DEBUG] user ID: ", this.user.id);
     });
 
-    // If AuthService hasn't loaded the user yet, fall back to localStorage
-    if (!this.user) {
-      const stored = localStorage.getItem('currentUser');
-      if (stored) {
-        this.user = JSON.parse(stored);
-        console.log('[Fallback] Loaded user from localStorage:', this.user);
-        this.authService.setCurrentUser(this.user); // sync back with Authservice
-      }
-    }
-
-    // get user id to use in API call
-    const userId = this.user?.id;
-
-    // Fetch personality type of user
-    if (userId) {
-      this.http.get<{ personality: string }>(`http://localhost:3000/api/user/${userId}/personality`)
-        .subscribe({
-          next: (res) => {
-            // update state if personality is returned
-            if (res?.personality) {
-              this.personality = res.personality;
-              this.imagePath = `assets/personas/${res.personality}.png`;
-              this.hasPersonality = true;
-            } else {
-              // if no personality found, user has not taken quiz
-              this.hasPersonality = false;
-            }
-          },
-          error: (err) => {
-            console.error('Failed to fetch personality:', err);
+    this.http.get<{ personality: string }>(`http://localhost:3000/api/user/${userIdToLoad}/personality`)
+      .subscribe({
+        next: (res) => {
+          if (res?.personality) {
+            this.personality = res.personality;
+            this.imagePath = `assets/personas/${res.personality}.png`;
+            this.hasPersonality = true;
+          } else {
             this.hasPersonality = false;
           }
-        });
-    } else {
-      console.warn('No user ID found, cannot fetch personality');
-      this.hasPersonality = false;
-    }
+        },
+        error: (err) => {
+          console.error('Failed to fetch personality:', err);
+          this.hasPersonality = false;
+        }
+      });
   }
+  
+  
   onImagePicked(event: Event) {
     const fileInput = event.target as HTMLInputElement;
     const file = fileInput.files?.[0];
@@ -159,6 +133,7 @@ export class ContactComponent implements OnInit {
       });
     }
   }
+
 
     enableEditing() {
       this.isEditing = true;

@@ -31,6 +31,9 @@ const PORT = process.env.PORT || 3000
 const uri = process.env.MONGO_URI
 console.log("Loaded MONGO_URI:", process.env.MONGO_URI);
 
+// importing the infocard data to use for the info card
+const { infoCards: infocard } = require('./compiled/src/app/models/infocard');
+
 // jenna local
 // const uri = process.env.MONGO_URI || "mongodb+srv://jn4gz:jn4gz12345@clustera4.jcqksc9.mongodb.net/tigertraits?retryWrites=true&w=majority";
 
@@ -274,10 +277,15 @@ app.post('/compatibilities', async (req, res) => {
         return {
           userId: result.userId,
           personalityType: result.personalityType,
-          email: user?.email || 'N/A'
+          email: user?.email || 'N/A',
+          name: infocard[result.personalityType]?.name || result.personalityType,
+          image: infocard[result.personalityType]?.image || 'assets/personas/default.png',
+          link: `/contact-card/${result.userId}`
         };
       })
     );
+    
+    
 
     const newEntry = {
       userId: userId,
@@ -369,7 +377,7 @@ app.put('/update-contact-card', authenticateJWT, async (req, res) => {
     const contactCardsCollection = db.collection('contactCards');
 
     const updatedCard = await contactCardsCollection.updateOne(
-      { _id: new ObjectId(userId) },
+      { _id: new ObjectId(userId)},
         { $set: {
           name,
           bio,
@@ -390,25 +398,38 @@ app.put('/update-contact-card', authenticateJWT, async (req, res) => {
 })
 
 // 10. get user contact card info from db
+
 app.get('/contact-card/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
-    // Validate and convert the id to ObjectId
-    if (!ObjectId.isValid(id)) {
-      return res.status(400).json({ message: 'Invalid ID format' });
-    }
     const db = await connectToMongoDB();
-    const usersCollection = db.collection('contactCards');
-    const user = await usersCollection.findOne({ _id: new ObjectId(id) });
-    if (!user) return res.status(404).json({ message: 'Card not found' });
+    const contactCardsCollection = db.collection('contactCards');
+
+    let user = await contactCardsCollection.findOne({ userId: id });
+
+    if (!user) {
+      user = {
+        userId: id,
+        name: '',
+        bio: '',
+        imageUrl: '',
+        instagram: '',
+        facebook: '',
+        linkedin: '',
+        tigerTrait: 'Truman’s Paw'
+      };
+
+      await contactCardsCollection.insertOne(user);
+      console.log(`Created default contact card for userId: ${id}`);
+    }
+
     res.status(200).json(user);
   } catch (err) {
-    console.error(err);
+    console.error('Failed to fetch or create contact card:', err);
     res.status(500).json({ message: 'Server error' });
   }
 });
-
 // 11. upload image to server
 app.post('/upload-image', upload.single('image'), (req, res) => {
   try{
@@ -422,7 +443,6 @@ app.post('/upload-image', upload.single('image'), (req, res) => {
     res.status(500).json({ message: 'Error uploading file' });
 
   }
-
 });
 
 //make image folder publicly accessible
