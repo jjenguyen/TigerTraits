@@ -25,7 +25,7 @@ export interface InfoCard {
 }
 
 //export all the info cards from quiz.component.ts
-export const infoCards: {[type: string]: InfoCard} = {
+export var infoCards: {[type: string]: InfoCard} = {
   'ESFP': {
     name: 'Sparky`s',
     traits: ['Spontaneous', 'Great Performer', 'Enthusiastic'],
@@ -43,7 +43,7 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '/profile/ESFJ' },
       { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' }
     ],
-    tagColor: '#99CECF',
+    tagColor: '#fdb719',
   },
   // sm validated 042125
   //template
@@ -64,7 +64,7 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Sparky`s', image: "assets/personas/ESFP.png", link: '/profile/ESFP' },
       { name: 'Mort`s Wall', image: "assets/personas/ISTJ.png", link: '/profile/ISTJ' }
     ],
-    tagColor: '#99CECF',
+    tagColor: '#fdb719',
   },
   // sm validated 042125
   //template
@@ -85,7 +85,7 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Jesse Hall Dome', image: "assets/personas/ENFJ.png", link: '/profile/ENFJ' },
       { name: 'Kiss The 50', image: "assets/personas/ISFJ.png", link: '/profile/ISFJ' }
     ],
-    tagColor: '#99CECF',
+    tagColor: '#ffd17d',
   },
   // sm validated 042125
   //template
@@ -106,7 +106,7 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Shamrock', image: "assets/personas/ISFP.png", link: '/profile/ISFP' },
       { name: 'Mizzou Helmet', image: "assets/personas/ESTP.png", link: '/profile/ESTP' }
     ],
-    tagColor: '#99CECF',
+    tagColor: '#99cecf',
   },
   // sm validated 042125
   //template
@@ -127,7 +127,7 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'BoatHenge', image: "assets/personas/ISTP.png", link: '/profile/ISTP' },
       { name: 'Big MO', image: "assets/personas/ESTJ.png", link: '/profile/ESTJ' }
     ],
-    tagColor: '#99CECF',
+    tagColor: '#D4D4D4',
   },
   // sm validated 042125
   //template
@@ -148,7 +148,7 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Mort`s Wall', image: "assets/personas/ISTJ.png", link: '/profile/ISTJ' },
       { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '/profile/ESFJ' }
     ],
-    tagColor: '#99CECF',
+    tagColor: '#fdb719',
   },
   // sm validated 042125
   //template
@@ -169,7 +169,7 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Mizzou Helmet', image: "assets/personas/ESTP.png", link: '/profile/ESTP' },
       { name: 'Mort`s Wall', image: "assets/personas/ISTJ.png", link: '/profile/ISTJ' }
     ],
-    tagColor: '#99CECF',
+    tagColor: '#FFD17D',
   },
   // sm validated 042125
   //template
@@ -190,7 +190,7 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Heidelberg', image: "assets/personas/ESFJ.png", link: '/profile/ESFJ' },
       { name: 'Kiss The 50', image: "assets/personas/ISFJ.png", link: '/profile/ISFJ' }
     ],
-    tagColor: '#99CECF',
+    tagColor: '#FFEDCF',
   },
   // sm validated 042125
   //template
@@ -211,7 +211,7 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'The Big Tree', image: "assets/personas/INTJ.png", link: '/profile/INTJ' },
       { name: 'Truman`s Paw', image: "assets/personas/INFP.png", link: '/profile/INFP' }
     ],
-    tagColor: '#99CECF',
+    tagColor: '#FFEDCF',
   },
   // sm validated 042125
   //template
@@ -232,7 +232,7 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Shamrock', image: "assets/personas/ISFP.png", link: '/profile/ISFP' },
       { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: '/profile/INFJ' }
     ],
-    tagColor: '#99CECF',
+    tagColor: '#FDB719',
   },
   // sm validated 042125
   //template
@@ -253,7 +253,7 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: '/profile/INFJ' },
       { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' }
     ],
-    tagColor: '#99CECF',
+    tagColor: '#FDB719',
   },
   // sm validated 042125
   //template
@@ -274,7 +274,7 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Speaker`s Circle', image: "assets/personas/ENTP.png", link: '/profile/ENTP' },
       { name: 'Truman`s Paw', image: "assets/personas/INFP.png", link: '/profile/INFP' }
     ],
-    tagColor: '#99CECF',
+    tagColor: '#ffd17d',
   },
   // sm validated 042125
   //template
@@ -295,7 +295,7 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Truman`s Paw', image: "assets/personas/INFP.png", link: '/profile/INFP' },
       { name: 'The Big Tree', image: "assets/personas/INTJ.png", link: '/profile/INTJ' }
     ],
-    tagColor: '#99CECF',
+    tagColor: '#FFEDCF',
   },
   // sm validated 042125
   //template
@@ -316,7 +316,7 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'The Big Tree', image: "assets/personas/INTJ.png", link: '/profile/INTJ' },
       { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' }
     ],
-    tagColor: '#99CECF',
+    tagColor: '#FDB719',
   },
   // sm validated 042125
   //template
@@ -337,7 +337,7 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Mizzou Squirrel', image: "assets/personas/ENFP.png", link: '/profile/ENFP' },
       { name: 'Speaker`s Circle', image: "assets/personas/ENTP.png", link: '/profile/ENTP' }
     ],
-    tagColor: '#99CECF',
+    tagColor: '#FDB719',
   },
   // sm validated 042125
   //template
@@ -358,6 +358,6 @@ export const infoCards: {[type: string]: InfoCard} = {
       { name: 'Speaker`s Circle', image: "assets/personas/ENTP.png", link: '/profile/ENTP' },
       { name: 'Ghost Of Harlan', image: "assets/personas/INFJ.png", link: `/profile/INFJ` }
     ],
-    tagColor: '#99CECF',
+    tagColor: '#FFEDCF',
   }
 }

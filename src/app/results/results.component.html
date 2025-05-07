@@ -3,36 +3,36 @@
 <!-- leaving a note for when we send it out for user testing -->
 <!-- RESULTS SCREEN from quiz component, checks if card is null or not -->
 <ng-container *ngIf="card; else noCard" class="results-screen">
-    <app-info-card
-      [personaName]="card.name"
-      [traits]="card.traits"
-      [leftTags]="card.leftTags"
-      [rightTags]="card.rightTags"
-      [imageUrl]="card.image"
-      [resources]="card.resources"
-      [compatibilities]="card.compatibilities"
-      [cardColor]="card.cardColor"
-      [tagColor]="FFD17D"
-    ></app-info-card>
-    <!-- Add this at the bottom of results.component.html -->
-    <!-- If not confirming, show delete button -->
-    
+  <app-info-card
+    [personaName]="card.name"
+    [traits]="card.traits"
+    [leftTags]="card.leftTags"
+    [rightTags]="card.rightTags"
+    [imageUrl]="card.image"
+    [resources]="card.resources"
+    [compatibilities]="card.compatibilities"
+    [cardColor]="card.cardColor"
+    [tagColor]="card.tagColor"
+  ></app-info-card>
+  <!-- Add this at the bottom of results.component.html -->
+  <!-- If not confirming, show delete button -->
+  
 
 </ng-container>
 
 <!--logging in defaults users to quiz, so users would have to go out of their way to try to see results before theyve taken it-->
 <ng-template #noCard>
-    <p>Hmmm... looks like you haven't taken our quiz yet.</p>
-    <p>Try taking the quiz first, then check back here to see your results.</p>
+  <p>Hmmm... looks like you haven't taken our quiz yet.</p>
+  <p>Try taking the quiz first, then check back here to see your results.</p>
 </ng-template>
 <div *ngIf="!confirmingDelete">
-  <button (click)="showConfirmDelete()">Delete Account</button>
+<button (click)="showConfirmDelete()">Delete Account</button>
 </div>
 
 <!-- If confirming, show confirmation buttons -->
 <div *ngIf="confirmingDelete" >
-  <p>Are you sure you want to delete your account?</p>
-  <button (click)="confirmAccountDelete()">Yes, Delete</button>
-  <button (click)="cancelDelete()">Cancel</button>
+<p>Are you sure you want to delete your account?</p>
+<button (click)="confirmAccountDelete()">Yes, Delete</button>
+<button (click)="cancelDelete()">Cancel</button>
 </div>
 
