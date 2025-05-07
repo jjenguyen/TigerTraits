@@ -108,8 +108,9 @@ export class QuizComponent {
     {
       id: "Q6",
       key: 'ie',
+      text: "You feel a food coma coming after lunch. What's your move?",
       options: [
-        "Quiet spot, please. I need to recharge.",
+        "Find me a quiet spot, please. I need to recharge.",
         "I'm gonna power through! I'm not missing a thing!"
       ],
       gif: 'assets/gifs/Test.gif'
