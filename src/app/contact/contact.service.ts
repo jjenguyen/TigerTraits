@@ -7,7 +7,7 @@ import { AuthService } from '../login/auth.service';
   providedIn: 'root'
 })
 export class ContactService {
-  private readonly BASE_URL = 'http://localhost:3000/api';
+  private readonly BASE_URL = '/api';
 
   constructor(private http: HttpClient, private authService: AuthService) {
   }
