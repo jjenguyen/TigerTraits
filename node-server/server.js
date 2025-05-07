@@ -172,42 +172,59 @@ app.post('/login', async (req, res) => {
 });
 
 // 3. register new user and insert new document into mongo "users" collection
-app.post('/register',[
-    body('email').isEmail().withMessage('Please enter a valid email address.'),
-    body('password')
+app.post('/register', [
+  body('email').isEmail().withMessage('Please enter a valid email address.'),
+  body('password')
     .isLength({ min: 8 }).withMessage('Password must be at least 8 characters long.')
     .matches(/\d/).withMessage('Password must contain at least one number.')
     .matches(/[a-z]/).withMessage('Password must contain at least one lowercase letter.')
     .withMessage('Password must contain at least one uppercase letter.')
-    ],
-    async (req, res) => {
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-    }
-    console.log('Registration request received:', req.body);
-    try {
-        const db = await connectToMongoDB();
-        const usersCollection = db.collection('users');
-        const email = req.body.email.toLowerCase();
-        const existingUser = await usersCollection.findOne({ email });
-        if (existingUser) {
-            return res.status(400).json({ message: 'User already exists. Please go to the login page to log in.' });
-        }
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
-        await usersCollection.insertOne({
-          email,
-          password: hashedPassword
-        });
+], async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
 
-        console.log('User registered successfully!');
-        console.log('case sensetivity test email:', email);
+  console.log('Registration request received:', req.body);
 
-        return res.status(201).json({ message: 'Account successfully created! Please go to the login page to log in.' });
-    } catch (error) {
-        console.error('Error during registration:', error);
-        res.status(500).json({ message: 'Internal server error' });
+  try {
+    const db = await connectToMongoDB();
+    const usersCollection = db.collection('users');
+    const contactCards = db.collection('contactCards');
+
+    const email = req.body.email.toLowerCase();
+    const existingUser = await usersCollection.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: 'User already exists. Please go to the login page to log in.' });
     }
+
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const userResult = await usersCollection.insertOne({
+      email,
+      password: hashedPassword
+    });
+
+    const contactCardData = {
+      _id: userResult.insertedId,
+      userId: userResult.insertedId.toString(),
+      name: '',
+      bio: '',
+      imageUrl: '',
+      facebook: '',
+      instagram: '',
+      linkedin: '',
+      tigerTrait: 'Truman’s Paw'
+    };
+
+    const cardResult = await contactCards.insertOne(contactCardData);
+    console.log('Contact card created with _id:', cardResult.insertedId);
+
+    console.log('User registered successfully!');
+    return res.status(201).json({ message: 'Account successfully created! Please go to the login page to log in.' });
+  } catch (error) {
+    console.error('Error during registration:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
 });
 
 // 4. insert user quiz results into mongo "quizResults" collection
@@ -353,7 +370,7 @@ app.delete('/api/delete-account', authenticateJWT, async (req, res) => {
 });
 
 // 9. update user contact card info in db
-app.put('/update-contact-card', authenticateJWT, async (req, res) => {
+app.put('/api/update-contact-card', authenticateJWT, async (req, res) => {
   //debugging
   console.log('PUT /update-contact-card hit');
   console.log('Request body:', req.body);
@@ -390,7 +407,7 @@ app.put('/update-contact-card', authenticateJWT, async (req, res) => {
 })
 
 // 10. get user contact card info from db
-app.get('/contact-card/:id', async (req, res) => {
+app.get('/api/contact-card/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
