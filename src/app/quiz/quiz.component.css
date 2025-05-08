@@ -1,19 +1,22 @@
 h3 {
     font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif !important;
-    color: #333333;
+    color: #453D3F;
     font-size: 20px;
     text-align: center;
     max-width: 350px;
     margin: 0 auto;
     padding: 10px;
     line-height: 1.5;
+    font-weight: bold;
 }
 
 h2 {
     font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif !important;
-    color: #333333;
+    color: #453D3F;
     font-size: 20px;
     font-weight: bold;
+    margin-top: -25px;
+    margin-bottom: 0px;
 }
 
 .start-screen,
@@ -28,7 +31,7 @@ h2 {
 .gif-container {
     width: 200px;
     height: 200px;
-    margin: 20px auto;
+    margin: 10px auto;
     /* border: 2px solid black; */
 }
 .gif-image {
@@ -37,37 +40,87 @@ h2 {
 }
 
 .button {
-    background-color: white;
-    width: 150px;
+    /* background-color: white;
+    width: 200px;
     height: 50px;
     margin: 5px;
     padding: 10px;
     font-size: 15px;
     text-align: center;
     border-radius: 10px;
-    white-space: normal;
+    white-space: normal; */
+
+    background-color: #99CECF;
+    border: 3px outset #008486;
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 24px;
+    border-radius: 16px;
+    font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+    box-shadow: 3px 3px #888;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
 }
 
 .question-text {
-    font-size: 20px;
+    font-size: 18px;
     max-width: 300px;
-    margin: 20px auto; /* centers the text */
+    margin: 15px auto; /* centers the text */
     word-wrap: break-word;
     overflow-wrap: break-word;
     white-space: normal;
     text-align: center; /* center-align the text inside */
+    font-weight: bold;
+    color: #453D3F;
+    margin-bottom: 5px;
 }
 
 /* answer choice button */
 .option-button {
-    width: 300px;
+    width: 255px;
     height: 85px;
-    margin: 5px;
+    margin: 7px;
     padding: 10px;
-    font-size: 16px;
+    font-size: 15px;
     text-align: center;
     border-radius: 10px;
     white-space: normal;
+    word-wrap: break-word;
+    font-weight: bold;
+    color: #453D3F;
+    position: relative;
+    line-height: 1.5;
+
+    border: none;
+    box-shadow: none;
+    /* background-color: #99CECF; */
+    background-color: white;
+
+    /* transition: all 0.3s ease-in-out; */
+    /* box-shadow: 3px 3px #888; */
+
+    /* border: dashed #008486; */
+}
+
+.option-button:hover {
+    background-color: #008486;
+    color: white;
+    /* border: 2px dashed white; */
+
+    /* transform: translateY(-3px);
+    box-shadow: 5px 5px #555; */
+}
+
+.option-button:active {
+    background-color: #004243;  /* Darker color to show click */
+    color: white;
+    transition: background-color 0.1s ease;
+}
+
+.option-button span {
+    display: inline-block;
+    max-width: 97%;
     word-wrap: break-word;
 }
 
@@ -78,5 +131,13 @@ h2 {
     .results-screen {
         text-align: center;
         margin-top: 10px;
+    }
+
+    h2 {
+        font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif !important;
+        color: #333333;
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: -13px;
     }
 }

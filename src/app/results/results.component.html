@@ -26,13 +26,14 @@
   <p>Try taking the quiz first, then check back here to see your results.</p>
 </ng-template>
 <div *ngIf="!confirmingDelete">
-<button (click)="showConfirmDelete()">Delete Account</button>
+<button class="delete-acc-btn" (click)="showConfirmDelete()">Delete Account</button>
 </div>
 
 <!-- If confirming, show confirmation buttons -->
 <div *ngIf="confirmingDelete" >
-<p>Are you sure you want to delete your account?</p>
-<button (click)="confirmAccountDelete()">Yes, Delete</button>
-<button (click)="cancelDelete()">Cancel</button>
+  <p class="delete-acc-message">Are you sure you want to delete your account?</p>
+  <p class="delete-acc-message">This action cannot be undone.</p>
+  <button class="delete-confirm-btn" (click)="confirmAccountDelete()">Yes. Delete my account.</button>
+  <button class="delete-cancel-btn" (click)="cancelDelete()">Cancel</button>
 </div>
 

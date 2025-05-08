@@ -26,7 +26,7 @@ export class QuizComponent {
 
   //updated mapping to map each option Text to a MBTI letter
   map: { [key: string]: string } = {
-    "I've got them mapped out and ready to go!": "J",
+    "C'mon now, I had this mapped out yesterday!": "J",
     "No plan, no problem. Let's see where the day takes us!": "P",
     "I'm craving a bagel from Goldie's. It's such a classic!": "S",
     "I heard a new food truck is in town?! I have to try it!": "N",
@@ -34,22 +34,22 @@ export class QuizComponent {
     "Dancing my heart out at Jesse Hall!": "F",
     "You won't...": "I",
     "Losing my voice in the crowd!": "E",
-    "Shakespeare's or Booche's! Don't mess with traditions man.": "S",
-    "Time to try something new! I'm tired of the usual...": "N",
+    "Shakespeare's or Booche's! Let's not mess with the traditions, ok..?": "S",
+    "I'm in the mood for something new! I'm getting tired of the usual...": "N",
     "Find me a quiet spot, please. I need to recharge.": "I",
     "I'm gonna power through! I'm not missing a thing!": "E",
-    "Don't act suprised. I've had this on my calendar for weeks!": "J",
-    "I don't know how I got here, but I'm having a good time!": "P",
-    "Making sure everything's efficient and on track!": "T",
-    "Checking in with everyone and bringing the good vibes!": "F",
-    "What do you need from me?! Give me the step-by-step guide and I've got you.": "S",
+    "Pfft, don't act suprised. It's been on my calendar!": "J",
+    "I don't know how I got here, but I'm staying for the vibes!": "P",
+    "Making sure everything's efficient and stays on track.": "T",
+    "Checking in with everyone and bringing the good energy.": "F",
+    "What do you need from me?! Tell me what you want and I've got you.": "S",
     "I can handle this, I think I’ve got the big picture!": "N",
     "I'll text them back when I've thought it through.": "I",
     "I've already started the group facetime! We'll figure it out together.": "E",
-    "Hang on, let's weigh the pros and cons first.": "T",
+    "Hang on, let's weigh the pros and cons before deciding.": "T",
     "Hmmm, let's see what the group is feeling.": "F",
     "I'm checking off the last item on the itinerary!": "J",
-    "Not sure.. I'm going where the night takes me!": "P"
+    "Not sure.. I'm going wherever the night takes me!": "P"
   };
 
   //quiz questions array
@@ -58,10 +58,10 @@ export class QuizComponent {
     {
       id: "Q1",
       key: 'jp',
-      text: "The sun wakes you up bright and early. What are your plans for the day?",
+      text: "The sun wakes you up bright and early. Do you have any plans?",
       options: [
         "No plan, no problem. Let's see where the day takes us!",
-        "I've got them mapped out and ready to go!"
+        "C'mon now, I had this mapped out yesterday!"
       ],
       gif: 'assets/gifs/Sun2.gif'
     },
@@ -100,8 +100,8 @@ export class QuizComponent {
       key: 'sn',
       text: "Lunch break! Where to?",
       options: [
-        "Time to try something new! I'm tired of the usual...",
-        "Shakespeare's or Booche's! Don't mess with traditions man."
+        "I'm in the mood for something new! I'm getting tired of the usual...",
+        "Shakespeare's or Booche's! Let's not mess with the traditions, ok..?"
       ],
       gif: 'assets/gifs/gif3.gif'
     },
@@ -118,10 +118,10 @@ export class QuizComponent {
     {
       id: "Q7",
       key: 'jp',
-      text: "You find yourself volunterring at a service event. Why are you here?",
+      text: "You find yourself volunterring at a service event. Why??",
       options: [
-        "Don't act suprised. I've had this on my calendar for weeks!",
-        "I don't know how I got here, but I'm having a good time!"
+        "Pfft, don't act suprised. It's been on my calendar!",
+        "I don't know how I got here, but I'm staying for the vibes!"
       ],
       gif: 'assets/gifs/Test.gif'
     },
@@ -130,8 +130,8 @@ export class QuizComponent {
       key: 'tf',
       text: "What role do you take on at the service event?",
       options: [
-        "Checking in with everyone and bringing the good vibes!",
-        "Making sure everything's efficient and on track!",
+        "Checking in with everyone and bringing the good energy.",
+        "Making sure everything's efficient and stays on track.",
       ],
       gif: 'assets/gifs/Test.gif'
     },
@@ -140,8 +140,8 @@ export class QuizComponent {
       key: 'sn',
       text: "Urgent! Someone is asking for your help. How do you jump in?",
       options: [
-        "What do you need from me?! Give me the step-by-step guide and I've got you.",
-        "I can handle this, I think I’ve got the big picture!"
+        "What do you need from me?! Tell me what you want and I've got you.",
+        "Don't even worry about it. I can figure it out on my own!"
       ],
       gif: 'assets/gifs/Test.gif'
     },
@@ -160,7 +160,7 @@ export class QuizComponent {
       key: 'tf',
       text: "You've been downtown for a while. Is it time to move or stay?",
       options: [
-        "Hang on, let's weigh the pros and cons first.",
+        "Hang on, let's weigh the pros and cons before deciding.",
         "Hmmm, let's see what the group is feeling."
       ],
       gif: 'assets/gifs/Test.gif'
@@ -170,7 +170,7 @@ export class QuizComponent {
       key: 'jp',
       text: "The night is coming to an end. How do you close it out?",
       options: [
-        "Not sure.. I'm going where the night takes me!",
+        "Not sure.. I'm going wherever the night takes me!",
         "I'm checking off the last item on the itinerary!"
       ],
       gif: 'assets/gifs/Night.gif'
@@ -273,11 +273,14 @@ handleSelect(optionText: string): void {
   console.log("Updated answers object:", this.answers);
 
   //iterate over length of the questions to move to next question after setting answers in set
-  if (this.currentQuestion < this.questions.length - 1) {
-    setTimeout(() => {this.currentQuestion++;}, 150);
-  } else {
-    this.handleSubmit();
-  }
+  // add a delay after selecting an option to give user confirmation
+  setTimeout(() => {
+    if (this.currentQuestion < this.questions.length - 1) {
+      this.currentQuestion++;  // Move to the next question
+    } else {
+      this.handleSubmit();  // End of quiz, submit answers
+    }
+  }, 100);
 }
 
 

@@ -61,3 +61,33 @@
     width: 100%;
     text-align: center;
 }
+
+.delete-acc-btn, .delete-confirm-btn, .delete-cancel-btn {
+    background-color: #99CECF;
+    border: 3px outset #008486;
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 24px;
+    border-radius: 16px;
+    font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+    box-shadow: 3px 3px #888;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.delete-acc-message {
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.delete-acc-btn:hover, .delete-confirm-btn:hover, .delete-cancel-btn:hover {
+  background-color: #008486;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.delete-confirm-btn {
+    margin-right: 25px;
+}

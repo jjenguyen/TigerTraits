@@ -94,12 +94,6 @@ body, html {
   height: 625px;
 }
 
-.window-profile {
-  background-color: #fff3e0;
-  width: 800px;
-  height: 500px;
-}
-
 .window-about {
   background-color: #FFEDCF;
   width: 700px;
@@ -107,9 +101,20 @@ body, html {
 }
 
 .window-feedback {
-  background-color: #e8f5e9;
+  background-color: #FFEDCF;
   width: 700px;
   height: 650px;
+}
+.feedback-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin-top: -10px;
+  margin-left: -7px;
+}
+.iframe {
+  width: 100%;
+  border: none;
 }
 
 .window-notes {
@@ -221,7 +226,7 @@ body, html {
 .floating-window {
   position: absolute;
   top: 30px;
-  left: 250px;
+  left: 225px;
   /* width: 700px;
   height: 620px; */
   display: flex;

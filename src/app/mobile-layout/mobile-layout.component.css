@@ -61,7 +61,7 @@ color: #fff;
 }
 
 .hamburger-btn:hover {
-color: #FFD17D;
+/* color: #FFD17D; */
 transform: scale(1.1);
 }
 
