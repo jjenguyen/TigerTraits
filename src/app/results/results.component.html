@@ -16,8 +16,6 @@
   ></app-info-card>
   <!-- Add this at the bottom of results.component.html -->
   <!-- If not confirming, show delete button -->
-  
-
 </ng-container>
 
 <!--logging in defaults users to quiz, so users would have to go out of their way to try to see results before theyve taken it-->
@@ -25,10 +23,27 @@
   <p>Hmmm... looks like you haven't taken our quiz yet.</p>
   <p>Try taking the quiz first, then check back here to see your results.</p>
 </ng-template>
+
+<!-- compatibilities list -->
+<div>
+  <h3>Explore Compatibilities</h3>
+    <ul class="compatibility-list">
+      <li *ngFor="let user of compatibilities" (click)="openProfile(user.userId)">
+        {{ user.name || 'Unknown' }} ({{ user.personalityType || 'Unknown' }})
+      </li>
+    </ul>
+    <div *ngIf="compatibilities.length === 0">
+      <p>No compatible users found.</p>
+    </div>
+
+  <!-- FIX - need to use openApp to return back to quiz start -->
+  <button class="quiz-again-btn" (click)="startQuizAgain()">Take the Quiz Again</button>
+</div>
+
+<!-- delete account -->
 <div *ngIf="!confirmingDelete">
 <button class="delete-acc-btn" (click)="showConfirmDelete()">Delete Account</button>
 </div>
-
 <!-- If confirming, show confirmation buttons -->
 <div *ngIf="confirmingDelete" >
   <p class="delete-acc-message">Are you sure you want to delete your account?</p>
@@ -36,4 +51,3 @@
   <button class="delete-confirm-btn" (click)="confirmAccountDelete()">Yes. Delete my account.</button>
   <button class="delete-cancel-btn" (click)="cancelDelete()">Cancel</button>
 </div>
-

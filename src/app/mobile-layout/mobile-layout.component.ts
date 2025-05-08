@@ -88,8 +88,8 @@ export class MobileLayoutComponent implements OnInit {
         return this.isLoggedIn ? 'TigerTraits' : 'Start Here';
       case 'quiz': return 'Quiz';
       case 'about': return 'About';
-      case 'results': return 'My Results';
-      case 'contact': return 'Contact Card';
+      case 'results': return 'Results';
+      case 'contact': return 'Contact';
       case 'feedback': return 'Feedback';
       case 'notes': return 'Notes';
       case 'login': return 'Login';

@@ -37,10 +37,32 @@ export class AppComponent implements OnInit, AfterViewInit {
       }
     });
 
-    // listens for the custom event to open an app - implemented for "take the quiz" function in contact card under my tigertrait section
+    // // listens for the custom event to open an app - implemented for "take the quiz" function in contact card under my tigertrait section
+    // window.addEventListener('openApp', (event: any) => {
+    //   const appName = event.detail;
+    //   this.openApp(appName);
+    // });
+
+    // // event listener for opening a profile
+    // window.addEventListener('openApp', (event: any) => {
+    //   const { appName, data } = event.detail;
+    //   if (appName === 'viewProfile' && data) {
+    //     this.handleProfileOpen(data);
+    //   } else {
+    //     this.openApp(appName);
+    //   }
+    // });
+
+    // unified event listener for opening apps and profiles
     window.addEventListener('openApp', (event: any) => {
-      const appName = event.detail;
-      this.openApp(appName);
+      const { appName, data } = event.detail;
+
+      // handle opening the contact (profile) window
+      if (appName === 'contact' && data) {
+        this.handleProfileOpen(data);
+      } else {
+        this.openApp(appName, data);
+      }
     });
 
     // default to welcome
@@ -48,6 +70,17 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.openApp('welcome');
     }
   }
+
+// NEW CODE - method to open a profile when clicked
+// handle opening the profile with the correct user ID
+handleProfileOpen(userId: string): void {
+  if (userId) {
+    // open the contact window with the user ID
+    this.openApp('contact', userId);
+  } else {
+    console.error('Invalid user ID');
+  }
+}
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -69,18 +102,40 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   // opens the window if its not open, or brings it to the front if it is already open
+  // openApp(appName: string, data?: any): void {
+  //   if (this.isLoggedIn || this.isAppAlwaysUnlocked(appName)) {
+  //     const existing = this.openApps.find(app => app.name === appName && (!data || app.data === data));
+  //     if (!existing) {
+  //       this.zIndexCounter++;
+  //       this.openApps.push({ name: appName, data, zIndex: this.zIndexCounter });
+  //       setTimeout(() => this.reapplyDraggable(), 50);
+  //     } else {
+  //       this.bringToFront(existing);
+  //     }
+  //   }
+  // }  
+  // NEW CODE VERSION - open the window if it's not open, or bring it to the front if it is already open
   openApp(appName: string, data?: any): void {
     if (this.isLoggedIn || this.isAppAlwaysUnlocked(appName)) {
-      const existing = this.openApps.find(app => app.name === appName && (!data || app.data === data));
+      // unify the profile view to always use 'contact' as the app name
+      if (appName === 'viewProfile') {
+        appName = 'contact';
+      }
+      
+      // ensure the data is a user ID string, not an object
+      const formattedData = (typeof data === 'object') ? data.userId : data;
+      const existing = this.openApps.find(app => app.name === appName && app.data === formattedData);
+  
       if (!existing) {
         this.zIndexCounter++;
-        this.openApps.push({ name: appName, data, zIndex: this.zIndexCounter });
+        this.openApps.push({ name: appName, data: formattedData, zIndex: this.zIndexCounter });
         setTimeout(() => this.reapplyDraggable(), 50);
       } else {
         this.bringToFront(existing);
       }
     }
-  }  
+  }
+  
 
   closeApp(appName: string): void {
     this.openApps = this.openApps.filter(app => app.name !== appName);
@@ -133,7 +188,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
   }
   
-
   handleStartClick(): void {
     if (!this.isLoggedIn) {
       this.openApp('welcome');
@@ -154,10 +208,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       case 'welcome':
       default: return 'window-default';
     }
-  }
-
-  handleProfileOpen(userId: string): void {
-    this.openApp('viewProfile', userId);
   }
 
   reapplyDraggable(): void {
@@ -218,4 +268,3 @@ export class AppComponent implements OnInit, AfterViewInit {
     app.zIndex = this.zIndexCounter;
   }
 }
-

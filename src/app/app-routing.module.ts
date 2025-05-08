@@ -4,10 +4,6 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-
-
-
-
 import { ContactComponent } from './contact/contact.component';
 import { ResultsComponent } from './results/results.component';
 
@@ -20,6 +16,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'quiz', component: QuizComponent},
   { path: 'contact', component: ContactComponent },
+  { path: 'contact/:id', component: ContactComponent },
   { path: 'results', component: ResultsComponent},
   { path: 'results', component: ResultsComponent},
    // add more routes here as we need them

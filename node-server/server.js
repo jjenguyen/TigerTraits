@@ -213,7 +213,7 @@ app.post('/register', [
       facebook: '',
       instagram: '',
       linkedin: '',
-      tigerTrait: 'Truman’s Paw'
+      tigerTrait: ''
     };
 
     const cardResult = await contactCards.insertOne(contactCardData);
@@ -256,6 +256,71 @@ app.post('/quizResults',authenticateJWT, async (req, res) => {
 });
 
 // 5. get and store the user's 3 compatibility matches based on their result type
+// app.post('/compatibilities', async (req, res) => {
+//   try {
+//     const { userId, resultType } = req.body;
+
+//     const db = await connectToMongoDB();
+//     const usersCollection = db.collection('users');
+//     const quizResultsCollection = db.collection('quizResults');
+//     const compatCollection = db.collection('compatibilities');
+
+//     const compatibleTypes = compatibilityMap[resultType];
+
+//     if (!compatibleTypes) {
+//       return res.status(400).json({ message: 'Invalid personality type' });
+//     }
+
+//     // lookup users from quizResults with compatible personalityType
+//     const compatibleResults = await quizResultsCollection.aggregate([
+//       {
+//         $match: {
+//           personalityType: { $in: compatibleTypes },
+//           userId: { $ne: userId }
+//         }
+//       },
+//       {
+//         $sample: { size: 3 }
+//       }
+//     ]).toArray();
+
+//     // might be useful?: get their emails from the users collection (join)
+//     const matchedUsers = await Promise.all(
+//       compatibleResults.map(async (result) => {
+//         const user = await usersCollection.findOne({ _id: new ObjectId(String(result.userId)) });
+//         return {
+//           userId: result.userId,
+//           personalityType: result.personalityType,
+//           email: user?.email || 'N/A'
+//         };
+//       })
+//     );
+
+//     const newEntry = {
+//       userId: userId,
+//       resultType: resultType,
+//       matchedUsers
+//     };
+
+//     await compatCollection.updateOne(
+//       { userId: userId },
+//       { $set: newEntry },
+//       { upsert: true }
+//     );
+
+//     // checking logic for finding matches for compatiblities
+//     console.log('Compatible types for', resultType, ':', compatibleTypes);
+//     console.log('Compatible quizResults found:', compatibleResults.length);
+//     console.log('Matched Users:', matchedUsers);
+
+//     res.status(200).json({ message: 'Compatibility stored', data: newEntry });
+//   } catch (error) {
+//     console.error('Error storing compatibility:', error);
+//     res.status(500).json({ message: 'Internal server error' });
+//   }
+// });
+
+// NEW CODE - testing comp list feature logic
 app.post('/compatibilities', async (req, res) => {
   try {
     const { userId, resultType } = req.body;
@@ -265,57 +330,61 @@ app.post('/compatibilities', async (req, res) => {
     const quizResultsCollection = db.collection('quizResults');
     const compatCollection = db.collection('compatibilities');
 
+    // fetch compatibility types from the map
     const compatibleTypes = compatibilityMap[resultType];
-
     if (!compatibleTypes) {
       return res.status(400).json({ message: 'Invalid personality type' });
     }
 
-    // lookup users from quizResults with compatible personalityType
-    const compatibleResults = await quizResultsCollection.aggregate([
-      {
-        $match: {
-          personalityType: { $in: compatibleTypes },
-          userId: { $ne: userId }
-        }
-      },
-      {
-        $sample: { size: 3 }
-      }
-    ]).toArray();
+    // get a mix of 3 users per compatible type if possible
+    const matchedUsers = [];
+    for (const type of compatibleTypes) {
+      const typeMatches = await quizResultsCollection.aggregate([
+        { $match: { personalityType: type, userId: { $ne: userId } } },
+        { $sample: { size: 3 } }
+      ]).toArray();
+      matchedUsers.push(...typeMatches);
+    }
 
-    // might be useful?: get their emails from the users collection (join)
-    const matchedUsers = await Promise.all(
-      compatibleResults.map(async (result) => {
-        const user = await usersCollection.findOne({ _id: new ObjectId(String(result.userId)) });
-        return {
-          userId: result.userId,
-          personalityType: result.personalityType,
-          email: user?.email || 'N/A'
-        };
-      })
-    );
+    // limit to a max of 10 matches
+    if (matchedUsers.length > 10) {
+      matchedUsers.length = 10;
+    }
 
-    const newEntry = {
-      userId: userId,
-      resultType: resultType,
-      matchedUsers
-    };
-
+    // save to db
+    const newEntry = { userId: userId, resultType: resultType, matchedUsers };
     await compatCollection.updateOne(
       { userId: userId },
       { $set: newEntry },
       { upsert: true }
     );
 
-    // checking logic for finding matches for compatiblities
-    console.log('Compatible types for', resultType, ':', compatibleTypes);
-    console.log('Compatible quizResults found:', compatibleResults.length);
-    console.log('Matched Users:', matchedUsers);
-
+    console.log('Stored compatibility matches for:', resultType);
     res.status(200).json({ message: 'Compatibility stored', data: newEntry });
   } catch (error) {
     console.error('Error storing compatibility:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+// NEW CODE - GET route to retrieve compatibility list for a user
+app.get('/api/compatibilities/:userId', async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const db = await connectToMongoDB();
+    const compatCollection = db.collection('compatibilities');
+
+    // find the user's compatibility data
+    const compatibilityData = await compatCollection.findOne({ userId: userId });
+
+    if (!compatibilityData) {
+      return res.status(404).json({ message: 'No compatibilities found.' });
+    }
+
+    res.status(200).json({ data: compatibilityData.matchedUsers });
+  } catch (error) {
+    console.error('Error fetching compatibilities:', error);
     res.status(500).json({ message: 'Internal server error' });
   }
 });

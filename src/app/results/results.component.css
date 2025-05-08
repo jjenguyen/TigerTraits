@@ -92,3 +92,32 @@
 .delete-confirm-btn {
     margin-right: 25px;
 }
+
+/* FIX - comp list */
+.results-container {
+  padding: 1rem;
+}
+.compatibility-section {
+  margin-top: 1rem;
+  border-top: 1px solid #ccc;
+  padding-top: 0.5rem;
+}
+.compatibility-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 150px;
+  overflow-y: auto;
+}
+.compatibility-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem;
+  background-color: #f7f7f7;
+  border-radius: 4px;
+  color: red;
+}
+.compatibility-item:hover {
+  background-color: #e0e0e0;
+}

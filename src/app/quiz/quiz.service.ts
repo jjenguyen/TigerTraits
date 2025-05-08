@@ -40,5 +40,10 @@ export class QuizService {
       userId,
       resultType
     });
-  }  
+  }
+
+  // fetch compatibility matches for a given user from the server
+  getCompatibilities(userId: string): Observable<any> {
+    return this.http.get<any>(`/api/compatibilities/${userId}`);
+  }
 }

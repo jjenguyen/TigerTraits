@@ -13,7 +13,6 @@ export class ContactService {
   }
 
   getContactCard(userId: string): Observable<any> {
-
     return this.http.get(`${this.BASE_URL}/contact-card/${userId}`);
   }
 

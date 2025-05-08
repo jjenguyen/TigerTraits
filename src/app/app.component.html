@@ -11,11 +11,11 @@
     </div>
     <div class="icon" (click)="openApp('contact')" [class.locked]="isAppLocked('contact')">
       <img src="assets/icons/profile.png" />
-      <div class="icon-label">Contact</div>
+      <div class="icon-label">My Contact</div>
     </div>
     <div class="icon" (click)="openApp('results')" [class.locked]="isAppLocked('results')">
       <img src="assets/icons/results.png" />
-      <div class="icon-label">Results</div>
+      <div class="icon-label">My Results</div>
     </div>
     <div class="icon" (click)="openApp('feedback')">
       <img src="assets/icons/feedback.png" />
@@ -38,7 +38,7 @@
       <span>
         {{
           app.name === 'welcome' ? 'Start here'
-          : app.name === 'viewProfile' ? 'Contact'
+          : app.name === 'contact' ? 'Contact'
           : app.name === 'deleteAccount' ? 'Delete Account'
           : (app.name | titlecase)
         }}
@@ -52,7 +52,7 @@
         <app-login *ngIf="app.name === 'login'" (loginSuccess)="onLoginSuccess($event)" (openRegister)="openApp('register')"></app-login>
         <app-register *ngIf="app.name === 'register'" (openLogin)="openApp('login')"></app-register>
         <app-quiz *ngIf="app.name === 'quiz'" (openProfile)="handleProfileOpen($event)"></app-quiz>
-        <app-contact *ngIf="app.name === 'contact'"></app-contact>
+        <app-contact *ngIf="app.name === 'contact'" [userId]="app.data"></app-contact>
         <app-results *ngIf="app.name === 'results'"></app-results>
         <app-profile *ngIf="app.name === 'viewProfile'" [userId]="app.data"></app-profile>
 
