@@ -62,6 +62,7 @@
     text-align: center;
 }
 
+/* actual styling for results page that renders */
 .delete-acc-btn, .delete-confirm-btn, .delete-cancel-btn {
     background-color: #99CECF;
     border: 3px outset #008486;
