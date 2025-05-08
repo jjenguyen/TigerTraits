@@ -1,69 +1,4 @@
-/* pulled css from quiz component */
-.start-screen,
-.quiz-screen,
-.completion-screen,
-.results-screen {
-    text-align: center;
-    margin-top: 10px;
-    margin-top: 10px;
-}
-
-/* for all gifs */
-.gif-container {
-    width: 200px;
-    height: 200px;
-    margin: 20px auto;
-    /* border: 2px solid black; */
-}
-.gif-image {
-    width: 100%;
-    height: 100%;
-}
-
-.button {
-    background-color: white;
-    width: 150px;
-    height: 50px;
-    margin: 5px;
-    padding: 10px;
-    font-size: 15px;
-    text-align: center;
-    border-radius: 10px;
-    white-space: normal;
-}
-
-.question-text {
-    max-width: 300px;
-    margin: 20px auto; /* centers the text */
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
-    text-align: center; /* center-align the text inside */
-}
-
-/* answer choice button */
-.option-button {
-    width: 300px;
-    height: 85px;
-    margin: 5px;
-    padding: 10px;
-    font-size: 16px;
-    text-align: center;
-    border-radius: 10px;
-    white-space: normal;
-    word-wrap: break-word;
-}
-
-.delete-section {
-    position: fixed;
-    bottom: 20px;
-    left: 0;
-    width: 100%;
-    text-align: center;
-}
-
-/* actual styling for results page that renders */
-.delete-acc-btn, .delete-confirm-btn, .delete-cancel-btn {
+/* .delete-acc-btn, .delete-confirm-btn, .delete-cancel-btn {
     background-color: #99CECF;
     border: 3px outset #008486;
     color: #000;
@@ -91,10 +26,10 @@
 
 .delete-confirm-btn {
     margin-right: 25px;
-}
+} */
 
 /* FIX - comp list */
-.results-container {
+/* .results-container {
   padding: 1rem;
 }
 .compatibility-section {
@@ -120,4 +55,125 @@
 }
 .compatibility-item:hover {
   background-color: #e0e0e0;
-}
+} */
+
+
+
+/* FIX - needs themed styling */
+.results-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    max-width: 700px;
+    padding: 1rem; /* consolidated padding */
+  }
+  
+  .info-card-section {
+    width: 350px;
+    margin-right: 13px;
+    margin-top: -20px;
+  }
+
+  .right-section {
+    width: 350px;
+  }
+  
+  .compatibility-container {
+    margin-top: -30px;
+    background-color: #f3f3f3;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    max-height: 400px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .compatibility-list-container {
+    flex: 1; /* allows the list to take remaining height */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .compatibility-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .compatibility-list li {
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: #e0e0e0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000;
+  }
+  
+  .compatibility-list li:hover {
+    background-color: #d1d1d1;
+  }
+  
+  .compatibility-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.25rem;
+    background-color: #f7f7f7;
+    border-radius: 4px;
+    color: #000;
+  }
+  
+  .compatibility-item:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .buttons-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .quiz-again-btn,
+  .delete-acc-btn,
+  .delete-confirm-btn,
+  .delete-cancel-btn {
+    background-color: #99CECF;
+    border: 3px outset #008486;
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 24px;
+    border-radius: 16px;
+    font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+    box-shadow: 3px 3px #888;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .quiz-again-btn:hover,
+  .delete-acc-btn:hover,
+  .delete-confirm-btn:hover,
+  .delete-cancel-btn:hover {
+    background-color: #008486;
+    color: #fff;
+    transform: scale(1.05);
+  }
+
+  .confirm-delete-section {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .delete-acc-message {
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+  }

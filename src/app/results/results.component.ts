@@ -184,7 +184,7 @@ export class ResultsComponent implements OnInit {
         const compatList = response?.data || [];
         this.compatibilities = [];
   
-        // Use Promise.all to wait for all name fetches
+        // use Promise.all to wait for all name fetches
         const nameFetchPromises = compatList.map((compat) => {
           return this.contactService.getContactCard(compat.userId).toPromise()
             .then((contactInfo) => {
@@ -198,7 +198,7 @@ export class ResultsComponent implements OnInit {
             });
         });
   
-        // Update compatibilities after all names are fetched
+        // update compatibilities after all names are fetched
         Promise.all(nameFetchPromises).then((resolvedCompatList) => {
           this.compatibilities = resolvedCompatList;
           console.log('Updated compatibility list:', this.compatibilities);
