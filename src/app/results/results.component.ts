@@ -146,27 +146,62 @@ export class ResultsComponent implements OnInit {
   //   });
   // }
   // NEW CODE, DRAFT 2 - fetches the compatibility list and loads user names from contact cards
+  // getCompatibilities(userId: string): void {
+  //   this.quizService.getCompatibilities(userId).subscribe({
+  //     next: (response) => {
+  //       console.log('Compatibilities fetched:', response);
+  //       const compatList = response?.data || [];
+  //       this.compatibilities = [];
+
+  //       // fetch the name for each compatibility
+  //       compatList.forEach((compat) => {
+  //         this.contactService.getContactCard(compat.userId).subscribe({
+  //           next: (contactInfo) => {
+  //             compat.name = contactInfo?.name || 'Unknown User';
+  //             this.compatibilities.push(compat);
+  //             console.log('Updated compatibility:', compat);
+  //           },
+  //           error: (err) => {
+  //             console.error('Error fetching contact name:', err);
+  //             compat.name = 'Unknown User';
+  //             this.compatibilities.push(compat);
+  //           }
+  //         });
+  //       });
+  //     },
+  //     error: (err) => {
+  //       console.error('Error fetching compatibilities:', err);
+  //       this.compatibilities = [];
+  //     }
+  //   });
+  // }
+
+  // NEW!!!
   getCompatibilities(userId: string): void {
     this.quizService.getCompatibilities(userId).subscribe({
       next: (response) => {
         console.log('Compatibilities fetched:', response);
         const compatList = response?.data || [];
         this.compatibilities = [];
-
-        // fetch the name for each compatibility
-        compatList.forEach((compat) => {
-          this.contactService.getContactCard(compat.userId).subscribe({
-            next: (contactInfo) => {
+  
+        // Use Promise.all to wait for all name fetches
+        const nameFetchPromises = compatList.map((compat) => {
+          return this.contactService.getContactCard(compat.userId).toPromise()
+            .then((contactInfo) => {
               compat.name = contactInfo?.name || 'Unknown User';
-              this.compatibilities.push(compat);
-              console.log('Updated compatibility:', compat);
-            },
-            error: (err) => {
+              return compat;
+            })
+            .catch((err) => {
               console.error('Error fetching contact name:', err);
               compat.name = 'Unknown User';
-              this.compatibilities.push(compat);
-            }
-          });
+              return compat;
+            });
+        });
+  
+        // Update compatibilities after all names are fetched
+        Promise.all(nameFetchPromises).then((resolvedCompatList) => {
+          this.compatibilities = resolvedCompatList;
+          console.log('Updated compatibility list:', this.compatibilities);
         });
       },
       error: (err) => {
@@ -174,8 +209,7 @@ export class ResultsComponent implements OnInit {
         this.compatibilities = [];
       }
     });
-  }
-
+  }  
 
   // FIX - need to use openApp to return back to quiz start
   // method to start the quiz again

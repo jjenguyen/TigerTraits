@@ -25,6 +25,7 @@
             </div>
           </div>
       
+          <!-- NEW!!! -->
           <div class="info-box4">
             <h3>My TigerTrait</h3>
             <ng-container *ngIf="hasPersonality !== null">
@@ -32,13 +33,14 @@
               <div *ngIf="hasPersonality; else quizPrompt">
                 <img class="persona-img" id="tiger-trait-img" [src]="imagePath" [alt]="personality">
               </div>
-      
+          
               <!-- Else show quiz prompt -->
               <ng-template #quizPrompt>
                 <button class="quiz-start-button" (click)="goToQuiz()">Result is unavailable. Click here to find out!</button>
               </ng-template>
             </ng-container>
           </div>
+          
         </div>
       </div>
       <button class="edit-button" (click)="enableEditing()">Edit Contact Info</button>

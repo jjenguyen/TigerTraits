@@ -274,6 +274,7 @@ ngOnInit(): void {
   }
 }
 
+// NEW!!!
 loadContactCard(userId: string): void {
   this.contactService.getContactCard(userId).subscribe({
     next: (info) => {
@@ -287,9 +288,26 @@ loadContactCard(userId: string): void {
         instagram: info.instagram || '',
         facebook: info.facebook || '',
         linkedin: info.linkedin || '',
-        tigerTrait: info.tigerTrait || 'ENFP'
+        tigerTrait: info.tigerTrait || ''
       });
       this.imagePreview = info.imageUrl || '';
+
+      // fetch personality type and set the image path
+      this.contactService.getPersonality(userId).subscribe({
+        next: (res) => {
+          if (res?.personality) {
+            this.personality = res.personality;
+            this.imagePath = `assets/personas/${res.personality}.png`;
+            this.hasPersonality = true;
+          } else {
+            this.hasPersonality = false;
+          }
+        },
+        error: (err) => {
+          console.error('Failed to fetch personality:', err);
+          this.hasPersonality = false;
+        }
+      });
     },
     error: (err) => {
       console.error('Error loading contact info:', err);
