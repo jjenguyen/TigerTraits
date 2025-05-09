@@ -10,7 +10,8 @@
   
 .card {
     background-color: white;
-    border: 3px dashed #333333;
+    /* border: 3px dashed #008486; */
+    box-shadow: 5px 5px #d4d4d4;
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 20px;

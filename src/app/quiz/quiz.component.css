@@ -113,7 +113,7 @@ h2 {
 }
 
 .option-button:active {
-    background-color: #004243;  /* Darker color to show click */
+    background-color: #004243;
     color: white;
     transition: background-color 0.1s ease;
 }
@@ -125,6 +125,25 @@ h2 {
 }
 
 @media screen and (max-width: 1124px) {
+    .start-screen,
+    .quiz-screen,
+    .completion-screen,
+    .results-screen {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    h2 {
+        font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif !important;
+        color: #333333;
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: -13px;
+    }
+}
+
+/* vertical responsiveness (iPad, tablets, etc.) */
+@media screen and (max-height: 799px) {
     .start-screen,
     .quiz-screen,
     .completion-screen,

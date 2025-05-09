@@ -28,7 +28,7 @@
       <h3>Explore Compatibilities</h3>
       <div class="compatibility-list-container">
         <ul class="compatibility-list">
-          <li *ngFor="let user of compatibilities" (click)="openProfile(user.userId)">
+          <li class="comp-link" *ngFor="let user of compatibilities" (click)="openProfile(user.userId)">
             {{ user.name || 'Unknown' }} ({{ user.personalityType || 'Unknown' }})
           </li>
         </ul>
@@ -40,7 +40,7 @@
 
     <!-- buttons -->
     <div class="buttons-section">
-      <button class="quiz-again-btn" (click)="startQuizAgain()">Take the Quiz Again</button>
+      <button class="quiz-again-btn" (click)="startQuizAgain()">Retake Quiz</button>
       <button class="delete-acc-btn" (click)="showConfirmDelete()">Delete Account</button>
     </div>
     <div *ngIf="confirmingDelete" class="confirm-delete-section">

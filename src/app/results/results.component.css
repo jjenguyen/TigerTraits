@@ -1,65 +1,16 @@
-/* .delete-acc-btn, .delete-confirm-btn, .delete-cancel-btn {
-    background-color: #99CECF;
-    border: 3px outset #008486;
-    color: #000;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 24px;
-    border-radius: 16px;
-    font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
-    box-shadow: 3px 3px #888;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
+h3 {
+  margin-bottom: 16px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #008486;
+  text-shadow: 1px 1px #FDB719;
+  letter-spacing: 1px;
 }
 
-.delete-acc-message {
-    color: #000;
-    font-size: 16px;
-    font-weight: bold;
+p {
+  font-weight: bolder;
 }
 
-.delete-acc-btn:hover, .delete-confirm-btn:hover, .delete-cancel-btn:hover {
-  background-color: #008486;
-  color: #fff;
-  transform: scale(1.05);
-}
-
-.delete-confirm-btn {
-    margin-right: 25px;
-} */
-
-/* FIX - comp list */
-/* .results-container {
-  padding: 1rem;
-}
-.compatibility-section {
-  margin-top: 1rem;
-  border-top: 1px solid #ccc;
-  padding-top: 0.5rem;
-}
-.compatibility-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  max-height: 150px;
-  overflow-y: auto;
-}
-.compatibility-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.25rem;
-  background-color: #f7f7f7;
-  border-radius: 4px;
-  color: red;
-}
-.compatibility-item:hover {
-  background-color: #e0e0e0;
-} */
-
-
-
-/* FIX - needs themed styling */
 .results-container {
     display: flex;
     justify-content: center;
@@ -81,13 +32,15 @@
   
   .compatibility-container {
     margin-top: -30px;
-    background-color: #f3f3f3;
-    padding: 10px;
+    background-color: white;
+    padding: 15px;
     border-radius: 8px;
     margin-bottom: 20px;
     max-height: 400px;
     display: flex;
     flex-direction: column;
+
+    box-shadow: 5px 5px #d4d4d4;
   }
   
   .compatibility-list-container {
@@ -106,32 +59,19 @@
   
   .compatibility-list li {
     margin: 5px 0;
-    padding: 8px;
+    padding: 10px;
     border-radius: 5px;
-    background-color: #e0e0e0;
+    background-color: #D4D4D4;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: #000;
+    font-weight: bolder;
   }
   
   .compatibility-list li:hover {
-    background-color: #d1d1d1;
-  }
-  
-  .compatibility-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.25rem;
-    background-color: #f7f7f7;
-    border-radius: 4px;
-    color: #000;
-  }
-  
-  .compatibility-item:hover {
-    background-color: #e0e0e0;
+    background-color: #989898;
   }
   
   .buttons-section {
@@ -177,3 +117,112 @@
     font-size: 16px;
     font-weight: bold;
   }
+
+/* mobile */
+@media screen and (max-width: 1124px) {
+  h3 {
+    font-size: 24px;
+  }
+
+  .results-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .info-card-section, .compatibility-container, .buttons-section {
+    width: 100%; /* match the width for all sections */
+    max-width: 700px;
+    margin: 10px auto;
+    margin-top: -10px;
+  }
+
+  .compatibility-container {
+    background-color: white;
+    padding: 15px;
+    
+    border-radius: 8px;
+    max-height: 300px;
+    margin-bottom: 20px;
+    margin-top: -155px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .buttons-section {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  .quiz-again-btn,
+  .delete-acc-btn {
+    width: 90%;
+    max-width: 600px;
+    margin: 5px auto;
+  }
+}
+
+/* vertical responsiveness (iPad, tablets, etc.) */
+@media screen and (min-width: 630px) and (max-width: 1124px), 
+       screen and (max-height: 799px) and (min-width: 630px) {
+  h3 {
+    font-size: 23px;
+  }
+
+  .results-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 1rem;
+    width: 100%;
+    height: auto;
+    margin-top: -17px;
+  }
+
+  .info-card-section,
+  .compatibility-container,
+  .buttons-section {
+    width: 90%;
+    max-width: 700px;
+    margin: 10px auto;
+  }
+
+  /* fix the floating window height and alignment */
+  .results-container {
+    justify-content: flex-start;
+  }
+
+  .compatibility-container {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    margin-top: -155px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .buttons-section {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  .quiz-again-btn,
+  .delete-acc-btn {
+    width: 90%;
+    max-width: 600px;
+    margin: 5px auto;
+  }
+}

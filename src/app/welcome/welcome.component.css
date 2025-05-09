@@ -84,7 +84,7 @@
   }
 }
 
-@media screen and (min-width: 1125px) {
+@media screen and (min-width: 1125px) and (min-height: 800px) {
   .welcome-container {
     display: flex;
     flex-direction: column;
@@ -154,4 +154,11 @@
     padding: 4px 10px;
     border-radius: 8px;
   } 
+}
+
+/* vertical responsiveness (iPad, tablets, etc.) */
+@media screen and (min-width: 630px) and (max-height: 799px) {
+  .welcome-container {
+    margin-top: 25px;
+  }
 }
