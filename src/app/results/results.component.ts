@@ -214,7 +214,16 @@ export class ResultsComponent implements OnInit {
   // FIX - need to use openApp to return back to quiz start
   // method to start the quiz again
   startQuizAgain(): void {
-    this.router.navigate(['/quiz']);
+    // check if it's desktop or mobile layout
+    const isDesktop = !!document.querySelector('.desktop-container');
+
+    if (isDesktop) {
+      // use openApp method for the desktop layout
+      window.dispatchEvent(new CustomEvent('openApp', { detail: { appName: 'quiz' } }));
+    } else {
+      // use custom event for mobile layout to switch screens
+      window.dispatchEvent(new CustomEvent('openApp', { detail: 'quiz' }));
+    }
   }
 
   // method to open a profile when clicked
