@@ -5,6 +5,11 @@
     <!-- window header bar -->
     <div class="window-header-bar">
         <span>{{ getHeaderTitle() }}</span>
+
+        <!-- <button *ngIf="currentScreen === 'contact' && selectedProfileUserId !== authService.getCurrentUser()?.id" 
+            class="back-btn" 
+            (click)="navigateBack()">←</button> -->
+
         <!-- <button class="hamburger-btn" (click)="toggleMenu()">☰</button> -->
         <button class="hamburger-btn" (click)="toggleMenu()" aria-label="Open menu">
             <i class="fas fa-bars"></i>
@@ -62,7 +67,7 @@
             </app-register>
 
             <app-quiz *ngIf="currentScreen === 'quiz'"></app-quiz>
-            <app-contact *ngIf="currentScreen === 'contact'"></app-contact>
+            <app-contact *ngIf="currentScreen === 'contact'" [userId]="selectedProfileUserId"></app-contact>
             <app-results *ngIf="currentScreen === 'results'"></app-results>
             
             <div *ngIf="currentScreen === 'about'" class="about-page">

@@ -228,6 +228,16 @@ export class ResultsComponent implements OnInit {
 
   // method to open a profile when clicked
   openProfile(userId: string): void {
-    window.dispatchEvent(new CustomEvent('openApp', { detail: { appName: 'contact', data: userId } }));
-  }  
+    // check if it's desktop or mobile layout
+    const isDesktop = !!document.querySelector('.desktop-container');
+
+    if (isDesktop) {
+      // use openApp method for the desktop layout
+      window.dispatchEvent(new CustomEvent('openApp', { detail: { appName: 'contact', data: userId } }));
+    } else {
+      // use custom event for mobile layout to switch screens
+      window.dispatchEvent(new CustomEvent('openApp', { detail: { appName: 'contact', data: userId } }));
+      window.dispatchEvent(new CustomEvent('openProfileMobile', { detail: userId }));
+    }
+  } 
 }

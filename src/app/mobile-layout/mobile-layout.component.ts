@@ -15,6 +15,7 @@ export class MobileLayoutComponent implements OnInit {
   isLoggedIn: boolean = false; // track login status
   isDeleting: boolean = false;
   deleted: boolean = false; // track account deletion status
+  selectedProfileUserId: string | null = null; // NEW!! testing - store the user ID for contact view
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -37,6 +38,14 @@ export class MobileLayoutComponent implements OnInit {
         const appName = event.detail;
         console.log(`[MobileLayout] Switching to: ${appName}`);
         this.switchScreen(appName);
+      });
+
+      // listen for opening a profile in mobile layout
+      window.addEventListener('openProfileMobile', (event: any) => {
+        const userId = event.detail;
+        console.log(`[MobileLayout] Opening profile for user ID: ${userId}`);
+        this.selectedProfileUserId = userId;
+        this.currentScreen = 'contact';  // set to redirect to the contact screen
       });
     }
   }  
@@ -66,9 +75,24 @@ export class MobileLayoutComponent implements OnInit {
     if (this.isLoggedIn && screen === 'welcome') {
       return; // don't allow returning to welcome after login
     }
-    this.currentScreen = screen;
-    this.menuOpen = false;
-  }  
+
+      // reset the profile ID when navigating to own contact
+      if (screen === 'contact') {
+        const currentUser = this.authService.getCurrentUser();
+        if (currentUser) {
+          this.selectedProfileUserId = currentUser.id; // Set to own ID
+          this.currentScreen = ''; // temporarily set to blank to force update
+          setTimeout(() => {
+            this.currentScreen = 'contact'; // update to the contact screen after a brief delay
+          }, 50);
+        }
+      } else {
+
+        this.currentScreen = screen;
+      }
+      
+      this.menuOpen = false;
+    }
 
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
