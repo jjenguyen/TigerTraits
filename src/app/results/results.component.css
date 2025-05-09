@@ -36,7 +36,7 @@ p {
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 20px;
-    max-height: 400px;
+    max-height: 260px;
     display: flex;
     flex-direction: column;
 
@@ -117,6 +117,10 @@ p {
     font-size: 16px;
     font-weight: bold;
   }
+  
+  .delete-confirm-btn {
+    margin-bottom: 6px;
+  }
 
 /* mobile */
 @media screen and (max-width: 1124px) {
@@ -166,6 +170,10 @@ p {
     width: 90%;
     max-width: 600px;
     margin: 5px auto;
+  }
+
+  .delete-confirm-btn {
+    margin-right: 6px;
   }
 }
 
@@ -224,5 +232,9 @@ p {
     width: 90%;
     max-width: 600px;
     margin: 5px auto;
+  }
+
+  .delete-confirm-btn {
+    margin-right: 6px;
   }
 }

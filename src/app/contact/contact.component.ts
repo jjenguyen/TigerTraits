@@ -237,6 +237,7 @@ export class ContactComponent implements OnInit {
   contactCard: any;
   user: any;
   imagePreview: string | null;
+  isOwnProfile: boolean = false;
 
   contactForm = this.fb.group({
     name: ['', Validators.required],
@@ -267,8 +268,17 @@ ngOnInit(): void {
   // log the user ID being used to load the profile
   console.log('[DEBUG] Loaded User ID:', this.userId);
 
+  // if (this.userId) {
+  //   this.loadContactCard(this.userId);
+  // } else {
+  //   console.warn('No user ID provided for contact card.');
+  // }
   if (this.userId) {
     this.loadContactCard(this.userId);
+    // check if the loaded profile belongs to the logged-in user
+    const currentUser = this.authService.getCurrentUser();
+    this.isOwnProfile = currentUser?.id === this.userId;
+    console.log('[DEBUG] Is Own Profile:', this.isOwnProfile);
   } else {
     console.warn('No user ID provided for contact card.');
   }

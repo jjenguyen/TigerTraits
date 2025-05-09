@@ -43,7 +43,8 @@
           
         </div>
       </div>
-      <button class="edit-button" (click)="enableEditing()">Edit Contact Info</button>
+      <!-- <button class="edit-button" (click)="enableEditing()">Edit Contact Info</button> -->
+      <button *ngIf="isOwnProfile" class="edit-button" (click)="enableEditing()">Edit Contact Info</button>
   </div>
 </div>
 
