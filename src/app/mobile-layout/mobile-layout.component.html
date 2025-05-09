@@ -5,15 +5,17 @@
     <!-- window header bar -->
     <div class="window-header-bar">
         <span>{{ getHeaderTitle() }}</span>
-
-        <!-- <button *ngIf="currentScreen === 'contact' && selectedProfileUserId !== authService.getCurrentUser()?.id" 
-            class="back-btn" 
-            (click)="navigateBack()">←</button> -->
-
-        <!-- <button class="hamburger-btn" (click)="toggleMenu()">☰</button> -->
-        <button class="hamburger-btn" (click)="toggleMenu()" aria-label="Open menu">
-            <i class="fas fa-bars"></i>
-        </button>
+        <div class="header-btn-group">
+            <!-- back button for naving to and from comp list and user contacts -->
+            <button *ngIf="currentScreen === 'contact' && selectedProfileUserId !== authService.getCurrentUser()?.id" 
+                class="back-btn" 
+                (click)="navigateBack()">←</button>
+            <!-- <button class="hamburger-btn" (click)="toggleMenu()">☰</button> -->
+            <button class="hamburger-btn" (click)="toggleMenu()" aria-label="Open menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
 
         <!-- nav menu (slides open) -->
         <div class="nav-menu" *ngIf="menuOpen">

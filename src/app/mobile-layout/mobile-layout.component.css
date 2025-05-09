@@ -49,6 +49,21 @@ padding: 16px;
 overflow-y: auto;
 }
 
+/* hamburger and back button (for comp list) */
+.header-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* space between back and hamburger buttons */
+}
+
+.back-btn {
+  all: unset;
+  font-size: 25px;
+  cursor: pointer;
+  margin-right: 8px;
+  color: #fff;
+}
+
 /* nav hamburger button */
 .hamburger-btn {
 all: unset; /* removes all browser default styles */
@@ -60,7 +75,7 @@ justify-content: center;
 color: #fff;
 }
 
-.hamburger-btn:hover {
+.hamburger-btn:hover, .back-btn:hover {
 /* color: #FFD17D; */
 transform: scale(1.1);
 }

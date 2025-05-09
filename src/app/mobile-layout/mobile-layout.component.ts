@@ -17,7 +17,8 @@ export class MobileLayoutComponent implements OnInit {
   deleted: boolean = false; // track account deletion status
   selectedProfileUserId: string | null = null; // NEW!! testing - store the user ID for contact view
 
-  constructor(private authService: AuthService, private router: Router) {}
+  // had to set authService to public for back button (comp list and user contact naving)
+  constructor(public authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     const token = localStorage.getItem('token');
@@ -90,7 +91,7 @@ export class MobileLayoutComponent implements OnInit {
 
         this.currentScreen = screen;
       }
-      
+
       this.menuOpen = false;
     }
 
@@ -104,6 +105,14 @@ export class MobileLayoutComponent implements OnInit {
     this.isLoggedIn = false; // update login state
     this.currentScreen = 'welcome';
     this.menuOpen = false;
+  }
+
+  navigateBack(): void {
+    // only nav back if the profile being viewed is not the logged-in user's profile
+    const currentUser = this.authService.getCurrentUser();
+    if (this.currentScreen === 'contact' && this.selectedProfileUserId !== currentUser?.id) {
+      this.currentScreen = 'results'; // go back to the compatibility list
+    }
   }
 
   getHeaderTitle(): string {
