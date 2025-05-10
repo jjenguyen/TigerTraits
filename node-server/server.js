@@ -500,7 +500,7 @@ app.post('/api/upload-image', upload.single('image'), (req, res) => {
   try{
     console.log('Request body:', req.body);
     //change this for production
-    const fileUrl = `http://localhost:3000/api/uploads/${req.file.filename}`;
+    const fileUrl = `/api/uploads/${req.file.filename}`;
     console.log('File uploaded successfully:', req.file);
     res.status(200).json({ imageUrl: fileUrl });
   } catch (err) {

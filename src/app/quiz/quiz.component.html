@@ -4,7 +4,7 @@
 <!-- START SCREEN -->
 <div *ngIf="viewStep === 'start'" class="start-screen">
   <div class="gif-container">
-    <img src="assets/gifs/Test1.gif" alt="GIF" class="gif-image" />
+    <img src="assets/gifs/Start.gif" alt="GIF" class="gif-image" />
   </div>
   <h3>It's homecoming weekend at Mizzou and campus is filled with spirit! The decisions you make today will reveal your tiger trait.</h3>
   <h3>Ready to start your day?</h3>
@@ -36,7 +36,7 @@
 <!-- COMPLETION SCREEN -->
 <div *ngIf="viewStep === 'complete'" class="completion-screen">
   <div class="gif-container">
-    <img src="assets/gifs/Complete.gif" alt="GIF" class="gif-image" />
+    <img src="assets/gifs/End.gif" alt="GIF" class="gif-image" />
   </div>
   <h3>All done! Ready to see your results?</h3>
   <button class="button" (click)="viewStep = 'result'">Show Results</button>
@@ -56,5 +56,5 @@
     [tagColor]="resultData.tagColor"
   ></app-info-card>
   <!-- restart quiz button, initalize all the quiz comp vars back to their OG state-->
-  <button class="button" (click)="viewStep = 'start'; result = ''; resultData = null; card = null; currentQuestion = 0; answers = {};">Take the Quiz Again!</button>"
+  <button class="quiz-button" (click)="viewStep = 'start'; result = ''; resultData = null; card = null; currentQuestion = 0; answers = {};">Take the Quiz Again!</button>
 </div>

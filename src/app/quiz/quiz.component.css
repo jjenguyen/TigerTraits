@@ -124,6 +124,25 @@ h2 {
     word-wrap: break-word;
 }
 
+.quiz-button {
+    background-color: #99CECF;
+    border: 3px outset #008486;
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 24px;
+    border-radius: 16px;
+    font-family: 'Comic Neue', 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+    box-shadow: 3px 3px #888;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    margin: 10px auto;
+    position: relative;
+    top: -130px; /* Move up */
+
+}
+
 @media screen and (max-width: 1124px) {
     .start-screen,
     .quiz-screen,

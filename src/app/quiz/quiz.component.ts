@@ -63,7 +63,7 @@ export class QuizComponent {
         "No plan, no problem. Let's see where the day takes us!",
         "C'mon now, I had this mapped out yesterday!"
       ],
-      gif: 'assets/gifs/Sun2.gif'
+      gif: 'assets/gifs/Q1.gif'
     },
     {
       id: "Q2",
@@ -73,7 +73,7 @@ export class QuizComponent {
         "I'm craving a bagel from Goldie's. It's such a classic!",
         "I heard a new food truck is in town?! I have to try it!"
       ],
-      gif: 'assets/gifs/Growl.gif'
+      gif: 'assets/gifs/Q2.gif'
     },
     {
       id: "Q3",
@@ -83,7 +83,7 @@ export class QuizComponent {
         "Analyzing the artwork for Decorate the District!",
         "Dancing my heart out at Jesse Hall!"
       ],
-      gif: 'assets/gifs/Dance2.gif'
+      gif: 'assets/gifs/Q3.gif'
     },
     {
       id: "Q4",
@@ -93,7 +93,7 @@ export class QuizComponent {
         "Losing my voice in the crowd!",
         "You won't..."
       ],
-      gif: 'assets/gifs/gif2.gif'
+      gif: 'assets/gifs/Q4.gif'
     },
     {
       id: "Q5",
@@ -103,7 +103,7 @@ export class QuizComponent {
         "I'm in the mood for something new! I'm getting tired of the usual...",
         "Shakespeare's or Booche's! Let's not mess with the traditions, ok..?"
       ],
-      gif: 'assets/gifs/gif3.gif'
+      gif: 'assets/gifs/Q5.gif'
     },
     {
       id: "Q6",
@@ -113,17 +113,17 @@ export class QuizComponent {
         "Find me a quiet spot, please. I need to recharge.",
         "I'm gonna power through! I'm not missing a thing!"
       ],
-      gif: 'assets/gifs/Test.gif'
+      gif: 'assets/gifs/Q6.gif'
     },
     {
       id: "Q7",
       key: 'jp',
-      text: "You find yourself volunterring at a service event. Why??",
+      text: "You find yourself voluntering at a service event. Why?",
       options: [
         "Pfft, don't act suprised. It's been on my calendar!",
         "I don't know how I got here, but I'm staying for the vibes!"
       ],
-      gif: 'assets/gifs/Test.gif'
+      gif: 'assets/gifs/Q7.gif'
     },
     {
       id: "Q8",
@@ -133,7 +133,7 @@ export class QuizComponent {
         "Checking in with everyone and bringing the good energy.",
         "Making sure everything's efficient and stays on track.",
       ],
-      gif: 'assets/gifs/Test.gif'
+      gif: 'assets/gifs/Q8.gif'
     },
     {
       id: "Q9",
@@ -143,7 +143,7 @@ export class QuizComponent {
         "What do you need from me?! Tell me what you want and I've got you.",
         "Don't even worry about it. I can figure it out on my own!"
       ],
-      gif: 'assets/gifs/Test.gif'
+      gif: 'assets/gifs/Q9.gif'
     },
     {
       id: "Q10",
@@ -153,7 +153,7 @@ export class QuizComponent {
         "I've already started the group facetime! We'll figure it out together.",
         "I'll text them back when I've thought it through."
       ],
-      gif: 'assets/gifs/Buzz.gif'
+      gif: 'assets/gifs/Q10.gif'
     },
     {
       id: "Q11",
@@ -163,7 +163,7 @@ export class QuizComponent {
         "Hang on, let's weigh the pros and cons before deciding.",
         "Hmmm, let's see what the group is feeling."
       ],
-      gif: 'assets/gifs/Test.gif'
+      gif: 'assets/gifs/Q11.gif'
     },
     {
       id: "Q12",
@@ -173,7 +173,7 @@ export class QuizComponent {
         "Not sure.. I'm going wherever the night takes me!",
         "I'm checking off the last item on the itinerary!"
       ],
-      gif: 'assets/gifs/Night.gif'
+      gif: 'assets/gifs/Q12.gif'
     }
   ];
 
